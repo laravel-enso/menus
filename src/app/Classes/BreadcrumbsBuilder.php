@@ -3,7 +3,6 @@
 namespace LaravelEnso\MenuManager\app\Classes;
 
 use Illuminate\Support\Collection;
-use LaravelEnso\MenuManager\app\Classes\CurrentMenuDetector;
 use LaravelEnso\MenuManager\app\Enums\PagesBreadcrumbs;
 use LaravelEnso\MenuManager\app\Models\Menu;
 
