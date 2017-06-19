@@ -1,0 +1,81 @@
+<?php
+
+namespace LaravelEnso\MenuManager\app\Classes;
+
+use Illuminate\Support\Collection;
+use LaravelEnso\MenuManager\app\Classes\CurrentMenuDetector;
+use LaravelEnso\MenuManager\app\Enums\PagesBreadcrumbs;
+use LaravelEnso\MenuManager\app\Models\Menu;
+
+class BreadcrumbsBuilder
+{
+    private $breadcrumbs;
+    private $enum;
+    private $menus;
+    private $currentMenu;
+
+    public function __construct(Collection $menus)
+    {
+        $this->menus = $menus;
+        $this->breadcrumbs = collect();
+        $this->enum = new PagesBreadcrumbs();
+        $this->currentMenu = (new CurrentMenuDetector($this->menus))->get();
+        $this->build();
+    }
+
+    public function get()
+    {
+        return $this->breadcrumbs;
+    }
+
+    private function build()
+    {
+        $currentMenu = $this->currentMenu;
+
+        while ($currentMenu) {
+            $this->prependBreadcrumb($currentMenu);
+
+            $currentMenu = $currentMenu->parent;
+        }
+
+        $this->appendTermination();
+    }
+
+    private function appendTermination()
+    {
+        $termination = $this->getRouteEndingSegment();
+
+        if (!$termination) {
+            return;
+        }
+
+        if ($this->enum->hasKey($termination)) {
+            $termination = $this->enum->getValueByKey($termination);
+        }
+
+        $this->pushBreadcrumb($termination);
+    }
+
+    private function prependBreadcrumb(Menu $currentMenu)
+    {
+        $this->breadcrumbs->prepend([
+            'label' => strtolower(__($currentMenu->name)),
+            'link'  => $currentMenu->link,
+        ]);
+    }
+
+    private function pushBreadcrumb(string $termination)
+    {
+        $this->breadcrumbs->push([
+            'label' => $termination,
+            'link'  => request()->path(),
+        ]);
+    }
+
+    private function getRouteEndingSegment()
+    {
+        $routeArray = explode('.', request()->route()->getName());
+
+        return count($routeArray) > 1 ? end($routeArray) : null;
+    }
+}
