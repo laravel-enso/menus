@@ -30,8 +30,9 @@
 
     <script>
 
-        let vue = new Vue({
+        let vm = new Vue({
             el: '#app',
+
             methods: {
                 customRender: function(column, data, type, row, meta) {
                     switch(column) {

@@ -27,4 +27,9 @@ class Menu extends Model
     {
         return self::whereParentId($this->id)->pluck('id');
     }
+
+    public function scopeIsParent($query)
+    {
+        return $query->whereHasChildren(true);
+    }
 }

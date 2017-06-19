@@ -8,12 +8,9 @@
     </div>
 </div>
 <div class="col-sm-6">
-    <div class="form-group{{ $errors->has('order') ? ' has-error' : '' }}">
-        {!! Form::label('order', __("Order")) !!}
-        <small class="text-danger" style="float:right;">
-            {{ $errors->first('order') }}
-        </small>
-        {!! Form::text('order', null, ['class' => 'form-control', 'readonly' => 'readonly', 'placeholder' => __("Fill")]) !!}
+    {!! Form::label('order', __("Order")) !!}
+    <div class="well well-sm" style="height:34px">
+        <p>{{ isset($menu) ? $menu->order : '' }}</p>
     </div>
 </div>
 <div class="col-sm-6">

@@ -3,7 +3,7 @@
         element="ul"
         class="sortable-menu"
         :options="{ group: { name:'menus' }}">
-        <transition-group name="list-complete">
+        <transition-group name="list-complete" style="display:block; min-height:5px">
             <li v-for="menu in menus"
                 :key="menu.unique_id"
                 class="sortable-menu list-complete-item">
@@ -49,6 +49,7 @@
 
     .list-complete-item {
         transition: all 0.3s;
+        min-height: 5px;
     }
 
     .list-complete-enter, .list-complete-leave-active {

@@ -28,10 +28,13 @@
                     </div>
                     <div class="box-body">
                         <center>
-                            <reorderable-menu :menus="menus" style="max-width: 400px; padding-left: 0" v-cloak>
+                            <reorderable-menu :menus="menus"
+                                style="max-width: 400px;
+                                padding-left: 0"
+                                v-cloak>
                             </reorderable-menu>
                         <center>
-                            <button id="save" class="btn btn-primary" @click="sendConfiguration">
+                            <button id="save" class="btn btn-primary" @click="setOrder()">
                                 {{ __("Save") }}
                             </button>
                         </center>
@@ -48,39 +51,32 @@
     <script>
 
         var vm = new Vue({
-
             el: '#app',
+
             data: {
-
-                menus: JSON.parse('{!! $treeMenu !!}')
+                menus: {!! $treeMenu !!}
             },
+
             methods: {
-
-                addEmptyChildrenArray: function(menus) {
-
+                addEmptyChildrenArray(menus) {
                     var self = this;
 
-                    menus.forEach(function(menu) {
-
+                    menus.forEach(menu => {
                         if (!menu.hasOwnProperty('children')) {
-
                             menu.children = [];
                         } else {
-
                             self.addEmptyChildrenArray(menu.children);
                         }
                     });
                 },
-                sendConfiguration: function() {
-
-                    axios.patch('/system/menus/setOrder', { menus: this.menus }).then((response) => {
-
+                setOrder() {
+                    axios.patch('/system/menus/setOrder', { menus: this.menus }).then(response => {
                         window.location.reload();
                     });
                 },
             },
-            created: function() {
 
+            created() {
                 this.addEmptyChildrenArray(this.menus);
             }
         });

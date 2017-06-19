@@ -9,26 +9,15 @@ class MenusTableStructure extends TableStructure
     public function __construct()
     {
         $this->data = [
-
-            /* current number for each line */
             'crtNo'         => __('#'),
-            /* buttons with available actions */
             'actionButtons' => __('Actions'),
             'notSearchable' => [2, 4, 5],
             'render'        => [1, 4, 5],
             'headerAlign'   => 'center',
-            /* table body alignment. The dt-body-* class is used in this example */
             'bodyAlign'     => 'center',
-            /* the class of the '<table> element */
             'tableClass'    => 'table display compact',
-            /* if none is given, by default, 'lfrtip' is used.
-             * See datatables.net documentation */
             'dom'           => 'lfrtip',
-            /* list of columns to be displayed, given by position - translation key
-             * The translation will be used in the table column header.
-             * Note: 'special' columns such as crtNo/actionButtons should NOT be given here */
             'columns'         => [
-
                 0 => [
                     'label' => __('Name'),
                     'data'  => 'name',
