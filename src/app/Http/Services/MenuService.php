@@ -11,9 +11,9 @@ class MenuService
 {
     private const AdminRoleId = 1;
 
-	private $request;
+    private $request;
 
-	public function __construct(Request $request)
+    public function __construct(Request $request)
     {
         $this->request = $request;
     }
@@ -48,7 +48,7 @@ class MenuService
             flash()->success(__('Menu Created'));
         });
 
-        return redirect('system/menus/' . $menu->id . '/edit');
+        return redirect('system/menus/'.$menu->id.'/edit');
     }
 
     public function edit(Menu $menu)
@@ -81,7 +81,6 @@ class MenuService
 
         $menu->delete();
 
-        return [ 'message' => __('Operation was successfull') ];
+        return ['message' => __('Operation was successfull')];
     }
 }
-

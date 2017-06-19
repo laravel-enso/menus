@@ -8,9 +8,9 @@ use LaravelEnso\MenuManager\app\Models\Menu;
 
 class MenuReorderService
 {
-	private $request;
+    private $request;
 
-	public function __construct(Request $request)
+    public function __construct(Request $request)
     {
         $this->request = $request;
     }
@@ -49,4 +49,3 @@ class MenuReorderService
         }
     }
 }
-
