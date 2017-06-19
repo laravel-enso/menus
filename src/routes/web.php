@@ -1,10 +1,10 @@
 <?php
 
 Route::group([
-    'namespace' => 'LaravelEnso\MenuManager\app\Http\Controllers',
-    'middleware' => ['web', 'auth', 'core']
+    'namespace'  => 'LaravelEnso\MenuManager\app\Http\Controllers',
+    'middleware' => ['web', 'auth', 'core'],
 ], function () {
-	Route::group(['prefix' => 'system', 'as' => 'system.'], function () {
+    Route::group(['prefix' => 'system', 'as' => 'system.'], function () {
         Route::group(['prefix' => 'menus', 'as' => 'menus.'], function () {
             Route::get('reorder', 'MenuController@reorder')->name('reorder');
             Route::patch('setOrder', 'MenuController@setOrder')->name('setOrder');
@@ -14,5 +14,5 @@ Route::group([
         });
 
         Route::resource('menus', 'MenuController');
-	});
+    });
 });

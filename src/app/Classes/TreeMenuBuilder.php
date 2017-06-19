@@ -25,7 +25,7 @@ class TreeMenuBuilder
     {
         $menus = collect();
 
-        $this->menus->each(function($menu) use (&$menus, $parentId) {
+        $this->menus->each(function ($menu) use (&$menus, $parentId) {
             if ($menu->parent_id !== $parentId) {
                 return true;
             }

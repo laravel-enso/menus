@@ -3,13 +3,13 @@
 namespace LaravelEnso\MenuManager\app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use LaravelEnso\MenuManager\app\Classes\TreeMenuBuilder;
-use LaravelEnso\MenuManager\app\DataTable\MenusTableStructure;
 use LaravelEnso\Core\app\Enums\IsActiveEnum;
-use LaravelEnso\MenuManager\app\Http\Requests\ValidateMenuRequest;
-use LaravelEnso\MenuManager\app\Models\Menu;
 use LaravelEnso\Core\app\Models\Role;
 use LaravelEnso\DataTable\app\Traits\DataTable;
+use LaravelEnso\MenuManager\app\Classes\TreeMenuBuilder;
+use LaravelEnso\MenuManager\app\DataTable\MenusTableStructure;
+use LaravelEnso\MenuManager\app\Http\Requests\ValidateMenuRequest;
+use LaravelEnso\MenuManager\app\Models\Menu;
 
 class MenuController extends Controller
 {

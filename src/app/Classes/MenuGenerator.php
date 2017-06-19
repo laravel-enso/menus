@@ -45,7 +45,7 @@ class MenuGenerator
 
     private function buildCurrentLevel(int $parentId = null)
     {
-        $this->menus->each(function($menu) use ($parentId) {
+        $this->menus->each(function ($menu) use ($parentId) {
             if ($menu->parent_id !== $parentId) {
                 return true;
             }
