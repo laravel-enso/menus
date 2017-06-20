@@ -4,8 +4,8 @@ namespace LaravelEnso\MenuManager\app\Http\Services;
 
 use Illuminate\Http\Request;
 use LaravelEnso\Core\app\Enums\IsActiveEnum;
-use LaravelEnso\RoleManager\app\Models\Role;
 use LaravelEnso\MenuManager\app\Models\Menu;
+use LaravelEnso\RoleManager\app\Models\Role;
 
 class MenuService
 {
