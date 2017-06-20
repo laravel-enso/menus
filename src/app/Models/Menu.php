@@ -10,7 +10,7 @@ class Menu extends Model
 
     public function roles()
     {
-        return $this->belongsToMany('LaravelEnso\Core\app\Models\Role')->withTimestamps();
+        return $this->belongsToMany('LaravelEnso\RoleManager\app\Models\Role')->withTimestamps();
     }
 
     public function parent()
@@ -31,5 +31,10 @@ class Menu extends Model
     public function scopeIsParent($query)
     {
         return $query->whereHasChildren(true);
+    }
+
+    public function scopeIsNotParent($query)
+    {
+        return $query->whereHasChildren(false);
     }
 }
