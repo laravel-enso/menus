@@ -12,7 +12,7 @@ class MenusTableStructure extends TableStructure
             'crtNo'           => __('#'),
             'actionButtons'   => __('Actions'),
             'notSearchable'   => [2, 4, 5],
-            'render'          => [1, 4, 5],
+            'render'          => [1],
             'headerAlign'     => 'center',
             'bodyAlign'       => 'center',
             'tableClass'      => 'table display compact',

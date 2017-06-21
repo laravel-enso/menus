@@ -20,11 +20,9 @@ class MenuService
 
     public function getTableQuery()
     {
-        $query = Menu::select(\DB::raw('menus.id as DT_RowId, menus.name, menus.icon,
+        return Menu::select(\DB::raw('menus.id as DT_RowId, menus.name, menus.icon,
             parent_menus.name as parent, menus.link, menus.created_at, menus.updated_at')
         )->leftJoin('menus as parent_menus', 'menus.parent_id', '=', 'parent_menus.id');
-
-        return $query;
     }
 
     public function index()
@@ -65,7 +63,7 @@ class MenuService
     {
         \DB::transaction(function () use ($menu) {
             $menu->update($this->request->all());
-            $roles = $this->request->roles_list ? $this->request->roles_list : [];
+            $roles = $this->request->has('roles_list') ? $this->request->get('roles_list') : [];
             $menu->roles()->sync($roles);
             flash()->success(__('The Changes have been saved!'));
         });

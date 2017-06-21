@@ -26,7 +26,7 @@ class MenuReorderService
     public function setOrder()
     {
         \DB::transaction(function () {
-            $menus = $this->request->menus;
+            $menus = $this->request->get('menus');
             $this->updateOrder($menus, null);
         });
 

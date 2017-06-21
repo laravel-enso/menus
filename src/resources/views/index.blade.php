@@ -34,13 +34,10 @@
             el: '#app',
 
             methods: {
-                customRender: function(column, data, type, row, meta) {
+                customRender(column, data, type, row, meta) {
                     switch(column) {
                         case 'icon':
                                 return '<i class="' + data + '"></i>';
-                        case 'created_at':
-                        case 'updated_at':
-                            return moment(data).format("DD-MM-YYYY");
                         default:
                             toastr.warning('render for column ' + column + ' is not defined.' );
                             return data;
