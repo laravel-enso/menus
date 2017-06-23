@@ -3,11 +3,11 @@
 namespace LaravelEnso\MenuManager\app\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use LaravelEnso\Helpers\Traits\DMYTimestamps;
+use LaravelEnso\Helpers\Traits\FormattedTimestamps;
 
 class Menu extends Model
 {
-    use DMYTimestamps;
+    use FormattedTimestamps;
 
     protected $fillable = ['name', 'icon', 'link', 'has_children', 'parent_id'];
 
