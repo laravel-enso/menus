@@ -5,24 +5,24 @@ use LaravelEnso\Core\app\Classes\StructureManager\StructureMigration;
 class CreateStructureForMenus extends StructureMigration
 {
     protected $permissionGroup = [
-        'name' => 'system.menus', 'description' => 'Menus Permissions Group',
+        'name' => 'system.menus', 'description' => 'Menus permissions group',
     ];
 
     protected $permissions = [
         ['name' => 'system.menus.getTableData', 'description' => 'Get table data for menus', 'type' => 0, 'default' => false],
         ['name' => 'system.menus.initTable', 'description' => 'Init table for menus menu', 'type' => 0, 'default' => false],
-        ['name' => 'system.menus.create', 'description' => 'Create Menu', 'type' => 1, 'default' => false],
-        ['name' => 'system.menus.edit', 'description' => 'Edit Existing Menu', 'type' => 1, 'default' => false],
-        ['name' => 'system.menus.index', 'description' => 'Show Menus', 'type' => 0, 'default' => false],
-        ['name' => 'system.menus.reorder', 'description' => 'Reorder Menus', 'type' => 1, 'default' => false],
-        ['name' => 'system.menus.setOrder', 'description' => 'Set New Menus Order', 'type' => 1, 'default' => false],
-        ['name' => 'system.menus.store', 'description' => 'Save Menu', 'type' => 1, 'default' => false],
-        ['name' => 'system.menus.update', 'description' => 'Update Menu', 'type' => 1, 'default' => false],
-        ['name' => 'system.menus.destroy', 'description' => 'Delete Menu', 'type' => 1, 'default' => false],
+        ['name' => 'system.menus.create', 'description' => 'Create menu', 'type' => 1, 'default' => false],
+        ['name' => 'system.menus.edit', 'description' => 'Edit menu', 'type' => 1, 'default' => false],
+        ['name' => 'system.menus.index', 'description' => 'Show menus index', 'type' => 0, 'default' => false],
+        ['name' => 'system.menus.reorder', 'description' => 'Reorder menus', 'type' => 1, 'default' => false],
+        ['name' => 'system.menus.setOrder', 'description' => 'Set new menus order', 'type' => 1, 'default' => false],
+        ['name' => 'system.menus.store', 'description' => 'Store newly created menu', 'type' => 1, 'default' => false],
+        ['name' => 'system.menus.update', 'description' => 'Update edited menu', 'type' => 1, 'default' => false],
+        ['name' => 'system.menus.destroy', 'description' => 'Delete menu', 'type' => 1, 'default' => false],
     ];
 
     protected $menu = [
-        'name' => 'Menus', 'icon' => 'fa fa-fw fa-list', 'link' => 'system/menus', 'has_children' => 0,
+        'name' => 'Menus', 'icon' => 'fa fa-fw fa-list', 'link' => 'system/menus', 'has_children' => false,
     ];
 
     protected $parentMenu = 'System';
