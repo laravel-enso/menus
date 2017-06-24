@@ -4,7 +4,7 @@ namespace LaravelEnso\MenuManager;
 
 use Illuminate\Support\ServiceProvider;
 
-class MenuManagerServiceProvider extends ServiceProvider
+class MenusServiceProvider extends ServiceProvider
 {
     public function boot()
     {
