@@ -6,13 +6,10 @@
 
 Menu Manager dependency for [Laravel Enso](https://github.com/laravel-enso/Enso)
 
-### Use
+### Publishes
 
-Come already included in [LaravelEnso Core](https://github.com/laravel-enso/Core)
-
-### Can publish
 - `php artisan vendor:publish --tag=menus-component` - the VueJS component
-- `php artisan vendor:publish --tag=update` - a common alias for when wanting to update the VueJS component, 
+- `php artisan vendor:publish --tag=enso-update` - a common alias for when wanting to update the VueJS component, 
 once a newer version is released
 
 ### Contributions
