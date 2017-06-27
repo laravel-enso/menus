@@ -4,11 +4,16 @@
 [![Total Downloads](https://poser.pugx.org/laravel-enso/menumanager/downloads)](https://packagist.org/packages/laravel-enso/menumanager)
 [![Latest Stable Version](https://poser.pugx.org/laravel-enso/menumanager/version)](https://packagist.org/packages/laravel-enso/menumanager)
 
-Menu Manager depedency for Laravel Enso
+Menu Manager dependency for [Laravel Enso](https://github.com/laravel-enso/Enso)
 
 ### Use
 
-Included in LaravelEnso Core
+Come already included in [LaravelEnso Core](https://github.com/laravel-enso/Core)
+
+### Can publish
+- `php artisan vendor:publish --tag=menus-component` - the VueJS component
+- `php artisan vendor:publish --tag=update` - a common alias for when wanting to update the VueJS component, 
+once a newer version is released
 
 ### Contributions
 
