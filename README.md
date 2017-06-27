@@ -14,4 +14,4 @@ once a newer version is released
 
 ### Contributions
 
-...are welcome
+are welcome
