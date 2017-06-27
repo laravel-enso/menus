@@ -6,6 +6,13 @@
 
 Menu Manager dependency for [Laravel Enso](https://github.com/laravel-enso/Enso)
 
+### Details
+
+- allow for the easy management of the main (sidebar) menus of the application
+- permits the creation, update, delete, reordering of the menus
+- comes with a VueJS component that offers the capability to reorder menus through drag-and-drop
+- offers the functionality to automatically generate breadcrumbs based on the current route
+
 ### Publishes
 
 - `php artisan vendor:publish --tag=menus-component` - the VueJS component
