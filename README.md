@@ -6,6 +6,8 @@
 
 Menu Manager dependency for [Laravel Enso](https://github.com/laravel-enso/Enso)
 
+[![Watch the demo](https://laravel-enso.github.io/menumanager/screenshots/Selection_012.png)](https://laravel-enso.github.io/menumanager/videos/menu_reorder.webm)
+
 ### Details
 
 - allow for the easy management of the main (sidebar) menus of the application
