@@ -27,6 +27,10 @@ class MenusServiceProvider extends ServiceProvider
         ], 'breadcrumbs-config');
 
         $this->publishes([
+            __DIR__.'/config/breadcrumbs.php' => config_path('breadcrumbs.php'),
+        ], 'enso-config');
+
+        $this->publishes([
             __DIR__.'/resources/assets/js/components' => resource_path('assets/js/vendor/laravel-enso/components'),
         ], 'menus-component');
 
