@@ -8,7 +8,6 @@ use LaravelEnso\MenuManager\app\Models\Menu;
 class BreadcrumbsBuilder
 {
     private $breadcrumbs;
-    private $enum;
     private $menus;
     private $currentMenu;
 
@@ -46,7 +45,9 @@ class BreadcrumbsBuilder
             return;
         }
 
-        $termination = config('breadcrumbs.'.$termination) ?: __($termination);
+        $termination = config('breadcrumbs.'.$termination)
+            ? __(config('breadcrumbs.'.$termination))
+            : __($termination);
 
         $this->pushBreadcrumb($termination);
     }

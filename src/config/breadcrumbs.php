@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'createResource' => __('create resource'),
-    'reorder'        => __('reorder'),
-    'editTexts'      => __('edit texts'),
+    'createResource' => 'create resource',
+    'reorder'        => 'reorder',
+    'editTexts'      => 'edit texts',
 ];
