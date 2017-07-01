@@ -3,7 +3,6 @@
 namespace LaravelEnso\MenuManager\app\Classes;
 
 use Illuminate\Support\Collection;
-use LaravelEnso\MenuManager\app\Enums\PagesBreadcrumbs;
 use LaravelEnso\MenuManager\app\Models\Menu;
 
 class BreadcrumbsBuilder
@@ -17,7 +16,6 @@ class BreadcrumbsBuilder
     {
         $this->menus = $menus;
         $this->breadcrumbs = collect();
-        $this->enum = new PagesBreadcrumbs();
         $this->currentMenu = (new CurrentMenuDetector($this->menus))->get();
         $this->build();
     }
@@ -48,9 +46,7 @@ class BreadcrumbsBuilder
             return;
         }
 
-        if ($this->enum->hasKey($termination)) {
-            $termination = $this->enum->getValueByKey($termination);
-        }
+        $termination = config('breadcrumbs.'.$termination) ?: __($termination);
 
         $this->pushBreadcrumb($termination);
     }
