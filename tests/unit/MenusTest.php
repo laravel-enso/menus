@@ -101,12 +101,12 @@ class PermissionTest extends TestCase
     private function postParams()
     {
         return [
-            'parent_id'   => Menu::first(['id'])->id,
-            'name'                  => 'testMenu',
-            'icon'           => 'fa-fa-icon',
-            'link'                  => '/system/testMenu',
+            'parent_id'                  => Menu::first(['id'])->id,
+            'name'                       => 'testMenu',
+            'icon'                       => 'fa-fa-icon',
+            'link'                       => '/system/testMenu',
             'has_children'               => 0,
-            '_method'               => 'POST',
+            '_method'                    => 'POST',
         ];
     }
 
