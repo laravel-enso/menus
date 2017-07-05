@@ -3,7 +3,6 @@
 namespace LaravelEnso\MenuManager\app\Classes;
 
 use Illuminate\Support\Collection;
-use LaravelEnso\Helpers\Classes\AbstractObject;
 
 class CurrentMenuDetector
 {
