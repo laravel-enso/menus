@@ -9,9 +9,9 @@
 
 Menu Manager dependency for [Laravel Enso](https://github.com/laravel-enso/Enso)
 
-![Screenshot](https://laravel-enso.github.io/menumanager/screenshots/Selection_027.png)
+[![Screenshot](https://laravel-enso.github.io/menumanager/screenshots/Selection_027_thumb.png)](https://laravel-enso.github.io/menumanager/screenshots/Selection_027.png)
 
-[![Watch the demo](https://laravel-enso.github.io/menumanager/screenshots/Selection_012.png)](https://laravel-enso.github.io/menumanager/videos/menu_reorder.webm)
+[![Watch the demo](https://laravel-enso.github.io/menumanager/screenshots/Selection_012_thumb.png)](https://laravel-enso.github.io/menumanager/videos/menu_reorder.webm)
 
 <sup>click on the photo to view a short demo in compatible browsers</sup>
 
@@ -30,14 +30,14 @@ Menu Manager dependency for [Laravel Enso](https://github.com/laravel-enso/Enso)
   - `parent_id`: the id of its parent menu, if he has a parent, or null
   - `name`: the label that is translated and visible in the UI
   - `icon`: the icon classes, visible in the UI
-  - `order`: is used for ordering the elements of the menu and is automatically generated when reordering the menu from the UI 
+  - `order`: is used for ordering the elements of the menu and is automatically generated when reordering the menu from the UI
   - `link`: is the link that's going to be accessed when clicking on the menu
   - `has_children`: is a flag telling us if a menu element has children and is used when rendering the menu. When reordering the menu the `has_children` flag is automatically set as needed
 
 ### Publishes
 
 - `php artisan vendor:publish --tag=menus-component` - the VueJS component
-- `php artisan vendor:publish --tag=enso-update` - a common alias for when wanting to update the VueJS component, 
+- `php artisan vendor:publish --tag=enso-update` - a common alias for when wanting to update the VueJS component,
 once a newer version is released
 
 ### Notes
