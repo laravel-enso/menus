@@ -79,6 +79,6 @@ class MenuService
 
         $menu->delete();
 
-        return ['message' => __('Operation was successfull')];
+        return ['message' => __('Operation was successful')];
     }
 }
