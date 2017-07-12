@@ -1,17 +1,25 @@
 <?php
 
-Route::group([
-    'namespace'  => 'LaravelEnso\MenuManager\app\Http\Controllers',
-    'middleware' => ['web', 'auth', 'core'],
-], function () {
-    Route::group(['prefix' => 'system', 'as' => 'system.'], function () {
-        Route::group(['prefix' => 'menus', 'as' => 'menus.'], function () {
-            Route::get('reorder', 'MenuReorderController@reorder')->name('reorder');
-            Route::patch('setOrder', 'MenuReorderController@setOrder')->name('setOrder');
-            Route::get('initTable', 'MenuController@initTable')->name('initTable');
-            Route::get('getTableData', 'MenuController@getTableData')->name('getTableData');
-        });
+Route::middleware(['web', 'auth', 'core'])
+    ->namespace('LaravelEnso\MenuManager\app\Http\Controllers')
+    ->group(function () {
+        Route::prefix('system')->as('system.')
+            ->group(function () {
+                Route::prefix('menus')->as('menus.')
+                    ->group(function () {
+                        Route::get('initTable', 'MenuController@initTable')
+                            ->name('initTable');
+                        Route::get('getTableData', 'MenuController@getTableData')
+                            ->name('getTableData');
+                        Route::get('exportExcel', 'MenuController@exportExcel')
+                            ->name('exportExcel');
 
-        Route::resource('menus', 'MenuController');
+                        Route::get('reorder', 'MenuReorderController@reorder')
+                            ->name('reorder');
+                        Route::patch('setOrder', 'MenuReorderController@setOrder')
+                            ->name('setOrder');
+                    });
+
+                Route::resource('menus', 'MenuController', ['except' => ['show']]);
+            });
     });
-});

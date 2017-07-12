@@ -10,6 +10,7 @@ class CreateStructureForMenus extends StructureMigration
 
     protected $permissions = [
         ['name' => 'system.menus.getTableData', 'description' => 'Get table data for menus', 'type' => 0, 'default' => false],
+        ['name' => 'system.menus.exportExcel', 'description' => 'Export excel for menus', 'type' => 0, 'default' => false],
         ['name' => 'system.menus.initTable', 'description' => 'Init table for menus menu', 'type' => 0, 'default' => false],
         ['name' => 'system.menus.create', 'description' => 'Create menu', 'type' => 1, 'default' => false],
         ['name' => 'system.menus.edit', 'description' => 'Edit menu', 'type' => 1, 'default' => false],
