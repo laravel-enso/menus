@@ -14,12 +14,8 @@ class ValidateMenuRequest extends FormRequest
 
     public function rules()
     {
-        $menu = $this->route('menu');
-        $nameUnique = Rule::unique('menus', 'name');
-        $nameUnique = $this->_method == 'PATCH' ? $nameUnique->ignore($menu->id) : $nameUnique;
-
         return [
-            'name'         => ['required', $nameUnique],
+            'name'         => 'required',
             'icon'         => 'required',
             'has_children' => 'required',
         ];

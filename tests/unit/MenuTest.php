@@ -94,7 +94,6 @@ class MenuTest extends TestCase
     public function cantDestroyIfIsParent()
     {
         $menu = Menu::isParent()->first();
-
         $response = $this->delete('/system/menus/'.$menu->id);
 
         $response->assertStatus(302);

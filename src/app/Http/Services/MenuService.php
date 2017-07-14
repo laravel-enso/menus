@@ -43,8 +43,9 @@ class MenuService
         \DB::transaction(function () use (&$menu) {
             $menu = $menu->create($this->request->all());
             $menu->roles()->attach(self::AdminRoleId);
-            flash()->success(__('Menu Created'));
         });
+
+        flash()->success(__('Menu Created'));
 
         return redirect('system/menus/'.$menu->id.'/edit');
     }
@@ -63,10 +64,14 @@ class MenuService
     {
         \DB::transaction(function () use ($menu) {
             $menu->update($this->request->all());
-            $roles = $this->request->has('roles_list') ? $this->request->get('roles_list') : [];
+            $roles = $this->request->has('roles_list')
+                ? $this->request->get('roles_list')
+                : [];
+
             $menu->roles()->sync($roles);
-            flash()->success(__('The Changes have been saved!'));
         });
+
+        flash()->success(__('The Changes have been saved!'));
 
         return back();
     }

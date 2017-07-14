@@ -13,9 +13,9 @@ class CreateMenusTable extends Migration
             $table->foreign('parent_id')->references('id')->on('menus')->onUpdate('restrict')->onDelete('restrict');
             $table->string('name');
             $table->string('icon');
-            $table->integer('order')->default(999);
+            $table->integer('order');
             $table->string('link')->nullable();
-            $table->boolean('has_children')->default(false);
+            $table->boolean('has_children');
             $table->timestamps();
         });
     }

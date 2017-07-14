@@ -43,7 +43,7 @@
         <small class="text-danger" style="float:right;">
             {{ $errors->first('has_children') }}
         </small>
-        {!! Form::select('has_children', $hasChildrenOptions, null, ['class' => 'form-control select']) !!}
+        {!! Form::select('has_children', $hasChildrenOptions, isset($menu) ? $menu->has_parent : 0, ['class' => 'form-control select']) !!}
     </div>
 </div>
 <div class="col-sm-6">
