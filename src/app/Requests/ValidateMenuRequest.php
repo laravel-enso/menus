@@ -3,7 +3,6 @@
 namespace LaravelEnso\MenuManager\app\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class ValidateMenuRequest extends FormRequest
 {
