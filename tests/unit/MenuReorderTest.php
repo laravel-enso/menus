@@ -83,6 +83,7 @@ class MenuReorderTest extends TestCase
             $menu['unique_id'] = $menu['id'];
             $data['menus'][] = $menu;
         }
+
         return $data;
     }
 }
