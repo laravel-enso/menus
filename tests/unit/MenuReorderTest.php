@@ -79,7 +79,7 @@ class MenuReorderTest extends TestCase
     private function patchParams($menus)
     {
         $data = [];
-        foreach ($menus->toArray() as $index => $menu) {
+        foreach ($menus->toArray() as $menu) {
             $menu['unique_id'] = $menu['id'];
             $data['menus'][] = $menu;
         }

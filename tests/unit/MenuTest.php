@@ -113,13 +113,13 @@ class MenuTest extends TestCase
 
     private function createChildMenu($parentMenu)
     {
-        $menu = Menu::create([
+        Menu::create([
             'parent_id'                  => $parentMenu->id,
             'name'                       => $this->faker->word,
             'icon'                       => $this->faker->word,
             'link'                       => null,
             'has_children'               => 0,
-            ]);
+        ]);
     }
 
     private function postParams()
