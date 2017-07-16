@@ -3,7 +3,6 @@
 use App\User;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use LaravelEnso\MenuManager\app\Classes\TreeMenuBuilder;
 use LaravelEnso\MenuManager\app\Models\Menu;
 use Tests\TestCase;
 
@@ -31,9 +30,9 @@ class MenuReorderTest extends TestCase
     }
 
     /** @test */
-    public function set_order()
+    public function setOrder()
     {
-        $firstMenu  = $this->createFirstMenu();
+        $firstMenu = $this->createFirstMenu();
         $secondMenu = $this->createSecondMenu();
         $menus = Menu::orderBy('id', 'desc')->take(2)->get();
 
@@ -58,6 +57,7 @@ class MenuReorderTest extends TestCase
         ]);
         $firstMenu->order = 0;
         $firstMenu->save();
+
         return $firstMenu;
     }
 
@@ -72,6 +72,7 @@ class MenuReorderTest extends TestCase
         ]);
         $secondMenu->order = 1;
         $secondMenu->save();
+
         return $secondMenu;
     }
 

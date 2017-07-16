@@ -107,6 +107,7 @@ class MenuTest extends TestCase
             'link'                       => null,
             'has_children'               => 1,
             ]);
+
         return $parentMenu;
     }
 
