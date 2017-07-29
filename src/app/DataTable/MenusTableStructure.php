@@ -10,7 +10,7 @@ class MenusTableStructure extends TableStructure
     {
         $this->data = [
             'crtNo'         => __('#'),
-            'tableName'     => __("Menus"),
+            'tableName'     => __('Menus'),
             'actionButtons' => __('Actions'),
             'notSearchable' => [2, 4, 5],
             'render'        => [1],
