@@ -9,13 +9,14 @@ class MenusTableStructure extends TableStructure
     public function __construct()
     {
         $this->data = [
-            'crtNo'           => __('#'),
-            'actionButtons'   => __('Actions'),
-            'notSearchable'   => [2, 4, 5],
-            'render'          => [1],
-            'headerAlign'     => 'center',
-            'bodyAlign'       => 'center',
-            'columns'         => [
+            'crtNo'         => __('#'),
+            'tableName'     => __("Menus"),
+            'actionButtons' => __('Actions'),
+            'notSearchable' => [2, 4, 5],
+            'render'        => [1],
+            'headerAlign'   => 'center',
+            'bodyAlign'     => 'center',
+            'columns'       => [
                 0 => [
                     'label' => __('Name'),
                     'data'  => 'name',

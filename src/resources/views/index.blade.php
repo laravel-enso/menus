@@ -16,9 +16,8 @@
     <section class="content">
         <div class="row" v-cloak>
             <div class="col-md-12">
-                <data-table source="/system/menus">
-                    <span slot="data-table-title">{{ __("Menus") }}</span>
-                    @include('laravel-enso/core::partials.modal')
+                <data-table source="/system/menus"
+                    id="menus">
                 </data-table>
             </div>
         </div>
