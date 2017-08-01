@@ -9,8 +9,8 @@ class MenusTableStructure extends TableStructure
     public function __construct()
     {
         $this->data = [
-            'crtNo'         => __('#'),
             'tableName'     => __('Menus'),
+            'crtNo'         => __('#'),
             'actionButtons' => __('Actions'),
             'notSearchable' => [2, 4, 5],
             'render'        => [1],

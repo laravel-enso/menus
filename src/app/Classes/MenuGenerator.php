@@ -52,7 +52,9 @@ class MenuGenerator
 
             $class = $this->isActive($menu) ? 'active' : '';
 
-            return ($menu->has_children) ? $this->appendParent($menu, $class) : $this->append($menu, $class);
+            return ($menu->has_children)
+                ? $this->appendParent($menu, $class)
+                : $this->append($menu, $class);
         });
     }
 

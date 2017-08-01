@@ -30,7 +30,6 @@ class BreadcrumbsBuilder
 
         while ($currentMenu) {
             $this->prependBreadcrumb($currentMenu);
-
             $currentMenu = $currentMenu->parent;
         }
 

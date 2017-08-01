@@ -15,7 +15,7 @@ class MenuReorderService
         $this->request = $request;
     }
 
-    public function reorder()
+    public function index()
     {
         $menus = Menu::orderBy('order')->get();
         $treeMenu = (new TreeMenuBuilder($menus))->get();
@@ -23,14 +23,14 @@ class MenuReorderService
         return view('laravel-enso/menumanager::reorder', compact('treeMenu'));
     }
 
-    public function setOrder()
+    public function update()
     {
         \DB::transaction(function () {
             $menus = $this->request->get('menus');
             $this->updateOrder($menus, null);
         });
 
-        flash()->success(__('The Changes have been saved!'));
+        flash()->success(__(config('labels.savedChanges')));
     }
 
     private function updateOrder(array $menus, int $id = null)

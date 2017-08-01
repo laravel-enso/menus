@@ -33,12 +33,12 @@
                         <div class="row">
                             @include('laravel-enso/menumanager::form')
                             <div class="col-sm-6">
-                                <div class="form-group{{ $errors->has('roles_list') ? ' has-error' : '' }}">
-                                    {!! Form::label('roles_list[]', __("Roles List")) !!}
+                                <div class="form-group{{ $errors->has('roleList') ? ' has-error' : '' }}">
+                                    {!! Form::label('roleList[]', __("Roles List")) !!}
                                     <small class="text-danger" style="float:right;">
-                                        {{ $errors->first('roles_list[]') }}
+                                        {{ $errors->first('roleList[]') }}
                                     </small>
-                                    {!! Form::select('roles_list[]', $roles, null, ['class' => 'form-control select', 'multiple' => 'multiple']) !!}
+                                    {!! Form::select('roleList[]', $roles, null, ['class' => 'form-control select', 'multiple' => 'multiple']) !!}
                                 </div>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
 
     <script>
 
-        let vue = new Vue({
+        const vm = new Vue({
             el: '#app'
         });
 

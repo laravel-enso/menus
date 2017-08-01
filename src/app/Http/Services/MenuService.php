@@ -18,13 +18,6 @@ class MenuService
         $this->request = $request;
     }
 
-    public function getTableQuery()
-    {
-        return Menu::select(\DB::raw('menus.id as DT_RowId, menus.name, menus.icon,
-            parent_menus.name as parent, menus.link, menus.created_at, menus.updated_at')
-        )->leftJoin('menus as parent_menus', 'menus.parent_id', '=', 'parent_menus.id');
-    }
-
     public function index()
     {
         return view('laravel-enso/menumanager::index');
@@ -55,7 +48,7 @@ class MenuService
         $hasChildrenOptions = (new IsActiveEnum())->getData();
         $menus = Menu::isParent()->pluck('name', 'id');
         $roles = Role::pluck('name', 'id');
-        $menu->roles_list;
+        $menu->roleList;
 
         return view('laravel-enso/menumanager::edit', compact('menu', 'hasChildrenOptions', 'menus', 'roles'));
     }
@@ -64,14 +57,14 @@ class MenuService
     {
         \DB::transaction(function () use ($menu) {
             $menu->update($this->request->all());
-            $roles = $this->request->has('roles_list')
-                ? $this->request->get('roles_list')
+            $roles = $this->request->has('roleList')
+                ? $this->request->get('roleList')
                 : [];
 
             $menu->roles()->sync($roles);
         });
 
-        flash()->success(__('The Changes have been saved!'));
+        flash()->success(__(config('labels.savedChanges')));
 
         return back();
     }
@@ -84,6 +77,6 @@ class MenuService
 
         $menu->delete();
 
-        return ['message' => __('Operation was successful')];
+        return ['message' => __(config('labels.successfulOperation'))];
     }
 }

@@ -7,16 +7,16 @@ Route::middleware(['web', 'auth', 'core'])
             ->group(function () {
                 Route::prefix('menus')->as('menus.')
                     ->group(function () {
-                        Route::get('initTable', 'MenuController@initTable')
+                        Route::get('initTable', 'MenuTableController@initTable')
                             ->name('initTable');
-                        Route::get('getTableData', 'MenuController@getTableData')
+                        Route::get('getTableData', 'MenuTableController@getTableData')
                             ->name('getTableData');
-                        Route::get('exportExcel', 'MenuController@exportExcel')
+                        Route::get('exportExcel', 'MenuTableController@exportExcel')
                             ->name('exportExcel');
 
-                        Route::get('reorder', 'MenuReorderController@reorder')
+                        Route::get('reorder', 'MenuReorderController@index')
                             ->name('reorder');
-                        Route::patch('setOrder', 'MenuReorderController@setOrder')
+                        Route::patch('setOrder', 'MenuReorderController@update')
                             ->name('setOrder');
                     });
 

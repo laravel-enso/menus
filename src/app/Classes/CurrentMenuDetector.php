@@ -47,6 +47,9 @@ class CurrentMenuDetector
     private function trimPathEndingSegment()
     {
         $separatorIndex = strrpos($this->path, '/');
-        $this->path = $separatorIndex !== false ? substr($this->path, 0, $separatorIndex) : null;
+
+        $this->path = $separatorIndex !== false
+            ? substr($this->path, 0, $separatorIndex)
+            : null;
     }
 }

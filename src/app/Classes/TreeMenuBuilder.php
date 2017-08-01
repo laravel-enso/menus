@@ -39,7 +39,10 @@ class TreeMenuBuilder
 
     private function getChildren(Menu $menu)
     {
-        $menu->children = $menu->has_children ? $this->getTree($menu->id) : [];
+        $menu->children = $menu->has_children
+            ? $this->getTree($menu->id)
+            : [];
+
         $menu['unique_id'] = $menu['id'];
         unset($menu['id']);
 

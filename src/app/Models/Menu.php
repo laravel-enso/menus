@@ -5,6 +5,7 @@ namespace LaravelEnso\MenuManager\app\Models;
 use Illuminate\Database\Eloquent\Model;
 use LaravelEnso\DbSyncMigrations\app\Traits\DbSyncMigrations;
 use LaravelEnso\Helpers\Traits\FormattedTimestamps;
+use LaravelEnso\RoleManager\app\Models\Role;
 
 class Menu extends Model
 {
@@ -16,17 +17,17 @@ class Menu extends Model
 
     public function roles()
     {
-        return $this->belongsToMany('LaravelEnso\RoleManager\app\Models\Role')->withTimestamps();
+        return $this->belongsToMany(Role::class)->withTimestamps();
     }
 
     public function parent()
     {
-        return $this->belongsTo('LaravelEnso\MenuManager\app\Models\Menu');
+        return $this->belongsTo(Menu::class);
     }
 
-    public function getRolesListAttribute()
+    public function getRoleListAttribute()
     {
-        return $this->roles->pluck('id')->toArray();
+        return $this->roles()->pluck('id');
     }
 
     public function getChildrenListAttribute()

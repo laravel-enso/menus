@@ -4,28 +4,17 @@ namespace LaravelEnso\MenuManager\app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use LaravelEnso\DataTable\app\Traits\DataTable;
-use LaravelEnso\MenuManager\app\DataTable\MenusTableStructure;
 use LaravelEnso\MenuManager\app\Http\Requests\ValidateMenuRequest;
 use LaravelEnso\MenuManager\app\Http\Services\MenuService;
 use LaravelEnso\MenuManager\app\Models\Menu;
 
 class MenuController extends Controller
 {
-    use DataTable;
-
     private $menus;
-
-    protected $tableStructureClass = MenusTableStructure::class;
 
     public function __construct(Request $request)
     {
         $this->menus = new MenuService($request);
-    }
-
-    public function getTableQuery()
-    {
-        return $this->menus->getTableQuery();
     }
 
     public function index()

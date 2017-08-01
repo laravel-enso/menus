@@ -23,11 +23,11 @@ class MenusServiceProvider extends ServiceProvider
     private function publishesAll()
     {
         $this->publishes([
-            __DIR__.'/config/breadcrumbs.php' => config_path('breadcrumbs.php'),
+            __DIR__.'/config' => config_path(),
         ], 'breadcrumbs-config');
 
         $this->publishes([
-            __DIR__.'/config/breadcrumbs.php' => config_path('breadcrumbs.php'),
+            __DIR__.'/config' => config_path(),
         ], 'enso-config');
 
         $this->publishes([

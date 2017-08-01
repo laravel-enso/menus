@@ -15,13 +15,13 @@ class MenuReorderController extends Controller
         $this->menus = new MenuReorderService($request);
     }
 
-    public function reorder()
+    public function index()
     {
-        return $this->menus->reorder();
+        return $this->menus->index();
     }
 
-    public function setOrder()
+    public function update()
     {
-        return $this->menus->setOrder();
+        return $this->menus->update();
     }
 }
