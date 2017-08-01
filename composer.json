@@ -22,7 +22,7 @@
     "require": {
         "php": ">=7.1.0",
         "laravel/framework": "5.4.*",
-        "laravel-enso/core": "1.1.*",
+        "laravel-enso/core": "1.2.*",
         "nesbot/carbon": "^1.0"
     },
     "autoload": {
