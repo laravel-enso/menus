@@ -22,7 +22,7 @@ class Menu extends Model
 
     public function parent()
     {
-        return $this->belongsTo(Menu::class);
+        return $this->belongsTo(self::class);
     }
 
     public function getRoleListAttribute()
