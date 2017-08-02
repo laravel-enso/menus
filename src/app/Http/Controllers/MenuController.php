@@ -19,7 +19,7 @@ class MenuController extends Controller
 
     public function index()
     {
-        return $this->menus->index();
+        return view('laravel-enso/menumanager::index');
     }
 
     public function create()

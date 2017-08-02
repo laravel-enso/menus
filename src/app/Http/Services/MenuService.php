@@ -18,11 +18,6 @@ class MenuService
         $this->request = $request;
     }
 
-    public function index()
-    {
-        return view('laravel-enso/menumanager::index');
-    }
-
     public function create()
     {
         $hasChildrenOptions = (new IsActiveEnum())->getData();
