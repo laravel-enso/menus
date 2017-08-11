@@ -49,7 +49,7 @@ class MenuTest extends TestCase
             ->assertJsonFragment([
             'message' => 'The menu was created!',
             'redirect'=> '/system/menus/'.$menu->id.'/edit',
-        ]);
+            ]);
     }
 
     /** @test */
@@ -69,7 +69,7 @@ class MenuTest extends TestCase
         $menu->name = 'edited';
         $menu->method = 'PATCH';
 
-        $response = $this->patch('/system/menus/'.$menu->id, $menu->toArray())
+        $this->patch('/system/menus/'.$menu->id, $menu->toArray())
             ->assertStatus(200)
             ->assertJson(['message' => __(config('labels.savedChanges'))]);
 
