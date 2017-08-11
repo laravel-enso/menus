@@ -3,7 +3,6 @@
 namespace LaravelEnso\MenuManager\app\Http\Services;
 
 use Illuminate\Http\Request;
-use LaravelEnso\Core\app\Enums\IsActiveEnum;
 use LaravelEnso\FormBuilder\app\Classes\FormBuilder;
 use LaravelEnso\MenuManager\app\Models\Menu;
 use LaravelEnso\RoleManager\app\Models\Role;
@@ -43,7 +42,7 @@ class MenuService
 
         return [
             'message'  => __('The menu was created!'),
-            'redirect' => '/system/menus/' . $menu->id . '/edit',
+            'redirect' => '/system/menus/'.$menu->id.'/edit',
         ];
     }
 
@@ -54,7 +53,7 @@ class MenuService
         $form = (new FormBuilder(__DIR__.'/../../Forms/menu.json', $menu))
             ->setAction('PATCH')
             ->setTitle('Edit Menu')
-            ->setUrl('/system/menus/' . $menu->id)
+            ->setUrl('/system/menus/'.$menu->id)
             ->setSelectOptions('parent_id', Menu::isParent()->pluck('name', 'id'))
             ->setSelectOptions('roleList', Role::pluck('name', 'id'))
             ->getData();
