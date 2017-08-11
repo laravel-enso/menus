@@ -45,8 +45,11 @@ class MenuTest extends TestCase
 
         $menu = Menu::whereName($postParams['name'])->first();
 
-        $response->assertRedirect('/system/menus/'.$menu->id.'/edit');
-        $response->assertSessionHas('flash_notification');
+        $response->assertStatus(200)
+            ->assertJsonFragment([
+            'message' => 'The menu was created!',
+            'redirect'=>'/system/menus/'.$menu->id.'/edit'
+        ]);
     }
 
     /** @test */
@@ -66,10 +69,10 @@ class MenuTest extends TestCase
         $menu->name = 'edited';
         $menu->method = 'PATCH';
 
-        $response = $this->patch('/system/menus/'.$menu->id, $menu->toArray());
+        $response = $this->patch('/system/menus/'.$menu->id, $menu->toArray())
+            ->assertStatus(200)
+            ->assertJson(['message' => __(config('labels.savedChanges'))]);
 
-        $response->assertStatus(302);
-        $response->assertSessionHas('flash_notification');
         $this->assertTrue($menu->fresh()->name === 'edited');
     }
 

@@ -1,0 +1,71 @@
+{
+    "title": null,
+    "action": null,
+    "url": null,
+    "wrapperClass": "col-md-6",
+    "theme": "success",
+    "solid": false,
+    "storeSubmit": "Create",
+    "updateSubmit": "Save",
+    "deleteSubmit": "Delete",
+    "attributes": [{
+        "label": "Name",
+        "column": "name",
+        "value": null,
+        "config": {
+            "type": "input",
+            "content": "text"
+        }
+    }, {
+        "label": "Order",
+        "column": "order",
+        "value": null,
+        "config": {
+            "type": "input",
+            "content": "number"
+        }
+    }, {
+        "label": "Icon Class",
+        "column": "icon",
+        "value": null,
+        "config": {
+            "custom": true,
+            "type": "input",
+            "content": "text"
+        }
+    }, {
+        "label": "Link",
+        "column": "link",
+        "value": null,
+        "config": {
+            "type": "input",
+            "content": "text"
+        }
+    }, {
+        "label": "Parent",
+        "column": "parent_id",
+        "value": null,
+        "config": {
+            "type": "select",
+            "multiple": false,
+            "options": null
+        }
+    }, {
+        "label": "Roles",
+        "column": "roleList",
+        "value": null,
+        "config": {
+            "type": "select",
+            "multiple": true,
+            "options": null
+        }
+    }, {
+        "label": "Has Children",
+        "column": "has_children",
+        "value": false,
+        "config": {
+            "type": "input",
+            "content": "checkbox"
+        }
+    }]
+}

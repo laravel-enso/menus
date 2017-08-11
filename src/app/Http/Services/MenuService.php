@@ -4,13 +4,12 @@ namespace LaravelEnso\MenuManager\app\Http\Services;
 
 use Illuminate\Http\Request;
 use LaravelEnso\Core\app\Enums\IsActiveEnum;
+use LaravelEnso\FormBuilder\app\Classes\FormBuilder;
 use LaravelEnso\MenuManager\app\Models\Menu;
 use LaravelEnso\RoleManager\app\Models\Role;
 
 class MenuService
 {
-    private const AdminRoleId = 1;
-
     private $request;
 
     public function __construct(Request $request)
@@ -20,32 +19,47 @@ class MenuService
 
     public function create()
     {
-        $hasChildrenOptions = (new IsActiveEnum())->getData();
-        $menus = Menu::isParent()->pluck('name', 'id');
+        $form = (new FormBuilder(__DIR__.'/../../Forms/menu.json'))
+            ->setAction('POST')
+            ->setTitle('Create Menu')
+            ->setUrl('/system/menus')
+            ->setSelectOptions('parent_id', Menu::isParent()->pluck('name', 'id'))
+            ->setSelectOptions('roleList', Role::pluck('name', 'id'))
+            ->getData();
 
-        return view('laravel-enso/menumanager::create', compact('hasChildrenOptions', 'menus'));
+        return view('laravel-enso/menumanager::create', compact('form'));
     }
 
     public function store(Menu $menu)
     {
         \DB::transaction(function () use (&$menu) {
             $menu = $menu->create($this->request->all());
-            $menu->roles()->attach(self::AdminRoleId);
+            $roles = $this->request->has('roleList')
+                ? $this->request->get('roleList')
+                : [];
+
+            $menu->roles()->sync($roles);
         });
 
-        flash()->success(__('Menu Created'));
-
-        return redirect('system/menus/'.$menu->id.'/edit');
+        return [
+            'message'  => __('The menu was created!'),
+            'redirect' => '/system/menus/' . $menu->id . '/edit',
+        ];
     }
 
     public function edit(Menu $menu)
     {
-        $hasChildrenOptions = (new IsActiveEnum())->getData();
-        $menus = Menu::isParent()->pluck('name', 'id');
-        $roles = Role::pluck('name', 'id');
-        $menu->roleList;
+        $menu->append(['roleList']);
 
-        return view('laravel-enso/menumanager::edit', compact('menu', 'hasChildrenOptions', 'menus', 'roles'));
+        $form = (new FormBuilder(__DIR__.'/../../Forms/menu.json', $menu))
+            ->setAction('PATCH')
+            ->setTitle('Edit Menu')
+            ->setUrl('/system/menus/' . $menu->id)
+            ->setSelectOptions('parent_id', Menu::isParent()->pluck('name', 'id'))
+            ->setSelectOptions('roleList', Role::pluck('name', 'id'))
+            ->getData();
+
+        return view('laravel-enso/menumanager::edit', compact('form'));
     }
 
     public function update(Menu $menu)
@@ -59,9 +73,9 @@ class MenuService
             $menu->roles()->sync($roles);
         });
 
-        flash()->success(__(config('labels.savedChanges')));
-
-        return back();
+        return [
+            'message' => __(config('labels.savedChanges')),
+        ];
     }
 
     public function destroy(Menu $menu)

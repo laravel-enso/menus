@@ -4,24 +4,22 @@
 
 @section('content')
 
-    <section class="content-header">
-        <a class="btn btn-primary" href="/system/menus/create">
-            {{ __("Create Menu") }}
-        </a>
-        <a class="btn btn-primary" href="/system/menus/reorder">
-            {{ __("Reorder Menu") }}
-        </a>
-        @include('laravel-enso/menumanager::breadcrumbs')
-    </section>
-    <section class="content">
-        <div class="row" v-cloak>
-            <div class="col-md-12">
-                <data-table source="/system/menus"
-                    id="menus">
-                </data-table>
-            </div>
+    <page :custom-render="customRender"
+        v-cloak>
+        <span slot="header">
+            <a class="btn btn-primary" href="/system/menus/create">
+                {{ __("Create Menu") }}
+            </a>
+            <a class="btn btn-primary" href="/system/menus/reorder">
+                {{ __("Reorder Menu") }}
+            </a>
+        </span>
+        <div class="col-md-12">
+            <data-table source="/system/menus"
+                id="menus">
+            </data-table>
         </div>
-    </section>
+    </page>
 
 @endsection
 
