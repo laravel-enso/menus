@@ -4,9 +4,9 @@ use App\User;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use LaravelEnso\MenuManager\app\Models\Menu;
-use Tests\TestCase;
+use LaravelEnso\TestHelper\app\Classes\TestHelper;
 
-class MenuTest extends TestCase
+class MenuTest extends TestHelper
 {
     use DatabaseMigrations;
 
@@ -18,37 +18,38 @@ class MenuTest extends TestCase
 
         // $this->disableExceptionHandling();
         $this->faker = Factory::create();
-        $this->actingAs(User::first());
+        $this->signIn(User::first());
     }
 
     /** @test */
     public function index()
     {
-        $response = $this->get('/system/menus');
-
-        $response->assertStatus(200);
+        $this->get('/system/menus')
+            ->assertStatus(200)
+            ->assertViewIs('laravel-enso/menumanager::index');
     }
 
     /** @test */
     public function create()
     {
-        $response = $this->get('/system/menus/create');
-
-        $response->assertStatus(200);
+        $this->get('/system/menus/create')
+            ->assertStatus(200)
+            ->assertViewIs('laravel-enso/menumanager::create')
+            ->assertViewHas('form');
     }
 
     /** @test */
     public function store()
     {
         $postParams = $this->postParams();
-        $response = $this->post('/system/menus', $postParams);
+        $response   = $this->post('/system/menus', $postParams);
 
         $menu = Menu::whereName($postParams['name'])->first();
 
         $response->assertStatus(200)
             ->assertJsonFragment([
-            'message' => 'The menu was created!',
-            'redirect'=> '/system/menus/'.$menu->id.'/edit',
+                'message'  => 'The menu was created!',
+                'redirect' => '/system/menus/' . $menu->id . '/edit',
             ]);
     }
 
@@ -57,23 +58,23 @@ class MenuTest extends TestCase
     {
         $menu = Menu::create($this->postParams());
 
-        $response = $this->get('/system/menus/'.$menu->id.'/edit');
-
-        $response->assertStatus(200);
+        $this->get('/system/menus/' . $menu->id . '/edit')
+            ->assertStatus(200)
+            ->assertViewIs('laravel-enso/menumanager::edit')
+            ->assertViewHas('form');
     }
 
     /** @test */
     public function update()
     {
-        $menu = Menu::create($this->postParams());
-        $menu->name = 'edited';
-        $menu->method = 'PATCH';
+        $menu         = Menu::create($this->postParams());
+        $menu->name   = 'edited';
 
-        $this->patch('/system/menus/'.$menu->id, $menu->toArray())
+        $this->patch('/system/menus/' . $menu->id, $menu->toArray())
             ->assertStatus(200)
             ->assertJson(['message' => __(config('labels.savedChanges'))]);
 
-        $this->assertTrue($menu->fresh()->name === 'edited');
+        $this->assertEquals('edited', $menu->fresh()->name);
     }
 
     /** @test */
@@ -81,10 +82,10 @@ class MenuTest extends TestCase
     {
         $menu = Menu::create($this->postParams());
 
-        $response = $this->delete('/system/menus/'.$menu->id);
+        $this->delete('/system/menus/' . $menu->id)
+            ->assertStatus(200)
+            ->assertJsonFragment(['message']);
 
-        $response->assertStatus(200);
-        $response->assertJsonFragment(['message']);
         $this->assertNull($menu->fresh());
     }
 
@@ -94,46 +95,44 @@ class MenuTest extends TestCase
         $parentMenu = $this->createParentMenu();
         $this->createChildMenu($parentMenu);
 
-        $response = $this->delete('/system/menus/'.$parentMenu->id);
+        $this->delete('/system/menus/' . $parentMenu->id)
+            ->assertStatus(302)
+            ->assertSessionHas('flash_notification');
 
-        $response->assertStatus(302);
-        $this->assertTrue(session('flash_notification')[0]->level === 'danger');
         $this->assertNotNull($parentMenu->fresh());
     }
 
     private function createParentMenu()
     {
-        $parentMenu = Menu::create([
-            'parent_id'                  => null,
-            'name'                       => $this->faker->word,
-            'icon'                       => $this->faker->word,
-            'link'                       => null,
-            'has_children'               => 1,
-            ]);
-
-        return $parentMenu;
+        return Menu::create([
+            'parent_id'    => null,
+            'name'         => $this->faker->word,
+            'icon'         => $this->faker->word,
+            'link'         => null,
+            'has_children' => 1,
+        ]);
     }
 
     private function createChildMenu($parentMenu)
     {
         Menu::create([
-            'parent_id'                  => $parentMenu->id,
-            'name'                       => $this->faker->word,
-            'icon'                       => $this->faker->word,
-            'link'                       => null,
-            'has_children'               => 0,
+            'parent_id'    => $parentMenu->id,
+            'name'         => $this->faker->word,
+            'icon'         => $this->faker->word,
+            'link'         => null,
+            'has_children' => 0,
         ]);
     }
 
     private function postParams()
     {
         return [
-            'parent_id'                  => null,
-            'name'                       => $this->faker->word,
-            'icon'                       => $this->faker->word,
-            'link'                       => null,
-            'has_children'               => 0,
-            '_method'                    => 'POST',
+            'parent_id'    => null,
+            'name'         => $this->faker->word,
+            'icon'         => $this->faker->word,
+            'link'         => null,
+            'has_children' => 0,
+            '_method'      => 'POST',
         ];
     }
 }

@@ -4,9 +4,9 @@ use App\User;
 use Faker\Factory;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use LaravelEnso\MenuManager\app\Models\Menu;
-use Tests\TestCase;
+use LaravelEnso\TestHelper\app\Classes\TestHelper;
 
-class MenuReorderTest extends TestCase
+class MenuReorderTest extends TestHelper
 {
     use DatabaseMigrations;
 
@@ -16,73 +16,52 @@ class MenuReorderTest extends TestCase
     {
         parent::setUp();
 
-        $this->disableExceptionHandling();
+        // $this->disableExceptionHandling();
         $this->faker = Factory::create();
-        $this->actingAs(User::first());
+        $this->signIn(User::first());
     }
 
     /** @test */
     public function reorder()
     {
-        $response = $this->get('/system/menus/reorder');
-
-        $response->assertStatus(200);
+        $this->get('/system/menus/reorder')
+            ->assertStatus(200)
+            ->assertViewIs('laravel-enso/menumanager::reorder');
     }
 
     /** @test */
     public function setOrder()
     {
-        $firstMenu = $this->createFirstMenu();
-        $secondMenu = $this->createSecondMenu();
-        $menus = Menu::orderBy('id', 'desc')->take(2)->get();
-
-        $this->assertEquals(0, $firstMenu->order);
-        $this->assertEquals(1, $secondMenu->order);
+        $firstMenu  = $this->createMenu();
+        $secondMenu = $this->createMenu();
+        $menus      = collect([$firstMenu, $secondMenu]);
 
         $response = $this->patch('/system/menus/setOrder', $this->patchParams($menus));
 
         $response->assertStatus(200);
+
         $this->assertEquals(0, $secondMenu->fresh()->order);
         $this->assertEquals(1, $firstMenu->fresh()->order);
     }
 
-    private function createFirstMenu()
+    private function createMenu()
     {
-        $firstMenu = Menu::create([
+        return Menu::create([
             'parent_id'    => null,
             'name'         => $this->faker->word,
             'icon'         => $this->faker->word,
             'link'         => null,
             'has_children' => 0,
         ]);
-        $firstMenu->order = 0;
-        $firstMenu->save();
-
-        return $firstMenu;
-    }
-
-    private function createSecondMenu()
-    {
-        $secondMenu = Menu::create([
-            'parent_id'    => null,
-            'name'         => $this->faker->word,
-            'icon'         => $this->faker->word,
-            'link'         => null,
-            'has_children' => 0,
-        ]);
-        $secondMenu->order = 1;
-        $secondMenu->save();
-
-        return $secondMenu;
     }
 
     private function patchParams($menus)
     {
-        $data = [];
-        foreach ($menus->toArray() as $menu) {
-            $menu['unique_id'] = $menu['id'];
-            $data['menus'][] = $menu;
-        }
+        $menus->each(function($menu) {
+            $menu->unique_id = $menu->id;
+        });
+
+        $data['menus'] = $menus->reverse()->values()->toArray();
 
         return $data;
     }
