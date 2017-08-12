@@ -32,9 +32,9 @@ class MenuReorderTest extends TestHelper
     /** @test */
     public function setOrder()
     {
-        $firstMenu  = $this->createMenu();
+        $firstMenu = $this->createMenu();
         $secondMenu = $this->createMenu();
-        $menus      = collect([$firstMenu, $secondMenu]);
+        $menus = collect([$firstMenu, $secondMenu]);
 
         $response = $this->patch('/system/menus/setOrder', $this->patchParams($menus));
 
@@ -57,7 +57,7 @@ class MenuReorderTest extends TestHelper
 
     private function patchParams($menus)
     {
-        $menus->each(function($menu) {
+        $menus->each(function ($menu) {
             $menu->unique_id = $menu->id;
         });
 

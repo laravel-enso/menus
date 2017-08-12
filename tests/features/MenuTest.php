@@ -42,14 +42,14 @@ class MenuTest extends TestHelper
     public function store()
     {
         $postParams = $this->postParams();
-        $response   = $this->post('/system/menus', $postParams);
+        $response = $this->post('/system/menus', $postParams);
 
         $menu = Menu::whereName($postParams['name'])->first();
 
         $response->assertStatus(200)
             ->assertJsonFragment([
                 'message'  => 'The menu was created!',
-                'redirect' => '/system/menus/' . $menu->id . '/edit',
+                'redirect' => '/system/menus/'.$menu->id.'/edit',
             ]);
     }
 
@@ -58,7 +58,7 @@ class MenuTest extends TestHelper
     {
         $menu = Menu::create($this->postParams());
 
-        $this->get('/system/menus/' . $menu->id . '/edit')
+        $this->get('/system/menus/'.$menu->id.'/edit')
             ->assertStatus(200)
             ->assertViewIs('laravel-enso/menumanager::edit')
             ->assertViewHas('form');
@@ -67,10 +67,10 @@ class MenuTest extends TestHelper
     /** @test */
     public function update()
     {
-        $menu         = Menu::create($this->postParams());
-        $menu->name   = 'edited';
+        $menu = Menu::create($this->postParams());
+        $menu->name = 'edited';
 
-        $this->patch('/system/menus/' . $menu->id, $menu->toArray())
+        $this->patch('/system/menus/'.$menu->id, $menu->toArray())
             ->assertStatus(200)
             ->assertJson(['message' => __(config('labels.savedChanges'))]);
 
@@ -82,7 +82,7 @@ class MenuTest extends TestHelper
     {
         $menu = Menu::create($this->postParams());
 
-        $this->delete('/system/menus/' . $menu->id)
+        $this->delete('/system/menus/'.$menu->id)
             ->assertStatus(200)
             ->assertJsonFragment(['message']);
 
@@ -95,7 +95,7 @@ class MenuTest extends TestHelper
         $parentMenu = $this->createParentMenu();
         $this->createChildMenu($parentMenu);
 
-        $this->delete('/system/menus/' . $parentMenu->id)
+        $this->delete('/system/menus/'.$parentMenu->id)
             ->assertStatus(302)
             ->assertSessionHas('flash_notification');
 
