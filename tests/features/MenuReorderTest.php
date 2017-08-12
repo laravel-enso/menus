@@ -30,7 +30,7 @@ class MenuReorderTest extends TestHelper
     }
 
     /** @test */
-    public function setOrder()
+    public function set_order()
     {
         $firstMenu = $this->createMenu();
         $secondMenu = $this->createMenu();
