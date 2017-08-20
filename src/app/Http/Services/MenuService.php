@@ -85,6 +85,9 @@ class MenuService
 
         $menu->delete();
 
-        return ['message' => __(config('labels.successfulOperation'))];
+        return [
+            'message'  => __(config('labels.successfulOperation')),
+            'redirect' => '/system/menus',
+        ];
     }
 }
