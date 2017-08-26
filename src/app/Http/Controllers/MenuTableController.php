@@ -15,7 +15,7 @@ class MenuTableController extends Controller
 
     public function getTableQuery()
     {
-        return Menu::select(\DB::raw('menus.id as DT_RowId, menus.name, menus.icon,
+        return Menu::select(\DB::raw('menus.id as DT_RowId, menus.name, menus.icon, menus.has_children,
             parent_menus.name as parent, menus.link, menus.created_at, menus.updated_at')
         )->leftJoin('menus as parent_menus', 'menus.parent_id', '=', 'parent_menus.id');
     }

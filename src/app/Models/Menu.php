@@ -15,6 +15,8 @@ class Menu extends Model
 
     protected $attributes = ['order' => 999, 'has_children' => false];
 
+    protected $casts = ['has_children' => 'boolean'];
+
     public function roles()
     {
         return $this->belongsToMany(Role::class)->withTimestamps();

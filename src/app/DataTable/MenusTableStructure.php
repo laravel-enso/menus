@@ -12,8 +12,9 @@ class MenusTableStructure extends TableStructure
             'tableName'     => __('Menus'),
             'crtNo'         => __('#'),
             'actionButtons' => __('Actions'),
-            'notSearchable' => [2, 4, 5],
+            'notSearchable' => [2],
             'render'        => [1],
+            'boolean'       => [4],
             'headerAlign'   => 'center',
             'bodyAlign'     => 'center',
             'columns'       => [
@@ -38,11 +39,16 @@ class MenusTableStructure extends TableStructure
                     'name'  => 'menus.link',
                 ],
                 4 => [
+                    'label' => __('Has Children'),
+                    'data'  => 'has_children',
+                    'name'  => 'menus.has_children',
+                ],
+                5 => [
                     'label' => __('Created At'),
                     'data'  => 'created_at',
                     'name'  => 'menus.created_at',
                 ],
-                5 => [
+                6 => [
                     'label' => __('Updated At'),
                     'data'  => 'updated_at',
                     'name'  => 'menus.updated_at',
