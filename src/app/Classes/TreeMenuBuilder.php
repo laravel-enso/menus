@@ -44,7 +44,6 @@ class TreeMenuBuilder
             : [];
 
         $menu['unique_id'] = $menu['id'];
-        // $menu['expanded'] = false;
         unset($menu['id']);
 
         return $menu;
