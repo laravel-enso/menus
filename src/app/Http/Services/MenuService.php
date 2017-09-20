@@ -33,7 +33,7 @@ class MenuService
     {
         \DB::transaction(function () use (&$menu) {
             $menu = $menu->create($this->request->all());
-            $roles = $this->request->has('roleList')
+            $roles = $this->request->filled('roleList')
                 ? $this->request->get('roleList')
                 : [];
 
@@ -65,7 +65,7 @@ class MenuService
     {
         \DB::transaction(function () use ($menu) {
             $menu->update($this->request->all());
-            $roles = $this->request->has('roleList')
+            $roles = $this->request->filled('roleList')
                 ? $this->request->get('roleList')
                 : [];
 
