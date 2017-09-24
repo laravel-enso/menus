@@ -9,9 +9,12 @@ class MenusTableStructure extends TableStructure
     public function __construct()
     {
         $this->data = [
-            'tableName'     => __('Menus'),
+            'name'          => __('Menus'),
+            'icon'          => 'fa fa-list',
             'crtNo'         => __('#'),
-            'actionButtons' => __('Actions'),
+            'actions'       => __('Actions'),
+            'actionButtons' => ['edit', 'destroy'],
+            'headerButtons' => ['create', 'exportExcel'],
             'notSearchable' => [2],
             'render'        => [1],
             'boolean'       => [4],

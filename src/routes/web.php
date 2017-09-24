@@ -13,11 +13,6 @@ Route::middleware(['web', 'auth', 'core'])
                             ->name('getTableData');
                         Route::get('exportExcel', 'MenuTableController@exportExcel')
                             ->name('exportExcel');
-
-                        Route::get('reorder', 'MenuReorderController@index')
-                            ->name('reorder');
-                        Route::patch('setOrder', 'MenuReorderController@update')
-                            ->name('setOrder');
                     });
 
                 Route::resource('menus', 'MenuController', ['except' => ['show']]);

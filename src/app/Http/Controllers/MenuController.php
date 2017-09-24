@@ -3,47 +3,41 @@
 namespace LaravelEnso\MenuManager\app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use LaravelEnso\MenuManager\app\Http\Requests\ValidateMenuRequest;
 use LaravelEnso\MenuManager\app\Http\Services\MenuService;
 use LaravelEnso\MenuManager\app\Models\Menu;
 
 class MenuController extends Controller
 {
-    private $menus;
+    private $service;
 
-    public function __construct(Request $request)
+    public function __construct(MenuService $service)
     {
-        $this->menus = new MenuService($request);
-    }
-
-    public function index()
-    {
-        return view('laravel-enso/menumanager::index');
+        $this->service = $service;
     }
 
     public function create()
     {
-        return $this->menus->create();
+        return $this->service->create();
     }
 
     public function store(ValidateMenuRequest $request, Menu $menu)
     {
-        return $this->menus->store($menu);
+        return $this->service->store($request, $menu);
     }
 
     public function edit(Menu $menu)
     {
-        return $this->menus->edit($menu);
+        return $this->service->edit($menu);
     }
 
     public function update(ValidateMenuRequest $request, Menu $menu)
     {
-        return $this->menus->update($menu);
+        return $this->service->update($request, $menu);
     }
 
     public function destroy(Menu $menu)
     {
-        return $this->menus->destroy($menu);
+        return $this->service->destroy($menu);
     }
 }

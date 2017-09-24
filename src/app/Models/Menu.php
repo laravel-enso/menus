@@ -5,6 +5,7 @@ namespace LaravelEnso\MenuManager\app\Models;
 use Illuminate\Database\Eloquent\Model;
 use LaravelEnso\DbSyncMigrations\app\Traits\DbSyncMigrations;
 use LaravelEnso\Helpers\Traits\FormattedTimestamps;
+use LaravelEnso\PermissionManager\app\Models\Permission;
 use LaravelEnso\RoleManager\app\Models\Role;
 
 class Menu extends Model
@@ -25,6 +26,11 @@ class Menu extends Model
     public function parent()
     {
         return $this->belongsTo(self::class);
+    }
+
+    public function permission()
+    {
+        return $this->belongsTo(Permission::class, 'link', 'name');
     }
 
     public function getRoleListAttribute()

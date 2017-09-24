@@ -5,20 +5,18 @@ namespace LaravelEnso\MenuManager\app\Classes;
 use Illuminate\Support\Collection;
 use LaravelEnso\MenuManager\app\Models\Menu;
 
-class TreeMenuBuilder
+class MenuBuilder
 {
-    private $tree;
     private $menus;
 
     public function __construct(Collection $menus)
     {
         $this->menus = $menus;
-        $this->tree = $this->getTree();
     }
 
     public function get()
     {
-        return $this->tree;
+        return $this->getTree();
     }
 
     private function getTree(int $parentId = null)
@@ -26,12 +24,10 @@ class TreeMenuBuilder
         $menus = collect();
 
         $this->menus->each(function ($menu) use (&$menus, $parentId) {
-            if ($menu->parent_id !== $parentId) {
-                return true;
+            if ($menu->parent_id === $parentId) {
+                $menu->name = $menu->name;
+                $menus->push($this->getChildren($menu));
             }
-
-            $menu->name = __($menu->name);
-            $menus->push($this->getChildren($menu));
         });
 
         return $menus;
@@ -41,9 +37,9 @@ class TreeMenuBuilder
     {
         $menu->children = $menu->has_children
             ? $this->getTree($menu->id)
-            : [];
+            : collect();
 
-        $menu['epanded'] = false;
+        $menu['expanded'] = false;
 
         return $menu;
     }

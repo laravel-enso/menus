@@ -1,19 +1,14 @@
 {
     "title": null,
-    "action": null,
-    "url": null,
+    "method": null,
     "icon": "fa fa-list",
-    "wrapperClass": "col-md-6",
-    "theme": "success",
-    "solid": false,
-    "submitStore": "Create",
-    "submitUpdate": "Save",
-    "submitDelete": "Delete",
-    "attributes": [{
+    "columns": "2",
+    "prefix": "system.menus",
+    "fields": [{
         "label": "Name",
         "column": "name",
         "value": null,
-        "config": {
+        "meta": {
             "type": "input",
             "content": "text"
         }
@@ -21,7 +16,7 @@
         "label": "Order",
         "column": "order",
         "value": null,
-        "config": {
+        "meta": {
             "type": "input",
             "content": "number"
         }
@@ -29,7 +24,7 @@
         "label": "Icon Class",
         "column": "icon",
         "value": null,
-        "config": {
+        "meta": {
             "custom": true,
             "type": "input",
             "content": "text"
@@ -38,7 +33,7 @@
         "label": "Link",
         "column": "link",
         "value": null,
-        "config": {
+        "meta": {
             "type": "input",
             "content": "text"
         }
@@ -46,7 +41,7 @@
         "label": "Parent",
         "column": "parent_id",
         "value": null,
-        "config": {
+        "meta": {
             "type": "select",
             "multiple": false,
             "options": null
@@ -55,7 +50,7 @@
         "label": "Roles",
         "column": "roleList",
         "value": null,
-        "config": {
+        "meta": {
             "type": "select",
             "multiple": true,
             "options": null
@@ -64,7 +59,7 @@
         "label": "Has Children",
         "column": "has_children",
         "value": false,
-        "config": {
+        "meta": {
             "type": "input",
             "content": "checkbox"
         }

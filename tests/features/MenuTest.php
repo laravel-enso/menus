@@ -5,12 +5,15 @@ use Faker\Factory;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use LaravelEnso\MenuManager\app\Models\Menu;
 use LaravelEnso\TestHelper\app\Classes\TestHelper;
+use LaravelEnso\TestHelper\app\Classes\Traits\TestCreateForm;
+use LaravelEnso\TestHelper\app\Classes\Traits\TestDataTable;
 
 class MenuTest extends TestHelper
 {
-    use DatabaseMigrations;
+    use DatabaseMigrations, TestDataTable, TestCreateForm;
 
     private $faker;
+    private $prefix = 'system.menus';
 
     protected function setUp()
     {
@@ -22,27 +25,10 @@ class MenuTest extends TestHelper
     }
 
     /** @test */
-    public function index()
-    {
-        $this->get('/system/menus')
-            ->assertStatus(200)
-            ->assertViewIs('laravel-enso/menumanager::index');
-    }
-
-    /** @test */
-    public function create()
-    {
-        $this->get('/system/menus/create')
-            ->assertStatus(200)
-            ->assertViewIs('laravel-enso/menumanager::create')
-            ->assertViewHas('form');
-    }
-
-    /** @test */
     public function store()
     {
         $postParams = $this->postParams();
-        $response = $this->post('/system/menus', $postParams);
+        $response = $this->post(route('system.menus.store', [], false), $postParams);
 
         $menu = Menu::whereName($postParams['name'])->first();
 
@@ -58,10 +44,9 @@ class MenuTest extends TestHelper
     {
         $menu = Menu::create($this->postParams());
 
-        $this->get('/system/menus/'.$menu->id.'/edit')
+        $this->get(route('system.menus.edit', $menu->id, false))
             ->assertStatus(200)
-            ->assertViewIs('laravel-enso/menumanager::edit')
-            ->assertViewHas('form');
+            ->assertJsonStructure(['form']);
     }
 
     /** @test */
@@ -70,9 +55,9 @@ class MenuTest extends TestHelper
         $menu = Menu::create($this->postParams());
         $menu->name = 'edited';
 
-        $this->patch('/system/menus/'.$menu->id, $menu->toArray())
+        $this->patch(route('system.menus.update', $menu->id, false), $menu->toArray())
             ->assertStatus(200)
-            ->assertJson(['message' => __(config('labels.savedChanges'))]);
+            ->assertJson(['message' => __(config('enso.labels.savedChanges'))]);
 
         $this->assertEquals('edited', $menu->fresh()->name);
     }
@@ -82,7 +67,7 @@ class MenuTest extends TestHelper
     {
         $menu = Menu::create($this->postParams());
 
-        $this->delete('/system/menus/'.$menu->id)
+        $this->delete(route('system.menus.destroy', $menu->id, false))
             ->assertStatus(200)
             ->assertJsonFragment(['message']);
 
@@ -95,9 +80,11 @@ class MenuTest extends TestHelper
         $parentMenu = $this->createParentMenu();
         $this->createChildMenu($parentMenu);
 
-        $this->delete('/system/menus/'.$parentMenu->id)
+        $this->expectException(EnsoException::class);
+
+        $this->delete(route('system.menus.destroy', $parentMenu->id, false))
             ->assertStatus(302)
-            ->assertSessionHas('flash_notification');
+            ->assertJson(['message']);
 
         $this->assertNotNull($parentMenu->fresh());
     }
