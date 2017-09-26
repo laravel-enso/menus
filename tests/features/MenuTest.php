@@ -5,8 +5,8 @@ use Faker\Factory;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use LaravelEnso\MenuManager\app\Models\Menu;
 use LaravelEnso\TestHelper\app\Classes\TestHelper;
-use LaravelEnso\TestHelper\app\Classes\Traits\TestCreateForm;
-use LaravelEnso\TestHelper\app\Classes\Traits\TestDataTable;
+use LaravelEnso\TestHelper\app\Traits\TestCreateForm;
+use LaravelEnso\TestHelper\app\Traits\TestDataTable;
 
 class MenuTest extends TestHelper
 {
@@ -19,7 +19,7 @@ class MenuTest extends TestHelper
     {
         parent::setUp();
 
-        $this->disableExceptionHandling();
+        // $this->disableExceptionHandling();
         $this->faker = Factory::create();
         $this->signIn(User::first());
     }

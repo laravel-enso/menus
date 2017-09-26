@@ -15,6 +15,6 @@ Route::middleware(['web', 'auth', 'core'])
                             ->name('exportExcel');
                     });
 
-                Route::resource('menus', 'MenuController', ['except' => ['show', 'index']]);
+                Route::resource('menus', 'MenuController', ['except' => ['show']]);
             });
     });
