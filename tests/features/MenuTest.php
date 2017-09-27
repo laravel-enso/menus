@@ -2,15 +2,17 @@
 
 use App\User;
 use Faker\Factory;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use LaravelEnso\MenuManager\app\Models\Menu;
-use LaravelEnso\TestHelper\app\Classes\TestHelper;
+use LaravelEnso\TestHelper\app\Traits\SignIn;
 use LaravelEnso\TestHelper\app\Traits\TestCreateForm;
 use LaravelEnso\TestHelper\app\Traits\TestDataTable;
+use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
+use Tests\TestCase;
 
-class MenuTest extends TestHelper
+class MenuTest extends TestCase
 {
-    use DatabaseMigrations, TestDataTable, TestCreateForm;
+    use RefreshDatabase, SignIn, TestDataTable, TestCreateForm;
 
     private $faker;
     private $prefix = 'system.menus';
@@ -19,7 +21,7 @@ class MenuTest extends TestHelper
     {
         parent::setUp();
 
-        // $this->disableExceptionHandling();
+        // $this->withoutExceptionHandling();
         $this->faker = Factory::create();
         $this->signIn(User::first());
     }
@@ -28,14 +30,14 @@ class MenuTest extends TestHelper
     public function store()
     {
         $postParams = $this->postParams();
-        $response = $this->post(route('system.menus.store', [], false), $postParams);
+        $response   = $this->post(route('system.menus.store', [], false), $postParams);
 
         $menu = Menu::whereName($postParams['name'])->first();
 
         $response->assertStatus(200)
             ->assertJsonFragment([
                 'message'  => 'The menu was created!',
-                'redirect' => '/system/menus/'.$menu->id.'/edit',
+                'redirect' => '/system/menus/' . $menu->id . '/edit',
             ]);
     }
 
@@ -52,7 +54,7 @@ class MenuTest extends TestHelper
     /** @test */
     public function update()
     {
-        $menu = Menu::create($this->postParams());
+        $menu       = Menu::create($this->postParams());
         $menu->name = 'edited';
 
         $this->patch(route('system.menus.update', $menu->id, false), $menu->toArray())
@@ -66,11 +68,10 @@ class MenuTest extends TestHelper
     public function destroy()
     {
         $menu = Menu::create($this->postParams());
-        var_dump(route('administration.users.destroy', 3, false));
-        var_dump(route('system.menus.destroy', 3, false));
-        $this->delete(route('system.menus.destroy', $menu->id, false));
-        // ->assertStatus(200)
-        // ->assertJsonFragment(['message']);
+
+        $this->delete(route('system.menus.destroy', $menu->id, false))
+        ->assertStatus(200)
+        ->assertJsonFragment(['message']);
 
         $this->assertNull($menu->fresh());
     }
@@ -81,10 +82,10 @@ class MenuTest extends TestHelper
         $parentMenu = $this->createParentMenu();
         $this->createChildMenu($parentMenu);
 
-        $this->expectException(EnsoException::class);
+        $this->expectException(ConflictHttpException::class);
 
         $this->delete(route('system.menus.destroy', $parentMenu->id, false))
-            ->assertStatus(302)
+            ->assertStatus(409)
             ->assertJson(['message']);
 
         $this->assertNotNull($parentMenu->fresh());

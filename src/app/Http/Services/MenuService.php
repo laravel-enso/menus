@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use LaravelEnso\FormBuilder\app\Classes\FormBuilder;
 use LaravelEnso\MenuManager\app\Models\Menu;
 use LaravelEnso\RoleManager\app\Models\Role;
+use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class MenuService
 {
@@ -63,7 +64,7 @@ class MenuService
     public function destroy(Menu $menu)
     {
         if ($menu->children_list->count()) {
-            throw new \EnsoException(__('Menu Has Children'));
+            throw new ConflictHttpException(__('Menu Has Children'));
         }
 
         $menu->delete();
