@@ -30,14 +30,14 @@ class MenuTest extends TestCase
     public function store()
     {
         $postParams = $this->postParams();
-        $response   = $this->post(route('system.menus.store', [], false), $postParams);
+        $response = $this->post(route('system.menus.store', [], false), $postParams);
 
         $menu = Menu::whereName($postParams['name'])->first();
 
         $response->assertStatus(200)
             ->assertJsonFragment([
                 'message'  => 'The menu was created!',
-                'redirect' => '/system/menus/' . $menu->id . '/edit',
+                'redirect' => '/system/menus/'.$menu->id.'/edit',
             ]);
     }
 
@@ -54,7 +54,7 @@ class MenuTest extends TestCase
     /** @test */
     public function update()
     {
-        $menu       = Menu::create($this->postParams());
+        $menu = Menu::create($this->postParams());
         $menu->name = 'edited';
 
         $this->patch(route('system.menus.update', $menu->id, false), $menu->toArray())
