@@ -12,7 +12,7 @@ class MenuService
 {
     public function create()
     {
-        $form = (new FormBuilder(__DIR__ . '/../../Forms/menu.json'))
+        $form = (new FormBuilder(__DIR__.'/../../Forms/menu.json'))
             ->setMethod('POST')
             ->setTitle('Create Menu')
             ->setSelectOptions('parent_id', Menu::isParent()->pluck('name', 'id'))
@@ -40,7 +40,7 @@ class MenuService
     {
         $menu->append(['roleList']);
 
-        $form = (new FormBuilder(__DIR__ . '/../../Forms/menu.json', $menu))
+        $form = (new FormBuilder(__DIR__.'/../../Forms/menu.json', $menu))
             ->setMethod('PATCH')
             ->setTitle('Edit Menu')
             ->setSelectOptions('parent_id', Menu::isParent()->pluck('name', 'id'))
