@@ -12,7 +12,7 @@ class MenuService
 {
     public function create()
     {
-        $form = (new FormBuilder(__DIR__.'/../../Forms/menu.json'))
+        $form = (new FormBuilder(__DIR__ . '/../../Forms/menu.json'))
             ->setMethod('POST')
             ->setTitle('Create Menu')
             ->setSelectOptions('parent_id', Menu::isParent()->pluck('name', 'id'))
@@ -31,7 +31,8 @@ class MenuService
 
         return [
             'message'  => __('The menu was created!'),
-            'redirect' => route('system.menus.edit', $menu->id, false),
+            'redirect' => 'system.menus.edit',
+            'id'       => $menu->id,
         ];
     }
 
@@ -39,7 +40,7 @@ class MenuService
     {
         $menu->append(['roleList']);
 
-        $form = (new FormBuilder(__DIR__.'/../../Forms/menu.json', $menu))
+        $form = (new FormBuilder(__DIR__ . '/../../Forms/menu.json', $menu))
             ->setMethod('PATCH')
             ->setTitle('Edit Menu')
             ->setSelectOptions('parent_id', Menu::isParent()->pluck('name', 'id'))
@@ -71,7 +72,7 @@ class MenuService
 
         return [
             'message'  => __(config('enso.labels.successfulOperation')),
-            'redirect' => route('system.menus.index', [], false),
+            'redirect' => 'system.menus.index',
         ];
     }
 }

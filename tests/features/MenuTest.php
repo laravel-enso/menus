@@ -37,7 +37,8 @@ class MenuTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonFragment([
                 'message'  => 'The menu was created!',
-                'redirect' => '/system/menus/'.$menu->id.'/edit',
+                'redirect' => 'system.menus.edit',
+                'id' => $menu->id,
             ]);
     }
 
