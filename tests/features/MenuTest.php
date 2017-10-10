@@ -96,8 +96,7 @@ class MenuTest extends TestHelper
         $this->createChildMenu($parentMenu);
 
         $this->delete('/system/menus/'.$parentMenu->id)
-            ->assertStatus(302)
-            ->assertSessionHas('flash_notification');
+            ->assertStatus(455);
 
         $this->assertNotNull($parentMenu->fresh());
     }
