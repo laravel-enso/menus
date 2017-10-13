@@ -12,7 +12,7 @@ class Menu extends Model
 {
     use FormattedTimestamps, DbSyncMigrations;
 
-    protected $fillable = ['name', 'icon', 'link', 'has_children', 'parent_id'];
+    protected $fillable = ['name', 'icon', 'order', 'link', 'has_children', 'parent_id'];
 
     protected $attributes = ['order' => 999, 'has_children' => false];
 
