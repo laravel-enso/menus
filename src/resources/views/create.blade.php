@@ -7,7 +7,7 @@
     <page v-cloak>
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
             <vue-form :data="form">
-                <template slot="icon" scope="props">
+                <template slot="icon" slot-scope="props">
                     <input class="form-control"
                         @keydown="props.errors.clear(props.element.column)"
                         v-model="props.element.value"
