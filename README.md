@@ -9,9 +9,7 @@
 
 Menu Manager dependency for [Laravel Enso](https://github.com/laravel-enso/Enso)
 
-[![Screenshot](https://laravel-enso.github.io/menumanager/screenshots/Selection_027_thumb.png)](https://laravel-enso.github.io/menumanager/screenshots/Selection_027.png)
-
-[![Watch the demo](https://laravel-enso.github.io/menumanager/screenshots/Selection_012_thumb.png)](https://laravel-enso.github.io/menumanager/videos/menu_reorder.webm)
+[![Watch the demo](https://laravel-enso.github.io/menumanager/screenshots/bulma_012_thumb.png)](https://laravel-enso.github.io/menumanager/videos/bulma_menu_management.webm)
 
 <sup>click on the photo to view a short demo in compatible browsers</sup>
 
@@ -30,7 +28,7 @@ Menu Manager dependency for [Laravel Enso](https://github.com/laravel-enso/Enso)
   - `order`: used for ordering the elements of the menu in the desired sequence
   - `link`: is the link that's going to be accessed when clicking on the menu
   - `has_children`: is a flag telling us if a menu element has children and is used when rendering the menu
-
+- for the menu changes to take effect, a page refresh or a re-login is needed 
 ### Publishes
 
 - `php artisan vendor:publish --tag=menus-assets` - the VueJS pages and components
