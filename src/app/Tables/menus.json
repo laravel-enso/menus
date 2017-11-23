@@ -1,0 +1,46 @@
+{
+    "routePrefix": "system.menus",
+    "readSuffix": "getTableData",
+    "writeSuffix": null,
+    "name": "Menus",
+    "icon": "fa fa-list",
+    "crtNo": true,
+    "buttons": ["create","edit","destroy","excel"],
+    "columns": [
+        {
+            "label": "Name",
+            "name": "name",
+            "meta": ["searchable", "sortable"]
+        },
+        {
+            "label": "Icon",
+            "name": "icon",
+            "meta": ["render", "sortable"]
+        },
+        {
+            "label": "Parent",
+            "name": "parent",
+            "meta": ["searchable", "sortable"]
+        },
+        {
+            "label": "Link",
+            "name": "link",
+            "meta": ["searchable", "sortable"]
+        },
+        {
+            "label": "Has Children",
+            "name": "has_children",
+            "meta": ["boolean"]
+        },
+        {
+            "label": "Created At",
+            "name": "created_at",
+            "meta": ["sortable"]
+        },
+        {
+            "label": "Updated At",
+            "name": "updated_at",
+            "meta": ["sortable"]
+        }
+    ]
+}

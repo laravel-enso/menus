@@ -6,11 +6,11 @@ Route::middleware(['web', 'auth', 'core'])
     ->group(function () {
         Route::prefix('menus')->as('menus.')
             ->group(function () {
-                Route::get('initTable', 'MenuTableController@initTable')
+                Route::get('initTable', 'MenuTableController@init')
                     ->name('initTable');
-                Route::get('getTableData', 'MenuTableController@getTableData')
+                Route::get('getTableData', 'MenuTableController@data')
                     ->name('getTableData');
-                Route::get('exportExcel', 'MenuTableController@exportExcel')
+                Route::get('exportExcel', 'MenuTableController@excel')
                     ->name('exportExcel');
             });
 

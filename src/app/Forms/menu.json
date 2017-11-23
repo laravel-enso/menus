@@ -49,7 +49,7 @@
     }, {
         "label": "Roles",
         "column": "roleList",
-        "value": null,
+        "value": [],
         "meta": {
             "type": "select",
             "multiple": true,
