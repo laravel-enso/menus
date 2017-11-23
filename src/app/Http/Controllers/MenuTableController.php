@@ -4,14 +4,14 @@ namespace LaravelEnso\MenuManager\app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use LaravelEnso\MenuManager\app\Models\Menu;
-use LaravelEnso\VueDatatable\app\Traits\Excel;
 use LaravelEnso\VueDatatable\app\Traits\Datatable;
+use LaravelEnso\VueDatatable\app\Traits\Excel;
 
 class MenuTableController extends Controller
 {
     use Datatable, Excel;
 
-    private const Template = __DIR__ . '/../../Tables/menus.json';
+    private const Template = __DIR__.'/../../Tables/menus.json';
 
     public function query()
     {
