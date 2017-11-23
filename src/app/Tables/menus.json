@@ -10,36 +10,43 @@
         {
             "label": "Name",
             "name": "name",
+            "data": "menus.name",
             "meta": ["searchable", "sortable"]
         },
         {
             "label": "Icon",
             "name": "icon",
+            "data": "menus.icon",
             "meta": ["render", "sortable"]
         },
         {
             "label": "Parent",
             "name": "parent",
+            "data": "parent_menus.name",
             "meta": ["searchable", "sortable"]
         },
         {
             "label": "Link",
             "name": "link",
+            "data": "menus.link",
             "meta": ["searchable", "sortable"]
         },
         {
             "label": "Has Children",
             "name": "has_children",
+            "data": "menus.has_children",
             "meta": ["boolean"]
         },
         {
             "label": "Created At",
             "name": "created_at",
+            "data": "menus.created_at",
             "meta": ["sortable"]
         },
         {
             "label": "Updated At",
             "name": "updated_at",
+            "data": "menus.updated_at",
             "meta": ["sortable"]
         }
     ]
