@@ -22,12 +22,12 @@
     "require": {
         "php": ">=7.1.0",
         "laravel/framework": "5.5.*",
-        "laravel-enso/vue-datatable": "1.0.*",
         "laravel-enso/dbsyncmigrations": "2.1.*",
         "laravel-enso/formbuilder": "2.1.*",
         "laravel-enso/helpers": "1.5.*",
         "laravel-enso/rolemanager": "2.1.*",
         "laravel-enso/structuremanager": "2.1.*",
+        "laravel-enso/vuedatatable": "1.0.*",
         "laravel-enso/testhelper": "1.4.*"
     },
     "autoload": {
