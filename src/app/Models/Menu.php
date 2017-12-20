@@ -4,13 +4,12 @@ namespace LaravelEnso\MenuManager\app\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use LaravelEnso\DbSyncMigrations\app\Traits\DbSyncMigrations;
-use LaravelEnso\Helpers\Traits\FormattedTimestamps;
 use LaravelEnso\PermissionManager\app\Models\Permission;
 use LaravelEnso\RoleManager\app\Models\Role;
 
 class Menu extends Model
 {
-    use FormattedTimestamps, DbSyncMigrations;
+    use DbSyncMigrations;
 
     protected $fillable = ['name', 'icon', 'order', 'link', 'has_children', 'parent_id'];
 
