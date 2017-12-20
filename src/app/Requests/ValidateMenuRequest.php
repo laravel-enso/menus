@@ -14,8 +14,8 @@ class ValidateMenuRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'         => 'required',
-            'icon'         => 'required',
+            'name' => 'required',
+            'icon' => 'required',
             'has_children' => 'required',
         ];
     }

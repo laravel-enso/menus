@@ -3,9 +3,9 @@
 namespace LaravelEnso\MenuManager\app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use LaravelEnso\MenuManager\app\Http\Requests\ValidateMenuRequest;
-use LaravelEnso\MenuManager\app\Http\Services\MenuService;
 use LaravelEnso\MenuManager\app\Models\Menu;
+use LaravelEnso\MenuManager\app\Http\Services\MenuService;
+use LaravelEnso\MenuManager\app\Http\Requests\ValidateMenuRequest;
 
 class MenuController extends Controller
 {

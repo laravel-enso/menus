@@ -3,9 +3,9 @@
 namespace LaravelEnso\MenuManager\app\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use LaravelEnso\DbSyncMigrations\app\Traits\DbSyncMigrations;
-use LaravelEnso\PermissionManager\app\Models\Permission;
 use LaravelEnso\RoleManager\app\Models\Role;
+use LaravelEnso\PermissionManager\app\Models\Permission;
+use LaravelEnso\DbSyncMigrations\app\Traits\DbSyncMigrations;
 
 class Menu extends Model
 {

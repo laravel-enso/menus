@@ -3,9 +3,9 @@
 namespace LaravelEnso\MenuManager\app\Http\Services;
 
 use Illuminate\Http\Request;
-use LaravelEnso\FormBuilder\app\Classes\FormBuilder;
 use LaravelEnso\MenuManager\app\Models\Menu;
 use LaravelEnso\RoleManager\app\Models\Role;
+use LaravelEnso\FormBuilder\app\Classes\FormBuilder;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class MenuService
@@ -30,9 +30,9 @@ class MenuService
         });
 
         return [
-            'message'  => __('The menu was created!'),
+            'message' => __('The menu was created!'),
             'redirect' => 'system.menus.edit',
-            'id'       => $menu->id,
+            'id' => $menu->id,
         ];
     }
 
@@ -71,7 +71,7 @@ class MenuService
         $menu->delete();
 
         return [
-            'message'  => __(config('enso.labels.successfulOperation')),
+            'message' => __(config('enso.labels.successfulOperation')),
             'redirect' => 'system.menus.index',
         ];
     }
