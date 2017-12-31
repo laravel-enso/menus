@@ -5,19 +5,18 @@ namespace LaravelEnso\MenuManager\app\Http\Services;
 use Illuminate\Http\Request;
 use LaravelEnso\MenuManager\app\Models\Menu;
 use LaravelEnso\RoleManager\app\Models\Role;
-use LaravelEnso\FormBuilder\app\Classes\FormBuilder;
+use LaravelEnso\FormBuilder\app\Classes\Form;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class MenuService
 {
     public function create()
     {
-        $form = (new FormBuilder(__DIR__.'/../../Forms/menu.json'))
-            ->setMethod('POST')
-            ->setTitle('Create Menu')
-            ->setSelectOptions('parent_id', Menu::isParent()->pluck('name', 'id'))
-            ->setSelectOptions('roleList', Role::pluck('name', 'id'))
-            ->getData();
+        $form = (new Form(__DIR__.'/../../Forms/menu.json'))
+            ->create()
+            ->options('parent_id', Menu::isParent()->pluck('name', 'id'))
+            ->options('roleList', Role::pluck('name', 'id'))
+            ->get();
 
         return compact('form');
     }
@@ -40,12 +39,11 @@ class MenuService
     {
         $menu->append(['roleList']);
 
-        $form = (new FormBuilder(__DIR__.'/../../Forms/menu.json', $menu))
-            ->setMethod('PATCH')
-            ->setTitle('Edit Menu')
-            ->setSelectOptions('parent_id', Menu::isParent()->pluck('name', 'id'))
-            ->setSelectOptions('roleList', Role::pluck('name', 'id'))
-            ->getData();
+        $form = (new Form(__DIR__.'/../../Forms/menu.json'))
+            ->edit($menu)
+            ->options('parent_id', Menu::isParent()->pluck('name', 'id'))
+            ->options('roleList', Role::pluck('name', 'id'))
+            ->get();
 
         return compact('form');
     }
