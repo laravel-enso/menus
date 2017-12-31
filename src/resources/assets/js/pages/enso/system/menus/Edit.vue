@@ -1,9 +1,8 @@
 <template>
 
-    <div class="container">
-        <div class="columns is-centered">
+    <div class="columns is-centered">
         <div class="column is-three-quarters">
-        <vue-form :data="form"
+            <vue-form :data="form"
                 class="box animated fadeIn"
                 v-if="initialised">
                 <template slot="icon" slot-scope="props">
@@ -22,9 +21,8 @@
                             <i :class="props.field.value"></i>
                         </span>
                     </div>
-                    </template>
+                </template>
             </vue-form>
-        </div>
         </div>
     </div>
 
