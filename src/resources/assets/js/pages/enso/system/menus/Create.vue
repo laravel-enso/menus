@@ -9,7 +9,7 @@
                     <div class="control has-icons-right">
                         <input class="input"
                             :class="{ 'is-danger': props.errors.has('icon') }"
-                            @keydown="props.errors.clear(props.field.column)"
+                            @keydown="props.errors.clear(props.field.name)"
                             v-model="props.field.value"
                             type="text">
                         <span class="icon is-small is-right"
