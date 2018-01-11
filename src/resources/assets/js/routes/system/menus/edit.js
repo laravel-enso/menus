@@ -1,4 +1,4 @@
-import MenuEdit from '../../../../pages/enso/system/menus/Edit.vue';
+const MenuEdit = () => import('../../../pages/system/menus/Edit.vue');
 
 export default {
     name: 'system.menus.edit',

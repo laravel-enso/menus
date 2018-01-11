@@ -1,4 +1,4 @@
-import MenusIndex from '../../../../pages/enso/system/menus/Index.vue';
+const MenusIndex = () => import('../../../pages/system/menus/Index.vue');
 
 export default {
     name: 'system.menus.index',

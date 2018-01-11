@@ -30,7 +30,7 @@
 
 <script>
 
-import VueForm from '../../../../components/enso/vueforms/VueForm.vue';
+import VueForm from '../../../components/enso/vueforms/VueForm.vue';
 
 export default {
     components: { VueForm },
@@ -43,7 +43,7 @@ export default {
     },
 
     created() {
-        axios.get(route(this.$route.name, this.$route.params.id, false)).then((response) => {
+        axios.get(route(this.$route.name, null, false)).then((response) => {
             this.form = response.data.form;
             this.initialised = true;
         }).catch(error => this.handleError(error));

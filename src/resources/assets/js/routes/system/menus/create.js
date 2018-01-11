@@ -1,4 +1,4 @@
-import MenuCreate from '../../../../pages/enso/system/menus/Create.vue';
+const MenuCreate = () => import('../../../pages/system/menus/Create.vue');
 
 export default {
     name: 'system.menus.create',
