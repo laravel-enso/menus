@@ -9,35 +9,28 @@ use LaravelEnso\MenuManager\app\Http\Requests\ValidateMenuRequest;
 
 class MenuController extends Controller
 {
-    private $service;
-
-    public function __construct(MenuService $service)
+    public function create(MenuService $service)
     {
-        $this->service = $service;
+        return $service->create();
     }
 
-    public function create()
+    public function store(ValidateMenuRequest $request, Menu $menu, MenuService $service)
     {
-        return $this->service->create();
+        return $service->store($request, $menu);
     }
 
-    public function store(ValidateMenuRequest $request, Menu $menu)
+    public function edit(Menu $menu, MenuService $service)
     {
-        return $this->service->store($request, $menu);
+        return $service->edit($menu);
     }
 
-    public function edit(Menu $menu)
+    public function update(ValidateMenuRequest $request, Menu $menu, MenuService $service)
     {
-        return $this->service->edit($menu);
+        return $service->update($request, $menu);
     }
 
-    public function update(ValidateMenuRequest $request, Menu $menu)
+    public function destroy(Menu $menu, MenuService $service)
     {
-        return $this->service->update($request, $menu);
-    }
-
-    public function destroy(Menu $menu)
-    {
-        return $this->service->destroy($menu);
+        return $service->destroy($menu);
     }
 }
