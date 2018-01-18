@@ -16,7 +16,6 @@ class MenuController extends Controller
 
     public function store(ValidateMenuRequest $request, Menu $menu)
     {
-        // dd($request->get('roleList'));
         $menu = $menu->storeWithRoles(
             $request->all(),
             $request->get('roleList')

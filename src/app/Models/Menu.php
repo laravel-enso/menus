@@ -3,25 +3,19 @@
 namespace LaravelEnso\MenuManager\app\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use LaravelEnso\RoleManager\app\Models\Role;
+use LaravelEnso\RoleManager\app\Traits\HasRoles;
 use LaravelEnso\PermissionManager\app\Models\Permission;
-use LaravelEnso\DbSyncMigrations\app\Traits\DbSyncMigrations;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class Menu extends Model
 {
-    use DbSyncMigrations;
+    use HasRoles;
 
     protected $fillable = ['name', 'icon', 'order', 'link', 'has_children', 'parent_id'];
 
     protected $attributes = ['order' => 999, 'has_children' => false];
 
     protected $casts = ['has_children' => 'boolean'];
-
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class)->withTimestamps();
-    }
 
     public function parent()
     {
@@ -51,24 +45,6 @@ class Menu extends Model
     public function scopeIsNotParent($query)
     {
         return $query->whereHasChildren(false);
-    }
-
-    public function updateWithRoles(array $attributes, array $roles)
-    {
-        tap($this)->update($attributes)
-            ->roles()
-            ->sync($roles);
-    }
-
-    public function storeWithRoles(array $attributes, array $roles)
-    {
-        $this->fill($attributes);
-
-        tap($this)->save()
-            ->roles()
-            ->sync($roles);
-
-        return $this;
     }
 
     public function delete()
