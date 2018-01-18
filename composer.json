@@ -23,7 +23,7 @@
         "php": ">=7.1.0",
         "laravel/framework": "5.5.*",
         "laravel-enso/dbsyncmigrations": "2.1.*",
-        "laravel-enso/formbuilder": "2.2.*",
+        "laravel-enso/formbuilder": "2.3.*",
         "laravel-enso/rolemanager": "2.1.*",
         "laravel-enso/structuremanager": "2.1.*",
         "laravel-enso/vuedatatable": "1.0.*"

@@ -4,33 +4,53 @@ namespace LaravelEnso\MenuManager\app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use LaravelEnso\MenuManager\app\Models\Menu;
-use LaravelEnso\MenuManager\app\Http\Services\MenuService;
+use LaravelEnso\MenuManager\app\Forms\Builders\MenuForm;
 use LaravelEnso\MenuManager\app\Http\Requests\ValidateMenuRequest;
 
 class MenuController extends Controller
 {
-    public function create(MenuService $service)
+    public function create(MenuForm $form)
     {
-        return $service->create();
+        return ['form' => $form->create()];
     }
 
-    public function store(ValidateMenuRequest $request, Menu $menu, MenuService $service)
+    public function store(ValidateMenuRequest $request, Menu $menu)
     {
-        return $service->store($request, $menu);
+        // dd($request->get('roleList'));
+        $menu = $menu->storeWithRoles(
+            $request->all(),
+            $request->get('roleList')
+        );
+
+        return [
+            'message' => __('The menu was created!'),
+            'redirect' => 'system.menus.edit',
+            'id' => $menu->id,
+        ];
     }
 
-    public function edit(Menu $menu, MenuService $service)
+    public function edit(Menu $menu, MenuForm $form)
     {
-        return $service->edit($menu);
+        return ['form' => $form->edit($menu)];
     }
 
-    public function update(ValidateMenuRequest $request, Menu $menu, MenuService $service)
+    public function update(ValidateMenuRequest $request, Menu $menu)
     {
-        return $service->update($request, $menu);
+        $menu->updateWithRoles(
+            $request->all(),
+            $request->get('roleList')
+        );
+
+        return ['message' => __(config('enso.labels.savedChanges'))];
     }
 
-    public function destroy(Menu $menu, MenuService $service)
+    public function destroy(Menu $menu)
     {
-        return $service->destroy($menu);
+        $menu->delete();
+
+        return [
+            'message' => __(config('enso.labels.successfulOperation')),
+            'redirect' => 'system.menus.index',
+        ];
     }
 }

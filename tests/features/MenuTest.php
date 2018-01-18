@@ -21,7 +21,7 @@ class MenuTest extends TestCase
     {
         parent::setUp();
 
-        // $this->withoutExceptionHandling();
+        $this->withoutExceptionHandling();
         $this->faker = Factory::create();
         $this->signIn(User::first());
     }
@@ -36,9 +36,9 @@ class MenuTest extends TestCase
 
         $response->assertStatus(200)
             ->assertJsonFragment([
-                'message'  => 'The menu was created!',
+                'message' => 'The menu was created!',
                 'redirect' => 'system.menus.edit',
-                'id'       => $menu->id,
+                'id' => $menu->id,
             ]);
     }
 
@@ -55,7 +55,7 @@ class MenuTest extends TestCase
     /** @test */
     public function update()
     {
-        $menu = Menu::create($this->postParams());
+        $menu = Menu::create($this->postParams())->append(['roleList']);
         $menu->name = 'edited';
 
         $this->patch(route('system.menus.update', $menu->id, false), $menu->toArray())
@@ -95,10 +95,10 @@ class MenuTest extends TestCase
     private function createParentMenu()
     {
         return Menu::create([
-            'parent_id'    => null,
-            'name'         => $this->faker->word,
-            'icon'         => $this->faker->word,
-            'link'         => null,
+            'parent_id' => null,
+            'name' => $this->faker->word,
+            'icon' => $this->faker->word,
+            'link' => null,
             'has_children' => 1,
         ]);
     }
@@ -106,10 +106,10 @@ class MenuTest extends TestCase
     private function createChildMenu($parentMenu)
     {
         Menu::create([
-            'parent_id'    => $parentMenu->id,
-            'name'         => $this->faker->word,
-            'icon'         => $this->faker->word,
-            'link'         => null,
+            'parent_id' => $parentMenu->id,
+            'name' => $this->faker->word,
+            'icon' => $this->faker->word,
+            'link' => null,
             'has_children' => 0,
         ]);
     }
@@ -117,12 +117,13 @@ class MenuTest extends TestCase
     private function postParams()
     {
         return [
-            'parent_id'    => null,
-            'name'         => $this->faker->word,
-            'icon'         => $this->faker->word,
-            'link'         => null,
+            'parent_id' => null,
+            'name' => $this->faker->word,
+            'icon' => $this->faker->word,
+            'link' => null,
             'has_children' => 0,
-            '_method'      => 'POST',
+            '_method' => 'POST',
+            'roleList' => []
         ];
     }
 }

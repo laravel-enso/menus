@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use LaravelEnso\RoleManager\app\Models\Role;
 use LaravelEnso\PermissionManager\app\Models\Permission;
 use LaravelEnso\DbSyncMigrations\app\Traits\DbSyncMigrations;
+use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class Menu extends Model
 {
@@ -50,5 +51,32 @@ class Menu extends Model
     public function scopeIsNotParent($query)
     {
         return $query->whereHasChildren(false);
+    }
+
+    public function updateWithRoles(array $attributes, array $roles)
+    {
+        tap($this)->update($attributes)
+            ->roles()
+            ->sync($roles);
+    }
+
+    public function storeWithRoles(array $attributes, array $roles)
+    {
+        $this->fill($attributes);
+
+        tap($this)->save()
+            ->roles()
+            ->sync($roles);
+
+        return $this;
+    }
+
+    public function delete()
+    {
+        if ($this->children_list->count()) {
+            throw new ConflictHttpException(__('Menu Has Children'));
+        }
+
+        parent::delete();
     }
 }
