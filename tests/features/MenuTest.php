@@ -21,7 +21,7 @@ class MenuTest extends TestCase
     {
         parent::setUp();
 
-        $this->withoutExceptionHandling();
+        // $this->withoutExceptionHandling();
         $this->faker = Factory::create();
         $this->signIn(User::first());
     }
