@@ -10,8 +10,7 @@ class CreateMenusTable extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('parent_id')->unsigned()->index()->nullable();
-            $table->foreign('parent_id')->references('id')->on('menus')
-                ->onUpdate('restrict')->onDelete('restrict');
+            $table->foreign('parent_id')->references('id')->on('menus');
             $table->string('name');
             $table->string('icon');
             $table->integer('order');
