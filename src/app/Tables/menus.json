@@ -3,7 +3,7 @@
     "readSuffix": "getTableData",
     "writeSuffix": null,
     "name": "Menus",
-    "icon": "fa fa-list",
+    "icon": "fas fa-list",
     "crtNo": true,
     "buttons": ["excel", "create", "edit", "destroy"],
     "columns": [
