@@ -3,7 +3,7 @@
     "readSuffix": "getTableData",
     "writeSuffix": null,
     "name": "Menus",
-    "icon": "fas fa-list",
+    "icon": "list",
     "crtNo": true,
     "buttons": ["excel", "create", "edit", "destroy"],
     "columns": [
@@ -17,7 +17,7 @@
             "label": "Icon",
             "name": "icon",
             "data": "menus.icon",
-            "meta": ["render", "sortable"]
+            "meta": ["sortable"]
         },
         {
             "label": "Parent",
