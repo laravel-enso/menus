@@ -23,7 +23,7 @@ class MenuBuilder
     {
         $menus = collect();
 
-        $this->menus->each(function ($menu) use (&$menus, $parentId) {
+        $this->menus->each(function ($menu) use ($menus, $parentId) {
             if ($menu->parent_id === $parentId) {
                 $menu->name = $menu->name;
                 $menus->push($this->getChildren($menu));

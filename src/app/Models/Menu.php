@@ -22,6 +22,11 @@ class Menu extends Model
         return $this->belongsTo(self::class);
     }
 
+    public function children()
+    {
+        return $this->hasMany(self::class, 'parent_id', 'id') ;
+    }
+
     public function permission()
     {
         return $this->belongsTo(Permission::class, 'link', 'name');
