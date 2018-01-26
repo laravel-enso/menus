@@ -24,7 +24,7 @@ class Menu extends Model
 
     public function children()
     {
-        return $this->hasMany(self::class, 'parent_id', 'id') ;
+        return $this->hasMany(self::class, 'parent_id', 'id');
     }
 
     public function permission()
