@@ -29,6 +29,17 @@ Menu Manager dependency for [Laravel Enso](https://github.com/laravel-enso/Enso)
   - `link`: is the link that's going to be accessed when clicking on the menu
   - `has_children`: is a flag telling us if a menu element has children and is used when rendering the menu
 - for the menu changes to take effect, a page refresh or a re-login is needed 
+
+### Usage Notes
+
+Please note that because we want to keep the compiled size down, throughout the enso ecosistem, 
+icons are imported selectively.
+
+What this means for the menu editor, is that when adding/changing a menu, you should also make sure you 
+import the required icons. The proper place to include the new icons is:
+
+`assest/js/pages/layout/sidebar/icons/app.js`
+
 ### Publishes
 
 - `php artisan vendor:publish --tag=menus-assets` - the VueJS pages and components
