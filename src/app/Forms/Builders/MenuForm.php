@@ -20,8 +20,8 @@ class MenuForm
     public function create()
     {
         return $this->form
-            ->options('parent_id', Menu::isParent()->pluck('name', 'id'))
-            ->options('roleList', Role::pluck('name', 'id'))
+            ->options('parent_id', Menu::isParent()->get(['name', 'id']))
+            ->options('roleList', Role::get(['name', 'id']))
             ->create();
     }
 
@@ -30,8 +30,8 @@ class MenuForm
         $menu->append(['roleList']);
 
         return $this->form
-            ->options('parent_id', Menu::isParent()->pluck('name', 'id'))
-            ->options('roleList', Role::pluck('name', 'id'))
+            ->options('parent_id', Menu::isParent()->get(['name', 'id']))
+            ->options('roleList', Role::get(['name', 'id']))
             ->edit($menu);
     }
 }
