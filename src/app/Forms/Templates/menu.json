@@ -1,64 +1,66 @@
 {
-    "columns": "2",
     "routePrefix": "system.menus",
-    "fields": [{
-        "label": "Name",
-        "name": "name",
-        "value": null,
-        "meta": {
-            "type": "input",
-            "content": "text"
-        }
-    }, {
-        "label": "Order",
-        "name": "order",
-        "value": null,
-        "meta": {
-            "type": "input",
-            "content": "number"
-        }
-    }, {
-        "label": "Icon Class",
-        "name": "icon",
-        "value": null,
-        "meta": {
-            "custom": true,
-            "type": "input",
-            "content": "text"
-        }
-    }, {
-        "label": "Link",
-        "name": "link",
-        "value": null,
-        "meta": {
-            "type": "input",
-            "content": "text"
-        }
-    }, {
-        "label": "Parent",
-        "name": "parent_id",
-        "value": null,
-        "meta": {
-            "type": "select",
-            "multiple": false,
-            "options": []
-        }
-    }, {
-        "label": "Roles",
-        "name": "roleList",
-        "value": [],
-        "meta": {
-            "type": "select",
-            "multiple": true,
-            "options": []
-        }
-    }, {
-        "label": "Has Children",
-        "name": "has_children",
-        "value": false,
-        "meta": {
-            "type": "input",
-            "content": "checkbox"
-        }
+    "sections": [{
+        "columns": "2",
+        "fields": [{
+            "label": "Name",
+            "name": "name",
+            "value": null,
+            "meta": {
+                "type": "input",
+                "content": "text"
+            }
+        }, {
+            "label": "Order",
+            "name": "order",
+            "value": null,
+            "meta": {
+                "type": "input",
+                "content": "number"
+            }
+        }, {
+            "label": "Icon Class",
+            "name": "icon",
+            "value": null,
+            "meta": {
+                "custom": true,
+                "type": "input",
+                "content": "text"
+            }
+        }, {
+            "label": "Link",
+            "name": "link",
+            "value": null,
+            "meta": {
+                "type": "input",
+                "content": "text"
+            }
+        }, {
+            "label": "Parent",
+            "name": "parent_id",
+            "value": null,
+            "meta": {
+                "type": "select",
+                "multiple": false,
+                "options": []
+            }
+        }, {
+            "label": "Roles",
+            "name": "roleList",
+            "value": [],
+            "meta": {
+                "type": "select",
+                "multiple": true,
+                "options": []
+            }
+        }, {
+            "label": "Has Children",
+            "name": "has_children",
+            "value": false,
+            "meta": {
+                "type": "input",
+                "content": "checkbox"
+            }
+        }]
     }]
 }
