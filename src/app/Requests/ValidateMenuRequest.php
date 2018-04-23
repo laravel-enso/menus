@@ -17,7 +17,7 @@ class ValidateMenuRequest extends FormRequest
             'name' => 'required',
             'icon' => 'required',
             'has_children' => 'required',
-            'order' => 'numeric|required'
+            'order' => 'numeric|required',
         ];
     }
 
