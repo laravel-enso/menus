@@ -120,7 +120,8 @@ class MenuTest extends TestCase
             'parent_id' => null,
             'name' => $this->faker->word,
             'icon' => $this->faker->word,
-            'link' => null,
+            'link' => $this->faker->word,
+            'order' => 999,
             'has_children' => 0,
             '_method' => 'POST',
             'roleList' => []
