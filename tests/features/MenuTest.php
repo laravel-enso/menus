@@ -60,7 +60,7 @@ class MenuTest extends TestCase
 
         $this->patch(route('system.menus.update', $menu->id, false), $menu->toArray())
             ->assertStatus(200)
-            ->assertJson(['message' => __(config('enso.labels.savedChanges'))]);
+            ->assertJsonFragment(['message']);
 
         $this->assertEquals('edited', $menu->fresh()->name);
     }
@@ -87,7 +87,7 @@ class MenuTest extends TestCase
 
         $this->delete(route('system.menus.destroy', $parentMenu->id, false))
             ->assertStatus(409)
-            ->assertJson(['message']);
+            ->assertJsonFragment(['message']);
 
         $this->assertNotNull($parentMenu->fresh());
     }

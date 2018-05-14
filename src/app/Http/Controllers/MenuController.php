@@ -40,7 +40,7 @@ class MenuController extends Controller
             $request->get('roleList')
         );
 
-        return ['message' => __(config('enso.labels.savedChanges'))];
+        return ['message' => __('The menu was successfully updated')];
     }
 
     public function destroy(Menu $menu)
@@ -48,7 +48,7 @@ class MenuController extends Controller
         $menu->delete();
 
         return [
-            'message' => __(config('enso.labels.successfulOperation')),
+            'message' => __('The menu was successfully deleted'),
             'redirect' => 'system.menus.index',
         ];
     }
