@@ -20,7 +20,7 @@ class CreateStructureForMenus extends StructureMigration
     ];
 
     protected $menu = [
-        'name' => 'Menus', 'icon' => 'list', 'link' => 'system.menus.index', 'has_children' => false,
+        'name' => 'Menus', 'icon' => 'list', 'link' => 'system.menus.index', 'order' => 999, 'has_children' => false,
     ];
 
     protected $parentMenu = 'System';
