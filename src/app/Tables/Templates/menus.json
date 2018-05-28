@@ -39,8 +39,8 @@
         },
         {
             "label": "Order",
-            "name": "order",
-            "data": "menus.order",
+            "name": "order_index",
+            "data": "menus.order_index",
             "meta": ["sortable"]
         },
         {

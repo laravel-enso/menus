@@ -21,10 +21,10 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "laravel-enso/core": "2.7.*",
+        "laravel-enso/core": "2.8.*",
         "laravel-enso/formbuilder": "2.6.*",
         "laravel-enso/rolemanager": "2.2.*",
-        "laravel-enso/structuremanager": "2.1.*",
+        "laravel-enso/structuremanager": "2.2.*",
         "laravel-enso/vuedatatable": "1.1.*"
     },
     "require-dev": {

@@ -12,7 +12,7 @@
             }
         }, {
             "label": "Order",
-            "name": "order",
+            "name": "order_index",
             "value": 999,
             "meta": {
                 "type": "input",

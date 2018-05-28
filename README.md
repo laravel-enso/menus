@@ -25,7 +25,7 @@ Menu Manager dependency for [Laravel Enso](https://github.com/laravel-enso/Enso)
   - `parent_id`: the id of its parent menu, if he has a parent, or null
   - `name`: the label that is translated and visible in the UI
   - `icon`: the icon classes, visible in the UI
-  - `order`: used for ordering the elements of the menu in the desired sequence
+  - `order_index`: used for ordering the elements of the menu in the desired sequence
   - `link`: is the link that's going to be accessed when clicking on the menu
   - `has_children`: is a flag telling us if a menu element has children and is used when rendering the menu
 - for the menu changes to take effect, a page refresh or a re-login is needed 

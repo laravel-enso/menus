@@ -99,7 +99,8 @@ class MenuTest extends TestCase
             'name' => $this->faker->word,
             'icon' => $this->faker->word,
             'link' => null,
-            'has_children' => 1,
+            'has_children' => true,
+            'order_index' => 999,
         ]);
     }
 
@@ -110,7 +111,8 @@ class MenuTest extends TestCase
             'name' => $this->faker->word,
             'icon' => $this->faker->word,
             'link' => null,
-            'has_children' => 0,
+            'has_children' => false,
+            'order_index' => 999,
         ]);
     }
 
@@ -121,7 +123,7 @@ class MenuTest extends TestCase
             'name' => $this->faker->word,
             'icon' => $this->faker->word,
             'link' => $this->faker->word,
-            'order' => 999,
+            'order_index' => 999,
             'has_children' => 0,
             '_method' => 'POST',
             'roleList' => []

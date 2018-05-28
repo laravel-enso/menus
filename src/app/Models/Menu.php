@@ -11,9 +11,9 @@ class Menu extends Model
 {
     use HasRoles;
 
-    protected $fillable = ['name', 'icon', 'order', 'link', 'has_children', 'parent_id'];
-
-    protected $attributes = ['order' => 999, 'has_children' => false];
+    protected $fillable = [
+        'name', 'icon', 'order_index', 'link', 'has_children', 'parent_id'
+    ];
 
     protected $casts = ['has_children' => 'boolean'];
 
