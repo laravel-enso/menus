@@ -12,7 +12,7 @@ class Menu extends Model
     use HasRoles;
 
     protected $fillable = [
-        'name', 'icon', 'order_index', 'link', 'has_children', 'parent_id'
+        'name', 'icon', 'order_index', 'link', 'has_children', 'parent_id',
     ];
 
     protected $casts = ['has_children' => 'boolean'];
