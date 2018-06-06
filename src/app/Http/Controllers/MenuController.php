@@ -40,7 +40,9 @@ class MenuController extends Controller
             $request->get('roleList')
         );
 
-        return ['message' => __('The menu was successfully updated')];
+        return [
+            'message' => __('The menu was successfully updated')
+        ];
     }
 
     public function destroy(Menu $menu)
