@@ -41,7 +41,7 @@ class MenuController extends Controller
         );
 
         return [
-            'message' => __('The menu was successfully updated')
+            'message' => __('The menu was successfully updated'),
         ];
     }
 
