@@ -20,7 +20,7 @@ class ValidateMenuRequest extends FormRequest
             'order_index' => 'numeric|required',
             'link' => 'nullable',
             'parent_id' => 'nullable',
-            'roleList' => 'array'
+            'roleList' => 'array',
         ];
     }
 
