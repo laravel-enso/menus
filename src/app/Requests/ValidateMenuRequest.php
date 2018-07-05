@@ -16,8 +16,11 @@ class ValidateMenuRequest extends FormRequest
         return [
             'name' => 'required',
             'icon' => 'required',
-            'has_children' => 'required',
+            'has_children' => 'boolean',
             'order_index' => 'numeric|required',
+            'link' => 'nullable',
+            'parent_id' => 'nullable',
+            'roleList' => 'array'
         ];
     }
 

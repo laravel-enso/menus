@@ -17,7 +17,7 @@ class MenuController extends Controller
     public function store(ValidateMenuRequest $request, Menu $menu)
     {
         $menu = $menu->storeWithRoles(
-            $request->all(),
+            $request->validated(),
             $request->get('roleList')
         );
 
@@ -36,7 +36,7 @@ class MenuController extends Controller
     public function update(ValidateMenuRequest $request, Menu $menu)
     {
         $menu->updateWithRoles(
-            $request->all(),
+            $request->validated(),
             $request->get('roleList')
         );
 
