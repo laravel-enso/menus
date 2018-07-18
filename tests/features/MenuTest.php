@@ -36,9 +36,10 @@ class MenuTest extends TestCase
 
         $response->assertStatus(200)
             ->assertJsonFragment([
-                'message',
                 'redirect' => 'system.menus.edit',
                 'id' => $menu->id,
+            ])->assertJsonStructure([
+                'message'
             ]);
     }
 
@@ -60,7 +61,7 @@ class MenuTest extends TestCase
 
         $this->patch(route('system.menus.update', $menu->id, false), $menu->toArray())
             ->assertStatus(200)
-            ->assertJsonFragment(['message']);
+            ->assertJsonStructure(['message']);
 
         $this->assertEquals('edited', $menu->fresh()->name);
     }
@@ -72,7 +73,7 @@ class MenuTest extends TestCase
 
         $this->delete(route('system.menus.destroy', $menu->id, false))
         ->assertStatus(200)
-        ->assertJsonFragment(['message']);
+        ->assertJsonStructure(['message']);
 
         $this->assertNull($menu->fresh());
     }
@@ -87,7 +88,7 @@ class MenuTest extends TestCase
 
         $this->delete(route('system.menus.destroy', $parentMenu->id, false))
             ->assertStatus(409)
-            ->assertJsonFragment(['message']);
+            ->assertJsonStructure(['message']);
 
         $this->assertNotNull($parentMenu->fresh());
     }
