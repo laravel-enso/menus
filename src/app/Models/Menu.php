@@ -55,7 +55,9 @@ class Menu extends Model
     public function delete()
     {
         if ($this->children_list->count()) {
-            throw new ConflictHttpException(__('The menu cannot be deleted because it has children'));
+            throw new ConflictHttpException(
+                __('The menu cannot be deleted because it has children')
+            );
         }
 
         parent::delete();
