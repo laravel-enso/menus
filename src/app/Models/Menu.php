@@ -15,7 +15,10 @@ class Menu extends Model
         'name', 'icon', 'order_index', 'link', 'has_children', 'parent_id',
     ];
 
-    protected $casts = ['has_children' => 'boolean'];
+    protected $casts = [
+        'has_children' => 'boolean',
+        'parent_id' => 'integer',
+    ];
 
     public function parent()
     {
