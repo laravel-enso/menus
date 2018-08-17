@@ -1,8 +1,6 @@
 {
     "routePrefix": "system.menus",
     "readSuffix": "getTableData",
-    "name": "Menus",
-    "icon": "list",
     "crtNo": true,
     "buttons": ["excel", "create", "edit", "destroy"],
     "columns": [
