@@ -22,14 +22,18 @@ class MenuTest extends TestCase
         parent::setUp();
 
         // $this->withoutExceptionHandling();
+
+        $this->seed()
+            ->signIn(User::first());
+
         $this->faker = Factory::create();
-        $this->signIn(User::first());
     }
 
     /** @test */
     public function store()
     {
         $postParams = $this->postParams();
+
         $response = $this->post(route('system.menus.store', [], false), $postParams);
 
         $menu = Menu::whereName($postParams['name'])->first();
@@ -56,7 +60,9 @@ class MenuTest extends TestCase
     /** @test */
     public function update()
     {
-        $menu = Menu::create($this->postParams())->append(['roleList']);
+        $menu = Menu::create($this->postParams())
+                    ->append(['roleList']);
+
         $menu->name = 'edited';
 
         $this->patch(route('system.menus.update', $menu->id, false), $menu->toArray())
@@ -72,8 +78,8 @@ class MenuTest extends TestCase
         $menu = Menu::create($this->postParams());
 
         $this->delete(route('system.menus.destroy', $menu->id, false))
-        ->assertStatus(200)
-        ->assertJsonStructure(['message']);
+            ->assertStatus(200)
+            ->assertJsonStructure(['message']);
 
         $this->assertNull($menu->fresh());
     }
@@ -82,6 +88,7 @@ class MenuTest extends TestCase
     public function cant_destroy_if_is_parent()
     {
         $parentMenu = $this->createParentMenu();
+
         $this->createChildMenu($parentMenu);
 
         $this->expectException(ConflictHttpException::class);
