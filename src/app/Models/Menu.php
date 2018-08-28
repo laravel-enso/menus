@@ -35,14 +35,15 @@ class Menu extends Model
         return $this->belongsTo(Permission::class, 'link', 'name');
     }
 
-    public function getRoleListAttribute()
+    public function delete()
     {
-        return $this->roles()->pluck('id');
-    }
+        if ($this->children()->count()) {
+            throw new ConflictHttpException(
+                __('The menu cannot be deleted because it has children')
+            );
+        }
 
-    public function getChildrenListAttribute()
-    {
-        return self::whereParentId($this->id)->pluck('id');
+        parent::delete();
     }
 
     public function scopeIsParent($query)
@@ -53,16 +54,5 @@ class Menu extends Model
     public function scopeIsNotParent($query)
     {
         return $query->whereHasChildren(false);
-    }
-
-    public function delete()
-    {
-        if ($this->children_list->count()) {
-            throw new ConflictHttpException(
-                __('The menu cannot be deleted because it has children')
-            );
-        }
-
-        parent::delete();
     }
 }

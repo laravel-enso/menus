@@ -14,24 +14,20 @@ class MenuForm
 
     public function __construct()
     {
-        $this->form = new Form(self::FormPath);
+        $this->form = (new Form(self::FormPath))
+            ->options('parent_id', Menu::isParent()->get(['name', 'id']))
+            ->options('roleList', Role::get(['name', 'id']));
     }
 
     public function create()
     {
-        return $this->form
-            ->options('parent_id', Menu::isParent()->get(['name', 'id']))
-            ->options('roleList', Role::get(['name', 'id']))
-            ->create();
+        return $this->form->create();
     }
 
     public function edit(Menu $menu)
     {
-        $menu->append(['roleList']);
-
         return $this->form
-            ->options('parent_id', Menu::isParent()->get(['name', 'id']))
-            ->options('roleList', Role::get(['name', 'id']))
+            ->value('roleList', $menu->roleList())
             ->edit($menu);
     }
 }

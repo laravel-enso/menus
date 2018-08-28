@@ -21,7 +21,7 @@ class MenuTest extends TestCase
     {
         parent::setUp();
 
-        // $this->withoutExceptionHandling();
+        $this->withoutExceptionHandling();
 
         $this->seed()
             ->signIn(User::first());
@@ -60,12 +60,14 @@ class MenuTest extends TestCase
     /** @test */
     public function update()
     {
-        $menu = Menu::create($this->postParams())
-                    ->append(['roleList']);
+        $menu = Menu::create($this->postParams());
 
         $menu->name = 'edited';
 
-        $this->patch(route('system.menus.update', $menu->id, false), $menu->toArray())
+        $this->patch(
+            route('system.menus.update', $menu->id, false),
+            $menu->toArray() + ['roleList' => []]
+        )
             ->assertStatus(200)
             ->assertJsonStructure(['message']);
 
@@ -132,7 +134,7 @@ class MenuTest extends TestCase
             'icon' => $this->faker->word,
             'link' => $this->faker->word,
             'order_index' => 999,
-            'has_children' => 0,
+            'has_children' => false,
             '_method' => 'POST',
             'roleList' => []
         ];
