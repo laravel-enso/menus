@@ -3,6 +3,7 @@
 namespace LaravelEnso\MenuManager\app\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use LaravelEnso\RoleManager\app\Models\Role;
 use LaravelEnso\RoleManager\app\Traits\HasRoles;
 use LaravelEnso\PermissionManager\app\Models\Permission;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
@@ -35,11 +36,22 @@ class Menu extends Model
         return $this->belongsTo(Permission::class, 'link', 'name');
     }
 
+    public function defaultForRoles()
+    {
+        return $this->hasMany(Role::class);
+    }
+
     public function delete()
     {
         if ($this->children()->count()) {
             throw new ConflictHttpException(
                 __('The menu cannot be deleted because it has children')
+            );
+        }
+
+        if ($this->defaultForRoles()->count()) {
+            throw new ConflictHttpException(
+                __('The menu cannot be deleted because it is set as default for one or more roles')
             );
         }
 
