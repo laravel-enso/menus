@@ -14,12 +14,12 @@ class ValidateMenuRequest extends FormRequest
     public function rules()
     {
         return [
+            'parent_id' => 'nullable',
             'name' => 'required',
             'icon' => 'required',
             'has_children' => 'boolean',
             'order_index' => 'numeric|required',
             'link' => 'nullable',
-            'parent_id' => 'nullable',
             'roleList' => 'array',
         ];
     }

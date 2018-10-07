@@ -4,14 +4,11 @@ namespace LaravelEnso\MenuManager\app\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use LaravelEnso\MenuManager\app\Models\Menu;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use LaravelEnso\MenuManager\app\Forms\Builders\MenuForm;
 use LaravelEnso\MenuManager\app\Http\Requests\ValidateMenuRequest;
 
 class MenuController extends Controller
 {
-    use ValidatesRequests;
-
     public function create(MenuForm $form)
     {
         return ['form' => $form->create()];

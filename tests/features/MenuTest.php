@@ -1,42 +1,48 @@
 <?php
 
-use LaravelEnso\Core\app\Models\User;
-use Faker\Factory;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use LaravelEnso\MenuManager\app\Models\Menu;
-use LaravelEnso\TestHelper\app\Traits\SignIn;
-use LaravelEnso\TestHelper\app\Traits\TestCreateForm;
-use LaravelEnso\TestHelper\app\Traits\TestDataTable;
-use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 use Tests\TestCase;
+use LaravelEnso\Core\app\Models\User;
+use LaravelEnso\MenuManager\app\Models\Menu;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use LaravelEnso\FormBuilder\app\TestTraits\EditForm;
+use LaravelEnso\FormBuilder\app\TestTraits\CreateForm;
+use LaravelEnso\FormBuilder\app\TestTraits\DestroyForm;
+use LaravelEnso\VueDatatable\app\Traits\Tests\Datatable;
+use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class MenuTest extends TestCase
 {
-    use RefreshDatabase, SignIn, TestDataTable, TestCreateForm;
+    use CreateForm, Datatable, DestroyForm, EditForm, RefreshDatabase;
 
-    private $faker;
-    private $prefix = 'system.menus';
+    private $permissionGroup = 'system.menus';
+
+    private $testModel;
 
     protected function setUp()
     {
         parent::setUp();
 
-        $this->withoutExceptionHandling();
+        // $this->withoutExceptionHandling();
 
         $this->seed()
-            ->signIn(User::first());
+            ->actingAs(User::first());
 
-        $this->faker = Factory::create();
+        $this->testModel = factory(Menu::class)
+            ->make();
     }
 
     /** @test */
-    public function store()
+    public function can_store_menu()
     {
-        $postParams = $this->postParams();
+        $response = $this->post(
+            route('system.menus.store'),
+            $this->testModel->toArray() + [
+                'roleList' => [],
+            ]
+        );
 
-        $response = $this->post(route('system.menus.store', [], false), $postParams);
-
-        $menu = Menu::whereName($postParams['name'])->first();
+        $menu = Menu::whereName($this->testModel->name)
+            ->first();
 
         $response->assertStatus(200)
             ->assertJsonFragment([
@@ -48,50 +54,30 @@ class MenuTest extends TestCase
     }
 
     /** @test */
-    public function edit()
+    public function can_update_menu()
     {
-        $menu = Menu::create($this->postParams());
+        $this->testModel->save();
 
-        $this->get(route('system.menus.edit', $menu->id, false))
-            ->assertStatus(200)
-            ->assertJsonStructure(['form']);
-    }
-
-    /** @test */
-    public function update()
-    {
-        $menu = Menu::create($this->postParams());
-
-        $menu->name = 'edited';
+        $this->testModel->name = 'edited';
 
         $this->patch(
-            route('system.menus.update', $menu->id, false),
-            $menu->toArray() + ['roleList' => []]
-        )
-            ->assertStatus(200)
-            ->assertJsonStructure(['message']);
+            route('system.menus.update', $this->testModel->id, false),
+            $this->testModel->toArray() + ['roleList' => []]
+        )->assertStatus(200)->assertJsonStructure(['message']);
 
-        $this->assertEquals('edited', $menu->fresh()->name);
-    }
-
-    /** @test */
-    public function destroy()
-    {
-        $menu = Menu::create($this->postParams());
-
-        $this->delete(route('system.menus.destroy', $menu->id, false))
-            ->assertStatus(200)
-            ->assertJsonStructure(['message']);
-
-        $this->assertNull($menu->fresh());
+        $this->assertEquals('edited', $this->testModel->fresh()->name);
     }
 
     /** @test */
     public function cant_destroy_if_is_parent()
     {
-        $parentMenu = $this->createParentMenu();
+        $parentMenu = factory(Menu::class)->create([
+            'has_children' => true,
+            'link' => null,
+        ]);
 
-        $this->createChildMenu($parentMenu);
+        $this->testModel->parent_id = $parentMenu->id;
+        $this->testModel->save();
 
         $this->expectException(ConflictHttpException::class);
 
@@ -100,43 +86,5 @@ class MenuTest extends TestCase
             ->assertJsonStructure(['message']);
 
         $this->assertNotNull($parentMenu->fresh());
-    }
-
-    private function createParentMenu()
-    {
-        return Menu::create([
-            'parent_id' => null,
-            'name' => $this->faker->word,
-            'icon' => $this->faker->word,
-            'link' => null,
-            'has_children' => true,
-            'order_index' => 999,
-        ]);
-    }
-
-    private function createChildMenu($parentMenu)
-    {
-        Menu::create([
-            'parent_id' => $parentMenu->id,
-            'name' => $this->faker->word,
-            'icon' => $this->faker->word,
-            'link' => null,
-            'has_children' => false,
-            'order_index' => 999,
-        ]);
-    }
-
-    private function postParams()
-    {
-        return [
-            'parent_id' => null,
-            'name' => $this->faker->word,
-            'icon' => $this->faker->word,
-            'link' => $this->faker->word,
-            'order_index' => 999,
-            'has_children' => false,
-            '_method' => 'POST',
-            'roleList' => []
-        ];
     }
 }
