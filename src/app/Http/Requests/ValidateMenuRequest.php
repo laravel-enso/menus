@@ -32,7 +32,7 @@ class ValidateMenuRequest extends FormRequest
                 $validator->errors()->add('link', 'The link has to be null if the menu is a parent');
             }
 
-            if (!$this->get('has_children') && !$this->filled('link')) {
+            if (! $this->get('has_children') && ! $this->filled('link')) {
                 $validator->errors()->add('has_children', 'The menu must be a parent if the link is null');
                 $validator->errors()->add('link', 'The link cannot be null if the menu is not a parent');
             }
