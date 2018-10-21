@@ -2,6 +2,7 @@
 
 namespace LaravelEnso\MenuManager\app\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ValidateMenuRequest extends FormRequest
@@ -13,9 +14,18 @@ class ValidateMenuRequest extends FormRequest
 
     public function rules()
     {
+        $nameUnique = Rule::unique('menus', 'name')
+            ->where(function ($query) {
+                return $query->whereParentId($this->parent_id);
+            });
+
+        $nameUnique = ($this->method() === 'PATCH')
+            ? $nameUnique->ignore($this->route('menu')->id)
+            : $nameUnique;
+
         return [
             'parent_id' => 'nullable',
-            'name' => 'required',
+            'name' => [$nameUnique, 'required'],
             'icon' => 'required',
             'has_children' => 'boolean',
             'order_index' => 'numeric|required',
