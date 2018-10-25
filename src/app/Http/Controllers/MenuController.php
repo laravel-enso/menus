@@ -14,9 +14,9 @@ class MenuController extends Controller
         return ['form' => $form->create()];
     }
 
-    public function store(ValidateMenuRequest $request, Menu $menu)
+    public function store(ValidateMenuRequest $request)
     {
-        $menu = $menu->storeWithRoles($request->validated());
+        $menu = Menu::create($request->validated());
 
         return [
             'message' => __('The menu was created!'),
@@ -32,7 +32,7 @@ class MenuController extends Controller
 
     public function update(ValidateMenuRequest $request, Menu $menu)
     {
-        $menu->updateWithRoles($request->validated());
+        $menu->update($request->validated());
 
         return [
             'message' => __('The menu was successfully updated'),

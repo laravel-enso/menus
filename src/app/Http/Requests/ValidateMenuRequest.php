@@ -25,26 +25,25 @@ class ValidateMenuRequest extends FormRequest
 
         return [
             'parent_id' => 'nullable',
+            'permission_id' => 'nullable|exists:permissions,id',
             'name' => [$nameUnique, 'required'],
             'icon' => 'required',
             'has_children' => 'boolean',
             'order_index' => 'numeric|required',
-            'link' => 'nullable',
-            'roleList' => 'array',
         ];
     }
 
     public function withValidator($validator)
     {
         $validator->after(function ($validator) {
-            if ($this->get('has_children') && $this->filled('link')) {
-                $validator->errors()->add('has_children', 'The menu must not to be a parent if the link is not null');
-                $validator->errors()->add('link', 'The link has to be null if the menu is a parent');
+            if ($this->get('has_children') && $this->filled('permission_id')) {
+                $validator->errors()->add('has_children', 'The menu must not to be a parent if the route is not null');
+                $validator->errors()->add('permission_id', 'The route has to be null if the menu is a parent');
             }
 
-            if (! $this->get('has_children') && ! $this->filled('link')) {
-                $validator->errors()->add('has_children', 'The menu must be a parent if the link is null');
-                $validator->errors()->add('link', 'The link cannot be null if the menu is not a parent');
+            if (! $this->get('has_children') && ! $this->filled('permission_id')) {
+                $validator->errors()->add('has_children', 'The menu must be a parent if the route is null');
+                $validator->errors()->add('permission_id', 'The route cannot be null if the menu is not a parent');
             }
         });
     }

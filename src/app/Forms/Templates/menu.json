@@ -28,12 +28,12 @@
                 "content": "text"
             }
         }, {
-            "label": "Link",
-            "name": "link",
+            "label": "Route",
+            "name": "permission_id",
             "value": null,
             "meta": {
-                "type": "input",
-                "content": "text"
+                "type": "select",
+                "options": []
             }
         }, {
             "label": "Parent",
@@ -42,15 +42,6 @@
             "meta": {
                 "type": "select",
                 "multiple": false,
-                "options": []
-            }
-        }, {
-            "label": "Roles",
-            "name": "roleList",
-            "value": [],
-            "meta": {
-                "type": "select",
-                "multiple": true,
                 "options": []
             }
         }, {

@@ -72,8 +72,8 @@ class MenuTest extends TestCase
     public function cant_destroy_if_is_parent()
     {
         $parentMenu = factory(Menu::class)->create([
+            'permission_id' => null,
             'has_children' => true,
-            'link' => null,
         ]);
 
         $this->testModel->parent_id = $parentMenu->id;

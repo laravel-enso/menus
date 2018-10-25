@@ -21,11 +21,11 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "laravel-enso/core": "3.1.*",
-        "laravel-enso/formbuilder": "2.9.*",
-        "laravel-enso/rolemanager": "2.4.*",
-        "laravel-enso/structuremanager": "2.3.*",
-        "laravel-enso/vuedatatable": "1.6.*"
+        "laravel-enso/core": "3.2.*",
+        "laravel-enso/formbuilder": "2.10.*",
+        "laravel-enso/rolemanager": "2.5.*",
+        "laravel-enso/structuremanager": "2.4.*",
+        "laravel-enso/vuedatatable": "1.7.*"
     },
     "autoload": {
         "psr-4": {

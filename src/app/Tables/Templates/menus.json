@@ -1,6 +1,5 @@
 {
     "routePrefix": "system.menus",
-    "readSuffix": "getTableData",
     "crtNo": true,
     "buttons": ["excel", "create", "edit", "destroy"],
     "columns": [
@@ -20,9 +19,9 @@
             "data": "parent_menus.name",
             "meta": ["searchable", "sortable"]
         }, {
-            "label": "Link",
-            "name": "link",
-            "data": "menus.link",
+            "label": "Route",
+            "name": "route",
+            "data": "permissions.route",
             "meta": ["searchable", "sortable"]
         }, {
             "label": "Has Children",

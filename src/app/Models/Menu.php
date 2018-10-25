@@ -4,21 +4,19 @@ namespace LaravelEnso\MenuManager\app\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use LaravelEnso\RoleManager\app\Models\Role;
-use LaravelEnso\RoleManager\app\Traits\HasRoles;
 use LaravelEnso\PermissionManager\app\Models\Permission;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class Menu extends Model
 {
-    use HasRoles;
-
     protected $fillable = [
-        'name', 'icon', 'order_index', 'link', 'has_children', 'parent_id',
+        'name', 'parent_id', 'permission_id', 'icon', 'order_index', 'has_children',
     ];
 
     protected $casts = [
         'has_children' => 'boolean',
         'parent_id' => 'integer',
+        'permission_id' => 'integer',
     ];
 
     public function parent()
@@ -28,15 +26,15 @@ class Menu extends Model
 
     public function children()
     {
-        return $this->hasMany(self::class, 'parent_id', 'id');
+        return $this->hasMany(static::class, 'parent_id', 'id');
     }
 
     public function permission()
     {
-        return $this->belongsTo(Permission::class, 'link', 'name');
+        return $this->belongsTo(Permission::class);
     }
 
-    public function defaultForRoles()
+    public function rolesWhereIsDefault()
     {
         return $this->hasMany(Role::class);
     }
@@ -49,7 +47,7 @@ class Menu extends Model
             );
         }
 
-        if ($this->defaultForRoles()->count()) {
+        if ($this->rolesWhereIsDefault()->count()) {
             throw new ConflictHttpException(
                 __('The menu cannot be deleted because it is set as default for one or more roles')
             );

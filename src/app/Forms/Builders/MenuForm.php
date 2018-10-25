@@ -3,8 +3,8 @@
 namespace LaravelEnso\MenuManager\app\Forms\Builders;
 
 use LaravelEnso\MenuManager\app\Models\Menu;
-use LaravelEnso\RoleManager\app\Models\Role;
 use LaravelEnso\FormBuilder\app\Classes\Form;
+use LaravelEnso\PermissionManager\app\Models\Permission;
 
 class MenuForm
 {
@@ -16,7 +16,7 @@ class MenuForm
     {
         $this->form = (new Form(self::FormPath))
             ->options('parent_id', Menu::isParent()->get(['name', 'id']))
-            ->options('roleList', Role::get(['name', 'id']));
+            ->options('permission_id', Permission::get(['id', 'name']));
     }
 
     public function create()
@@ -27,7 +27,6 @@ class MenuForm
     public function edit(Menu $menu)
     {
         return $this->form
-            ->value('roleList', $menu->roleList())
             ->edit($menu);
     }
 }
