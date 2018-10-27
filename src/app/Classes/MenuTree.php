@@ -2,6 +2,7 @@
 
 namespace LaravelEnso\MenuManager\app\Classes;
 
+use Illuminate\Support\Str;
 use LaravelEnso\MenuManager\app\Models\Menu;
 
 class MenuTree
@@ -14,6 +15,7 @@ class MenuTree
         return $this->setPermissions()
             ->getMenus()
             ->filter()
+            ->map()
             ->build();
     }
 
@@ -70,6 +72,20 @@ class MenuTree
         $this->menus = $this->menus
             ->filter(function ($menu) {
                 return $this->isAllowed($menu);
+            });
+
+        return $this;
+    }
+
+    private function map()
+    {
+        $this->menus = $this->menus
+            ->map(function ($menu) {
+                if (Str::contains($menu->icon, ' ')) {
+                    $menu->icon = explode(' ', $menu->icon);
+                }
+
+                return $menu;
             });
 
         return $this;
