@@ -21,7 +21,7 @@
         }, {
             "label": "Route",
             "name": "route",
-            "data": "permissions.route",
+            "data": "permissions.name",
             "meta": ["searchable", "sortable"]
         }, {
             "label": "Has Children",
