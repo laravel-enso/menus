@@ -23,7 +23,6 @@
             "name": "icon",
             "value": null,
             "meta": {
-                "custom": true,
                 "type": "input",
                 "content": "text"
             }
