@@ -36,9 +36,7 @@ class MenuTest extends TestCase
     {
         $response = $this->post(
             route('system.menus.store'),
-            $this->testModel->toArray() + [
-                'roleList' => [],
-            ]
+            $this->testModel->toArray()
         );
 
         $menu = Menu::whereName($this->testModel->name)
@@ -62,7 +60,7 @@ class MenuTest extends TestCase
 
         $this->patch(
             route('system.menus.update', $this->testModel->id, false),
-            $this->testModel->toArray() + ['roleList' => []]
+            $this->testModel->toArray()
         )->assertStatus(200)->assertJsonStructure(['message']);
 
         $this->assertEquals('edited', $this->testModel->fresh()->name);
