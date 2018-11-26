@@ -8,7 +8,6 @@ use LaravelEnso\FormBuilder\app\TestTraits\EditForm;
 use LaravelEnso\FormBuilder\app\TestTraits\CreateForm;
 use LaravelEnso\FormBuilder\app\TestTraits\DestroyForm;
 use LaravelEnso\VueDatatable\app\Traits\Tests\Datatable;
-use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class MenuTest extends TestCase
 {
@@ -76,12 +75,8 @@ class MenuTest extends TestCase
 
         $this->testModel->parent_id = $parentMenu->id;
         $this->testModel->save();
-
-        $this->expectException(ConflictHttpException::class);
-
         $this->delete(route('system.menus.destroy', $parentMenu->id, false))
-            ->assertStatus(409)
-            ->assertJsonStructure(['message']);
+            ->assertStatus(409);
 
         $this->assertNotNull($parentMenu->fresh());
     }
