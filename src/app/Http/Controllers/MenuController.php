@@ -21,7 +21,7 @@ class MenuController extends Controller
         return [
             'message' => __('The menu was created!'),
             'redirect' => 'system.menus.edit',
-            'id' => $menu->id,
+            'param' => ['menu' => $menu->id],
         ];
     }
 
