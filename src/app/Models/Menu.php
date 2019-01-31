@@ -5,10 +5,13 @@ namespace LaravelEnso\MenuManager\app\Models;
 use Illuminate\Database\Eloquent\Model;
 use LaravelEnso\RoleManager\app\Models\Role;
 use LaravelEnso\PermissionManager\app\Models\Permission;
+use LaravelEnso\Multitenancy\app\Traits\SystemConnection;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class Menu extends Model
 {
+    use SystemConnection;
+
     protected $fillable = [
         'name', 'parent_id', 'permission_id', 'icon', 'order_index', 'has_children',
     ];
