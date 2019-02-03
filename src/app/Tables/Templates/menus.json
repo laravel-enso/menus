@@ -2,6 +2,7 @@
     "routePrefix": "system.menus",
     "crtNo": true,
     "buttons": ["excel", "create", "edit", "destroy"],
+    "appends": ["computedIcon"],
     "cache": true,
     "columns": [
         {
@@ -11,8 +12,8 @@
             "meta": ["searchable", "sortable"]
         }, {
             "label": "Icon",
-            "name": "icon",
-            "data": "menus.icon",
+            "name": "computedIcon",
+            "data": "menus.computedIcon",
             "meta": ["sortable", "icon"]
         }, {
             "label": "Parent",

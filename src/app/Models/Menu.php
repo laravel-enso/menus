@@ -2,6 +2,7 @@
 
 namespace LaravelEnso\MenuManager\app\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use LaravelEnso\RoleManager\app\Models\Role;
 use LaravelEnso\VueDatatable\app\Traits\TableCache;
@@ -43,6 +44,13 @@ class Menu extends Model
     public function rolesWhereIsDefault()
     {
         return $this->hasMany(Role::class);
+    }
+
+    public function getComputedIconAttribute()
+    {
+        return Str::contains($this->icon, ' ')
+            ? explode(' ', $this->icon)
+            : $this->icon;
     }
 
     public function delete()
