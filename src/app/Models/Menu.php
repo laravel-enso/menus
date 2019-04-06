@@ -23,8 +23,6 @@ class Menu extends Model
         'permission_id' => 'integer',
     ];
 
-    protected $cachedTable = 'menus';
-
     public function parent()
     {
         return $this->belongsTo(self::class);

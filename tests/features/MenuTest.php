@@ -45,9 +45,7 @@ class MenuTest extends TestCase
             ->assertJsonFragment([
                 'redirect' => 'system.menus.edit',
                 'param' => ['menu' => $menu->id],
-            ])->assertJsonStructure([
-                'message'
-            ]);
+            ])->assertJsonStructure(['message']);
     }
 
     /** @test */
