@@ -6,14 +6,14 @@ Route::middleware(['web', 'auth', 'core'])
     ->group(function () {
         Route::prefix('menus')->as('menus.')
             ->group(function () {
-                Route::get('initTable', 'MenuTableController@init')
-                    ->name('initTable');
-                Route::get('tableData', 'MenuTableController@data')
-                    ->name('tableData');
-                Route::get('exportExcel', 'MenuTableController@excel')
-                    ->name('exportExcel');
-            });
+                Route::get('create', 'Create')->name('create');
+                Route::post('store', 'Store')->name('store');
+                Route::get('{menu}/edit', 'Edit')->name('edit');
+                Route::patch('{menu}', 'Update')->name('update');
+                Route::delete('{menu}', 'Destroy')->name('destroy');
 
-        Route::resource('menus', 'MenuController')
-            ->except('show', 'index');
+                Route::get('tableData', 'Table@data')->name('tableData');
+                Route::get('initTable', 'Table@init')->name('initTable');
+                Route::get('exportExcel', 'Table@excel')->name('exportExcel');
+            });
     });
