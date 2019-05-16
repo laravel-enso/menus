@@ -4,7 +4,7 @@ namespace LaravelEnso\MenuManager\app\Forms\Builders;
 
 use LaravelEnso\MenuManager\app\Models\Menu;
 use LaravelEnso\FormBuilder\app\Classes\Form;
-use LaravelEnso\PermissionManager\app\Models\Permission;
+use LaravelEnso\Permissions\app\Models\Permission;
 
 class MenuForm
 {

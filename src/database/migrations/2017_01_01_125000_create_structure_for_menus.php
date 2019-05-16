@@ -1,8 +1,8 @@
 <?php
 
-use LaravelEnso\StructureManager\app\Classes\StructureMigration;
+use LaravelEnso\Migrator\app\Database\Migration;
 
-class CreateStructureForMenus extends StructureMigration
+class CreateStructureForMenus extends Migration
 {
     protected $permissions = [
         ['name' => 'system.menus.index', 'description' => 'Menus index', 'type' => 0, 'is_default' => false],

@@ -23,9 +23,9 @@
         "php": ">=7.1.0",
         "laravel-enso/core": "4.2.*",
         "laravel-enso/formbuilder": "3.0.*",
-        "laravel-enso/permissionmanager": "3.0.*",
+        "laravel-enso/permissions": "3.0.*",
         "laravel-enso/rolemanager": "3.0.*",
-        "laravel-enso/structuremanager": "3.0.*",
+        "laravel-enso/migrator": "1.0.*",
         "laravel-enso/vuedatatable": "2.0.*"
     },
     "autoload": {

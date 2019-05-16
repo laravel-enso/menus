@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 use LaravelEnso\MenuManager\app\Models\Menu;
-use LaravelEnso\PermissionManager\app\Models\Permission;
+use LaravelEnso\Permissions\app\Models\Permission;
 
 $factory->define(Menu::class, function (Faker $faker) {
     return [
