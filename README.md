@@ -1,6 +1,7 @@
-# Menu Manager
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3f2ff01a8dc04044a13c6f4fbb9e21bd)](https://www.codacy.com/app/laravel-enso/Menus?utm_source=github.com&utm_medium=referral&utm_content=laravel-enso/Menus&utm_campaign=badger)
-[![StyleCI](https://styleci.io/repos/94800927/shield?branch=master)](https://styleci.io/repos/94800927)
+# Menus
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3f2ff01a8dc04044a13c6f4fbb9e21bd)](https://www.codacy.com/app/laravel-enso/menus?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=laravel-enso/menus&amp;utm_campaign=Badge_Grade)
+[![StyleCI](https://github.styleci.io/repos/94800927/shield?branch=master)](https://github.styleci.io/repos/94800927)
 [![License](https://poser.pugx.org/laravel-enso/menus/license)](https://packagist.org/packages/laravel-enso/menus)
 [![Total Downloads](https://poser.pugx.org/laravel-enso/menus/downloads)](https://packagist.org/packages/laravel-enso/menus)
 [![Latest Stable Version](https://poser.pugx.org/laravel-enso/menus/version)](https://packagist.org/packages/laravel-enso/menus)

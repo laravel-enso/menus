@@ -3,7 +3,7 @@
 namespace LaravelEnso\Menus\app\Tables\Builders;
 
 use LaravelEnso\Menus\app\Models\Menu;
-use LaravelEnso\VueDatatable\app\Classes\Table;
+use LaravelEnso\Tables\app\Services\Table;
 
 class MenuTable extends Table
 {

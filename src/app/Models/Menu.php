@@ -4,9 +4,9 @@ namespace LaravelEnso\Menus\app\Models;
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
-use LaravelEnso\RoleManager\app\Models\Role;
-use LaravelEnso\VueDatatable\app\Traits\TableCache;
+use LaravelEnso\Roles\app\Models\Role;
 use LaravelEnso\Permissions\app\Models\Permission;
+use LaravelEnso\Tables\app\Traits\TableCache;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class Menu extends Model

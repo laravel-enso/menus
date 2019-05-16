@@ -3,7 +3,7 @@
 namespace LaravelEnso\Menus\app\Forms\Builders;
 
 use LaravelEnso\Menus\app\Models\Menu;
-use LaravelEnso\FormBuilder\app\Classes\Form;
+use LaravelEnso\Forms\app\Services\Form;
 use LaravelEnso\Permissions\app\Models\Permission;
 
 class MenuForm
