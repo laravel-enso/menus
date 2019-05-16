@@ -4,6 +4,7 @@ namespace LaravelEnso\Menus\app\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use LaravelEnso\Menus\app\Models\Menu;
+
 class Destroy extends Controller
 {
     public function __invoke(Menu $menu)

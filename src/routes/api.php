@@ -14,5 +14,5 @@ Route::middleware(['web', 'auth', 'core'])
 
         Route::get('tableData', 'Table@data')->name('tableData');
         Route::get('initTable', 'Table@init')->name('initTable');
-        Route::get('exportExcel', 'Table@excel')->name('exportExcel');        
+        Route::get('exportExcel', 'Table@excel')->name('exportExcel');
     });

@@ -11,7 +11,7 @@ class Update extends Controller
     public function __invoke(ValidateMenuUpdate $request, Menu $menu)
     {
         $menu->update($request->validated());
-        
+
         return [
             'message' => __('The menu was successfully updated'),
         ];
