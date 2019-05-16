@@ -1,11 +1,11 @@
 <?php
 
-namespace LaravelEnso\MenuManager\app\Http\Requests;
+namespace LaravelEnso\Menus\app\Http\Requests;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ValidateMenuRequest extends FormRequest
+class ValidateMenuCreate extends FormRequest
 {
     public function authorize()
     {
@@ -14,19 +14,10 @@ class ValidateMenuRequest extends FormRequest
 
     public function rules()
     {
-        $nameUnique = Rule::unique('menus', 'name')
-            ->where(function ($query) {
-                return $query->whereParentId($this->parent_id);
-            });
-
-        $nameUnique = ($this->method() === 'PATCH')
-            ? $nameUnique->ignore($this->route('menu')->id)
-            : $nameUnique;
-
         return [
             'parent_id' => 'nullable',
+            'name' => [$this->nameUnique(), 'required'],
             'permission_id' => 'nullable|exists:permissions,id',
-            'name' => [$nameUnique, 'required'],
             'icon' => 'required',
             'has_children' => 'boolean',
             'order_index' => 'numeric|required',
@@ -46,5 +37,13 @@ class ValidateMenuRequest extends FormRequest
                 $validator->errors()->add('permission_id', 'The route cannot be null if the menu is not a parent');
             }
         });
+    }
+
+    protected function nameUnique()
+    {
+        return Rule::unique('menus', 'name')
+            ->where(function ($query) {
+                return $query->whereParentId($this->parent_id);
+            });
     }
 }

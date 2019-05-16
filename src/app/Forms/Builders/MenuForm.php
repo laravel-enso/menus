@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelEnso\MenuManager\app\Forms\Builders;
+namespace LaravelEnso\Menus\app\Forms\Builders;
 
-use LaravelEnso\MenuManager\app\Models\Menu;
+use LaravelEnso\Menus\app\Models\Menu;
 use LaravelEnso\FormBuilder\app\Classes\Form;
 use LaravelEnso\Permissions\app\Models\Permission;
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace LaravelEnso\MenuManager\app\Http\Controllers;
+namespace LaravelEnso\Menus\app\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use LaravelEnso\VueDatatable\app\Traits\Excel;
 use LaravelEnso\VueDatatable\app\Traits\Datatable;
-use LaravelEnso\MenuManager\app\Tables\Builders\MenuTable;
+use LaravelEnso\Menus\app\Tables\Builders\MenuTable;
 
-class MenuTableController extends Controller
+class Table extends Controller
 {
     use Datatable, Excel;
 
