@@ -1,14 +1,14 @@
 {
-    "name": "laravel-enso/menumanager",
+    "name": "laravel-enso/menus",
     "description": "Menu Manager dependency for Laravel Enso",
     "keywords": [
         "laravel-enso",
-        "menumanager",
+        "menus",
         "menu-manager",
         "breadcrumbs",
         "laravel-menu"
     ],
-    "homepage": "https://github.com/laravel-enso/MenuManager",
+    "homepage": "https://github.com/laravel-enso/Menus",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -21,22 +21,22 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "laravel-enso/core": "4.2.*",
+        "laravel-enso/core": "4.3.*",
         "laravel-enso/formbuilder": "3.0.*",
-        "laravel-enso/permissionmanager": "3.0.*",
-        "laravel-enso/rolemanager": "3.0.*",
-        "laravel-enso/structuremanager": "3.0.*",
+        "laravel-enso/migrator": "1.0.*",
+        "laravel-enso/permissionmanager": "3.1.*",
+        "laravel-enso/rolemanager": "3.1.*",
         "laravel-enso/vuedatatable": "2.0.*"
     },
     "autoload": {
         "psr-4": {
-            "LaravelEnso\\MenuManager\\": "src/"
+            "LaravelEnso\\Menus\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "LaravelEnso\\MenuManager\\AppServiceProvider"
+                "LaravelEnso\\Menus\\AppServiceProvider"
             ],
             "aliases": {}
         }

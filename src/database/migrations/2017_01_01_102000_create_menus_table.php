@@ -19,6 +19,7 @@ class CreateMenusTable extends Migration
             $table->string('name');
             $table->string('icon');
             $table->integer('order_index');
+
             $table->boolean('has_children');
 
             $table->timestamps();

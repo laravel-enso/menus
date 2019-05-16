@@ -2,7 +2,7 @@
 
 use Tests\TestCase;
 use LaravelEnso\Core\app\Models\User;
-use LaravelEnso\MenuManager\app\Models\Menu;
+use LaravelEnso\Menus\app\Models\Menu;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use LaravelEnso\FormBuilder\app\TestTraits\EditForm;
 use LaravelEnso\FormBuilder\app\TestTraits\CreateForm;

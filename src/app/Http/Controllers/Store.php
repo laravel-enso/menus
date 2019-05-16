@@ -1,17 +1,16 @@
 <?php
 
-namespace LaravelEnso\MenuManager\app\Http\Controllers;
+namespace LaravelEnso\Menus\app\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use LaravelEnso\MenuManager\app\Models\Menu;
-use LaravelEnso\MenuManager\app\Http\Requests\ValidateMenuRequest;
+use LaravelEnso\Menus\app\Models\Menu;
+use LaravelEnso\Menus\app\Http\Requests\ValidateMenuCreate;
 
 class Store extends Controller
 {
-    public function __invoke(ValidateMenuRequest $request, Menu $menu)
+    public function __invoke(ValidateMenuCreate $request, Menu $menu)
     {
-        tap($menu)
-            ->fill($request->validated())
+        tap($menu)->fill($request->validated())
             ->save();
 
         return [

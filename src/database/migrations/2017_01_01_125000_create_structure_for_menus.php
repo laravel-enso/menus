@@ -14,6 +14,7 @@ class CreateStructureForMenus extends StructureMigration
         ['name' => 'system.menus.store', 'description' => 'Store newly created menu', 'type' => 1, 'is_default' => false],
         ['name' => 'system.menus.update', 'description' => 'Update edited menu', 'type' => 1, 'is_default' => false],
         ['name' => 'system.menus.destroy', 'description' => 'Delete menu', 'type' => 1, 'is_default' => false],
+        ['name' => 'system.menus.organize', 'description' => 'Organize menus', 'type' => 1, 'is_default' => false],
     ];
 
     protected $menu = [

@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelEnso\MenuManager\app\Tables\Builders;
+namespace LaravelEnso\Menus\app\Tables\Builders;
 
-use LaravelEnso\MenuManager\app\Models\Menu;
+use LaravelEnso\Menus\app\Models\Menu;
 use LaravelEnso\VueDatatable\app\Classes\Table;
 
 class MenuTable extends Table
@@ -11,10 +11,10 @@ class MenuTable extends Table
 
     public function query()
     {
-        return Menu::select(\DB::raw('
+        return Menu::selectRaw('
             menus.id as "dtRowId", menus.name, menus.icon, menus.has_children,
             menus.order_index, parent_menus.name as parent, permissions.name as route, menus.created_at
-        '))->leftJoin('permissions', 'menus.permission_id', '=', 'permissions.id')
+        ')->leftJoin('permissions', 'menus.permission_id', '=', 'permissions.id')
         ->leftJoin('menus as parent_menus', 'menus.parent_id', '=', 'parent_menus.id');
     }
 }

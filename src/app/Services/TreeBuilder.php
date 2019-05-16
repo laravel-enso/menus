@@ -1,19 +1,21 @@
 <?php
 
-namespace LaravelEnso\MenuManager\app\Classes;
+namespace LaravelEnso\Menus\app\Services;
 
+use App\User;
 use Illuminate\Support\Str;
-use LaravelEnso\MenuManager\app\Models\Menu;
+use LaravelEnso\Menus\app\Models\Menu;
 
-class MenuTree
+class TreeBuilder
 {
     private $permissions;
     private $menus;
+    private $tree;
 
-    public function get()
+    public function handle()
     {
-        return $this->setPermissions()
-            ->getMenus()
+        return $this->permissions()
+            ->menus()
             ->filter()
             ->map()
             ->build();
@@ -47,9 +49,9 @@ class MenuTree
         return $menu;
     }
 
-    private function setPermissions()
+    private function permissions()
     {
-        $this->permissions = auth()->user()
+        $this->permissions = User::first()
             ->role
             ->permissions()
             ->has('menu')
@@ -58,7 +60,7 @@ class MenuTree
         return $this;
     }
 
-    private function getMenus()
+    private function menus()
     {
         $this->menus = Menu::with('permission:id,name')
             ->orderBy('order_index')

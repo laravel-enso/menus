@@ -1,17 +1,17 @@
 <?php
 
-namespace LaravelEnso\MenuManager\app\Http\Controllers;
+namespace LaravelEnso\Menus\app\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use LaravelEnso\MenuManager\app\Models\Menu;
-use LaravelEnso\MenuManager\app\Http\Requests\ValidateMenuRequest;
+use LaravelEnso\Menus\app\Models\Menu;
+use LaravelEnso\Menus\app\Http\Requests\ValidateMenuUpdate;
 
 class Update extends Controller
 {
-    public function __invoke(ValidateMenuRequest $request, Menu $menu)
+    public function __invoke(ValidateMenuUpdate $request, Menu $menu)
     {
         $menu->update($request->validated());
-      
+        
         return [
             'message' => __('The menu was successfully updated'),
         ];

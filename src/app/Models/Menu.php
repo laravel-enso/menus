@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelEnso\MenuManager\app\Models;
+namespace LaravelEnso\Menus\app\Models;
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
