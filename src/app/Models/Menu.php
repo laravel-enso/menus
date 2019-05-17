@@ -3,10 +3,10 @@
 namespace LaravelEnso\Menus\app\Models;
 
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Model;
 use LaravelEnso\Roles\app\Models\Role;
-use LaravelEnso\Permissions\app\Models\Permission;
+use Illuminate\Database\Eloquent\Model;
 use LaravelEnso\Tables\app\Traits\TableCache;
+use LaravelEnso\Permissions\app\Models\Permission;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class Menu extends Model

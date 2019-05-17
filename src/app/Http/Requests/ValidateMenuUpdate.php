@@ -2,7 +2,7 @@
 
 namespace LaravelEnso\Menus\app\Http\Requests;
 
-class ValidateMenuUpdate extends ValidateMenuCreate
+class ValidateMenuUpdate extends ValidateMenuStore
 {
     protected function nameUnique()
     {
