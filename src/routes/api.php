@@ -12,7 +12,7 @@ Route::middleware(['web', 'auth', 'core'])
         Route::delete('{menu}', 'Destroy')->name('destroy');
         Route::put('organize', 'Organize')->name('organize');
 
-        Route::get('tableData', 'Table@data')->name('tableData');
-        Route::get('initTable', 'Table@init')->name('initTable');
-        Route::get('exportExcel', 'Table@excel')->name('exportExcel');
+        Route::get('initTable', 'InitTable')->name('initTable');
+        Route::get('tableData', 'TableData')->name('tableData');
+        Route::get('exportExcel', 'ExportExcel')->name('exportExcel');
     });
