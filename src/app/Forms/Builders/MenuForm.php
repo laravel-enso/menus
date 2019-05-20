@@ -15,7 +15,7 @@ class MenuForm
     public function __construct()
     {
         $this->form = (new Form(self::FormPath))
-            ->options('parent_id', Menu::isParent()->get(['name', 'id']))
+            ->options('parent_id', Menu::isParent()->get(['id', 'name']))
             ->options('permission_id', Permission::get(['id', 'name']));
     }
 

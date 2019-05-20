@@ -10,7 +10,6 @@ class TreeBuilder
 {
     private $permissions;
     private $menus;
-    private $tree;
 
     public function handle()
     {
