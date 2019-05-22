@@ -5,7 +5,7 @@
         "fields": [{
             "label": "Name",
             "name": "name",
-            "value": null,
+            "value": "",
             "meta": {
                 "type": "input",
                 "content": "text"
@@ -21,7 +21,7 @@
         }, {
             "label": "Icon Class",
             "name": "icon",
-            "value": null,
+            "value": "",
             "meta": {
                 "type": "input",
                 "content": "text"
