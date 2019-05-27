@@ -4,6 +4,7 @@ namespace LaravelEnso\Menus\app\Services;
 
 use App\User;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use LaravelEnso\Menus\app\Models\Menu;
 
 class TreeBuilder
@@ -50,7 +51,7 @@ class TreeBuilder
 
     private function permissions()
     {
-        $this->permissions = User::first()
+        $this->permissions = Auth::user()
             ->role
             ->permissions()
             ->has('menu')
