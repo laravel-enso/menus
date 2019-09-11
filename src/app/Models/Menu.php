@@ -18,9 +18,7 @@ class Menu extends Model
     ];
 
     protected $casts = [
-        'has_children' => 'boolean',
-        'parent_id' => 'integer',
-        'permission_id' => 'integer',
+        'has_children' => 'boolean', 'parent_id' => 'integer', 'permission_id' => 'integer',
     ];
 
     public function parent()
@@ -52,13 +50,13 @@ class Menu extends Model
 
     public function delete()
     {
-        if ($this->children()->count()) {
+        if ($this->children()->exists()) {
             throw new ConflictHttpException(
                 __('The menu cannot be deleted because it has children')
             );
         }
 
-        if ($this->rolesWhereIsDefault()->count()) {
+        if ($this->rolesWhereIsDefault()->exists()) {
             throw new ConflictHttpException(
                 __('The menu cannot be deleted because it is set as default for one or more roles')
             );

@@ -12,8 +12,6 @@ class Update extends Controller
     {
         $menu->update($request->validated());
 
-        return [
-            'message' => __('The menu was successfully updated'),
-        ];
+        return ['message' => __('The menu was successfully updated')];
     }
 }

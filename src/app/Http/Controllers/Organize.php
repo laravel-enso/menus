@@ -12,8 +12,6 @@ class Organize extends Controller
     {
         (new Organizer($request->get('menus')))->handle();
 
-        return [
-            'message' => __('The menu order has been sucessfully updated'),
-        ];
+        return ['message' => __('The menu order has been sucessfully updated')];
     }
 }

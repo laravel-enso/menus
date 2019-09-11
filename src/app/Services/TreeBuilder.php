@@ -2,7 +2,6 @@
 
 namespace LaravelEnso\Menus\app\Services;
 
-use App\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use LaravelEnso\Menus\app\Models\Menu;
@@ -73,7 +72,7 @@ class TreeBuilder
     {
         $this->menus = $this->menus
             ->filter(function ($menu) {
-                return $this->isAllowed($menu);
+                return $this->allowed($menu);
             });
 
         return $this;
@@ -93,18 +92,18 @@ class TreeBuilder
         return $this;
     }
 
-    private function isAllowed($menu)
+    private function allowed($menu)
     {
         return $this->permissions->pluck('id')->contains($menu->permission_id)
-            || $this->someChildrenAreAllowed($menu);
+            || $this->someChildrenAllowed($menu);
     }
 
-    private function someChildrenAreAllowed($parentMenu)
+    private function someChildrenAllowed($parentMenu)
     {
         return $parentMenu->has_children
             && $this->menus->first(function ($childMenu) use ($parentMenu) {
                 return $childMenu->parent_id === $parentMenu->id
-                    && $this->isAllowed($childMenu);
+                    && $this->allowed($childMenu);
             });
     }
 }

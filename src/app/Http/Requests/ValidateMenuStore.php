@@ -28,13 +28,13 @@ class ValidateMenuStore extends FormRequest
     {
         $validator->after(function ($validator) {
             if ($this->get('has_children') && $this->filled('permission_id')) {
-                $validator->errors()->add('has_children', 'The menu must not to be a parent if the route is not null');
-                $validator->errors()->add('permission_id', 'The route has to be null if the menu is a parent');
+                $validator->errors()->add('has_children', __('The menu must not to be a parent if the route is not null'));
+                $validator->errors()->add('permission_id', __('The route has to be null if the menu is a parent'));
             }
 
             if (! $this->get('has_children') && ! $this->filled('permission_id')) {
-                $validator->errors()->add('has_children', 'The menu must be a parent if the route is null');
-                $validator->errors()->add('permission_id', 'The route cannot be null if the menu is not a parent');
+                $validator->errors()->add('has_children', __('The menu must be a parent if the route is null'));
+                $validator->errors()->add('permission_id', __('The route cannot be null if the menu is not a parent'));
             }
         });
     }

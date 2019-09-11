@@ -12,8 +12,8 @@ class MenuTable extends Table
     public function query()
     {
         return Menu::selectRaw('
-            menus.id as "dtRowId", menus.name, menus.icon, menus.has_children,
-            menus.order_index, parent_menus.name as parent, permissions.name as route, menus.created_at
+            menus.id, menus.name, menus.icon, menus.has_children, menus.order_index,
+            parent_menus.name as parent, permissions.name as route, menus.created_at
         ')->leftJoin('permissions', 'menus.permission_id', '=', 'permissions.id')
         ->leftJoin('menus as parent_menus', 'menus.parent_id', '=', 'parent_menus.id');
     }

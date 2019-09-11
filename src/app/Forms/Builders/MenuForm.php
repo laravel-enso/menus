@@ -8,13 +8,13 @@ use LaravelEnso\Permissions\app\Models\Permission;
 
 class MenuForm
 {
-    private const FormPath = __DIR__.'/../Templates/menu.json';
+    protected const FormPath = __DIR__.'/../Templates/menu.json';
 
-    private $form;
+    protected $form;
 
     public function __construct()
     {
-        $this->form = (new Form(self::FormPath))
+        $this->form = (new Form(static::FormPath))
             ->options('parent_id', Menu::isParent()->get(['id', 'name']))
             ->options('permission_id', Permission::get(['id', 'name']));
     }
@@ -26,7 +26,6 @@ class MenuForm
 
     public function edit(Menu $menu)
     {
-        return $this->form
-            ->edit($menu);
+        return $this->form->edit($menu);
     }
 }

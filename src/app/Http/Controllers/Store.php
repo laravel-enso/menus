@@ -10,8 +10,7 @@ class Store extends Controller
 {
     public function __invoke(ValidateMenuStore $request, Menu $menu)
     {
-        tap($menu)->fill($request->validated())
-            ->save();
+        $menu->fill($request->validated())->save();
 
         return [
             'message' => __('The menu was created!'),

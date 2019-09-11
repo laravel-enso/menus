@@ -21,12 +21,12 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "laravel-enso/core": "4.3.*",
-        "laravel-enso/forms": "3.1.*",
+        "laravel-enso/core": "4.4.*",
+        "laravel-enso/forms": "3.2.*",
         "laravel-enso/migrator": "1.0.*",
-        "laravel-enso/permissions": "3.1.*",
-        "laravel-enso/roles": "3.1.*",
-        "laravel-enso/tables": "2.1.*"
+        "laravel-enso/permissions": "3.2.*",
+        "laravel-enso/roles": "3.2.*",
+        "laravel-enso/tables": "2.2.*"
     },
     "autoload": {
         "psr-4": {
