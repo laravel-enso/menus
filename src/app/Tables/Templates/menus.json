@@ -3,7 +3,6 @@
     "crtNo": true,
     "buttons": ["excel", "create", "edit", "destroy"],
     "appends": ["computedIcon"],
-    "cache": true,
     "columns": [{
         "label": "Name",
         "name": "name",

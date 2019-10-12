@@ -5,7 +5,7 @@ namespace LaravelEnso\Menus\app\Http\Requests;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ValidateMenuStore extends FormRequest
+class ValidateMenuRequest extends FormRequest
 {
     public function authorize()
     {
@@ -44,6 +44,6 @@ class ValidateMenuStore extends FormRequest
         return Rule::unique('menus', 'name')
             ->where(function ($query) {
                 return $query->whereParentId($this->parent_id);
-            });
+            })->ignore(optional($this->route('menu'))->id);
     }
 }

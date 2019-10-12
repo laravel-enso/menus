@@ -21,11 +21,11 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "laravel-enso/core": "4.4.*",
+        "laravel-enso/core": "4.5.*",
         "laravel-enso/forms": "3.2.*",
         "laravel-enso/migrator": "1.0.*",
-        "laravel-enso/permissions": "3.2.*",
-        "laravel-enso/roles": "3.2.*",
+        "laravel-enso/permissions": "3.3.*",
+        "laravel-enso/roles": "3.3.*",
         "laravel-enso/tables": "2.2.*"
     },
     "autoload": {

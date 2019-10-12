@@ -4,11 +4,11 @@ namespace LaravelEnso\Menus\app\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use LaravelEnso\Menus\app\Models\Menu;
-use LaravelEnso\Menus\app\Http\Requests\ValidateMenuStore;
+use LaravelEnso\Menus\app\Http\Requests\ValidateMenuRequest;
 
 class Store extends Controller
 {
-    public function __invoke(ValidateMenuStore $request, Menu $menu)
+    public function __invoke(ValidateMenuRequest $request, Menu $menu)
     {
         $menu->fill($request->validated())->save();
 
