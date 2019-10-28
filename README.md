@@ -12,14 +12,9 @@ Menu Manager dependency for [Laravel Enso](https://github.com/laravel-enso/Enso)
 
 <sup>click on the photo to view a short demo in compatible browsers</sup>
 
-### Features
+### Installation, Configuration & Usage
 
-- allow for the easy management of the main (sidebar) menus of the application
-- permits the creation, update, delete, ordering of the menus
-
-### Configuration & Usage
-
-Be sure to check out the full documentation for this package available at [docs.laravel-enso.com](https://docs.laravel-enso.com/backend/menu-manager.html)
+Be sure to check out the full documentation for this package available at [docs.laravel-enso.com](https://docs.laravel-enso.com/backend/menus.html)
 
 ### Contributions
 
@@ -28,4 +23,3 @@ are welcome. Pull requests are great, but issues are good too.
 ### License
 
 This package is released under the MIT license.
-<!--/h-->
