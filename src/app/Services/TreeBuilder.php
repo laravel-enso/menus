@@ -2,8 +2,8 @@
 
 namespace LaravelEnso\Menus\app\Services;
 
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use LaravelEnso\Menus\app\Models\Menu;
 
 class TreeBuilder

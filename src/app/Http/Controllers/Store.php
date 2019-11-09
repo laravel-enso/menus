@@ -3,8 +3,8 @@
 namespace LaravelEnso\Menus\app\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use LaravelEnso\Menus\app\Models\Menu;
 use LaravelEnso\Menus\app\Http\Requests\ValidateMenuRequest;
+use LaravelEnso\Menus\app\Models\Menu;
 
 class Store extends Controller
 {

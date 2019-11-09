@@ -2,8 +2,8 @@
 
 namespace LaravelEnso\Menus\app\Forms\Builders;
 
-use LaravelEnso\Menus\app\Models\Menu;
 use LaravelEnso\Forms\app\Services\Form;
+use LaravelEnso\Menus\app\Models\Menu;
 use LaravelEnso\Permissions\app\Models\Permission;
 
 class MenuForm
