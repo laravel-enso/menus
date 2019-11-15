@@ -12,7 +12,7 @@
         "label": "Icon",
         "name": "computedIcon",
         "data": "menus.computedIcon",
-        "meta": ["icon"]
+        "meta": ["icon", "notExportable"]
     }, {
         "label": "Parent",
         "name": "parent",
