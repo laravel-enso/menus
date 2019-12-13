@@ -20,7 +20,7 @@ class TreeBuilder
             ->build();
     }
 
-    private function build(int $parentId = null)
+    private function build(?int $parentId = null)
     {
         $tree = collect();
 
