@@ -22,15 +22,11 @@ class TreeBuilder
 
     private function build(?int $parentId = null)
     {
-        $tree = collect();
-
-        $this->menus->each(function ($menu) use ($tree, $parentId) {
-            if ($menu->parent_id === $parentId) {
-                $tree->push($this->withChildren($menu));
-            }
-        });
-
-        return $tree;
+        return $this->menus
+            ->filter(fn($menu) => $menu->parent_id === $parentId)
+            ->reduce(fn($tree, $menu) => (
+                $tree->push($this->withChildren($menu))
+            ), collect());
     }
 
     private function withChildren(Menu $menu)
@@ -71,9 +67,7 @@ class TreeBuilder
     private function filter()
     {
         $this->menus = $this->menus
-            ->filter(function ($menu) {
-                return $this->allowed($menu);
-            });
+            ->filter(fn($menu) => $this->allowed($menu));
 
         return $this;
     }
@@ -101,9 +95,7 @@ class TreeBuilder
     private function someChildrenAllowed($parentMenu)
     {
         return $parentMenu->has_children
-            && $this->menus->first(function ($childMenu) use ($parentMenu) {
-                return $childMenu->parent_id === $parentMenu->id
-                    && $this->allowed($childMenu);
-            });
+            && $this->menus->first(fn($childMenu) => $childMenu->parent_id === $parentMenu->id
+                && $this->allowed($childMenu));
     }
 }

@@ -44,8 +44,7 @@ class ValidateMenuRequest extends FormRequest
     protected function nameUnique()
     {
         return Rule::unique('menus', 'name')
-            ->where(function ($query) {
-                return $query->whereParentId($this->parent_id);
-            })->ignore(optional($this->route('menu'))->id);
+            ->where(fn($query) => $query->whereParentId($this->parent_id))
+            ->ignore(optional($this->route('menu'))->id);
     }
 }
