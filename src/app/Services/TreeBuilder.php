@@ -95,7 +95,9 @@ class TreeBuilder
     private function someChildrenAllowed($parentMenu)
     {
         return $parentMenu->has_children
-            && $this->menus->first(fn($childMenu) => $childMenu->parent_id === $parentMenu->id
-                && $this->allowed($childMenu));
+            && $this->menus->first(fn($childMenu) => (
+                $childMenu->parent_id === $parentMenu->id
+                && $this->allowed($childMenu)
+            ));
     }
 }
