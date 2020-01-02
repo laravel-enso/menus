@@ -1,16 +1,16 @@
 <?php
 
-namespace LaravelEnso\Menus\app\Forms\Builders;
+namespace LaravelEnso\Menus\App\Forms\Builders;
 
-use LaravelEnso\Forms\app\Services\Form;
-use LaravelEnso\Menus\app\Models\Menu;
-use LaravelEnso\Permissions\app\Models\Permission;
+use LaravelEnso\Forms\App\Services\Form;
+use LaravelEnso\Menus\App\Models\Menu;
+use LaravelEnso\Permissions\App\Models\Permission;
 
 class MenuForm
 {
     protected const FormPath = __DIR__.'/../Templates/menu.json';
 
-    protected $form;
+    protected Form $form;
 
     public function __construct()
     {

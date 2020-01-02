@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateMenusTable extends Migration
 {
@@ -10,7 +11,7 @@ class CreateMenusTable extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('parent_id')->unsigned()->index()->nullable();
+            $table->unsignedInteger('parent_id')->index()->nullable();
             $table->foreign('parent_id')->references('id')->on('menus');
 
             $table->integer('permission_id')->unsigned()->index()->nullable();
@@ -23,6 +24,8 @@ class CreateMenusTable extends Migration
             $table->boolean('has_children');
 
             $table->timestamps();
+
+            $table->unique(['parent_id', 'name']);
         });
     }
 

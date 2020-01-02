@@ -1,31 +1,36 @@
 <?php
 
-namespace LaravelEnso\Menus\app\Services;
+namespace LaravelEnso\Menus\App\Services;
 
-use LaravelEnso\Menus\app\Models\Menu;
+use LaravelEnso\Helpers\App\Classes\Obj;
+use LaravelEnso\Menus\App\Models\Menu;
 
 class Organizer
 {
-    private $menus;
+    private Obj $menus;
 
     public function __construct(array $menus)
     {
-        $this->menus = $menus;
+        $this->menus = new Obj($menus);
     }
 
-    public function handle()
+    public function handle(): void
     {
         $this->organize($this->menus);
     }
 
-    private function organize($menus)
+    private function organize(Obj $menus): void
     {
-        collect($menus)->each(function ($menu, $key) {
-            Menu::find($menu['id'])
-                ->update(['order_index' => ($key + 1) * 10]);
-            if ($menu['has_children']) {
-                $this->organize($menu['children']);
-            }
-        });
+        $menus->each(fn ($menu, $index) => $this->reorder($menu, $index));
+    }
+
+    private function reorder(Obj $menu, int $index): void
+    {
+        Menu::find($menu->get('id'))
+            ->update(['order_index' => ($index + 1) * 10]);
+
+        if ($menu->get('has_children')) {
+            $this->organize($menu->get('children'));
+        }
     }
 }

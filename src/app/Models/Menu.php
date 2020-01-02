@@ -1,13 +1,13 @@
 <?php
 
-namespace LaravelEnso\Menus\app\Models;
+namespace LaravelEnso\Menus\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use LaravelEnso\Permissions\app\Models\Permission;
-use LaravelEnso\Roles\app\Models\Role;
-use LaravelEnso\Tables\app\Traits\TableCache;
-use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
+use LaravelEnso\Menus\App\Exceptions\Menu as Exception;
+use LaravelEnso\Permissions\App\Models\Permission;
+use LaravelEnso\Roles\App\Models\Role;
+use LaravelEnso\Tables\App\Traits\TableCache;
 
 class Menu extends Model
 {
@@ -51,15 +51,11 @@ class Menu extends Model
     public function delete()
     {
         if ($this->children()->exists()) {
-            throw new ConflictHttpException(
-                __('The menu cannot be deleted because it has children')
-            );
+            throw Exception::hasChildren();
         }
 
         if ($this->rolesWhereIsDefault()->exists()) {
-            throw new ConflictHttpException(
-                __('The menu cannot be deleted because it is set as default for one or more roles')
-            );
+            throw Exception::usedAsDefault();
         }
 
         parent::delete();

@@ -1,10 +1,10 @@
 <?php
 
-namespace LaravelEnso\Menus\app\Tables\Builders;
+namespace LaravelEnso\Menus\App\Tables\Builders;
 
 use Illuminate\Database\Eloquent\Builder;
-use LaravelEnso\Menus\app\Models\Menu;
-use LaravelEnso\Tables\app\Contracts\Table;
+use LaravelEnso\Menus\App\Models\Menu;
+use LaravelEnso\Tables\App\Contracts\Table;
 
 class MenuTable implements Table
 {

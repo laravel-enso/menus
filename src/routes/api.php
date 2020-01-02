@@ -1,9 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 Route::middleware(['web', 'auth', 'core'])
     ->prefix('api/system/menus')
     ->as('system.menus.')
-    ->namespace('LaravelEnso\Menus\app\Http\Controllers')
+    ->namespace('LaravelEnso\Menus\App\Http\Controllers')
     ->group(function () {
         Route::get('create', 'Create')->name('create');
         Route::post('', 'Store')->name('store');
