@@ -23,7 +23,7 @@
         "laravel-enso/core": "4.7.*",
         "laravel-enso/forms": "3.4.*",
         "laravel-enso/migrator": "1.1.*",
-        "laravel-enso/permissions": "3.3.*",
+        "laravel-enso/permissions": "3.4.*",
         "laravel-enso/roles": "3.4.*",
         "laravel-enso/tables": "3.2.*"
     },
