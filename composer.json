@@ -20,7 +20,7 @@
         }
     ],
     "require": {
-        "laravel-enso/core": "4.7.*",
+        "laravel-enso/core": "4.8.*",
         "laravel-enso/forms": "3.4.*",
         "laravel-enso/migrator": "1.1.*",
         "laravel-enso/permissions": "3.4.*",
