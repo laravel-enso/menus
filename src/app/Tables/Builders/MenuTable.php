@@ -4,12 +4,11 @@ namespace LaravelEnso\Menus\App\Tables\Builders;
 
 use Illuminate\Database\Eloquent\Builder;
 use LaravelEnso\Menus\App\Models\Menu;
-use LaravelEnso\Tables\App\Contracts\CustomCountCacheKey;
 use LaravelEnso\Tables\App\Contracts\Table;
 
 class MenuTable implements Table
 {
-    protected const TemplatePath = __DIR__ . '/../Templates/menus.json';
+    protected const TemplatePath = __DIR__.'/../Templates/menus.json';
 
     public function query(): Builder
     {
