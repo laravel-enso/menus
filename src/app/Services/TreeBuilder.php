@@ -2,11 +2,9 @@
 
 namespace LaravelEnso\Menus\App\Services;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use LaravelEnso\Menus\App\Http\Resources\Menu as Resource;
 use LaravelEnso\Menus\App\Models\Menu;
 
 class TreeBuilder
@@ -23,15 +21,12 @@ class TreeBuilder
             ->build();
     }
 
-    private function build(?int $parentId = null): ResourceCollection
+    private function build(?int $parentId = null): Collection
     {
-        $menus = $this->menus
+        return $this->menus
             ->filter(fn ($menu) => $menu->parent_id === $parentId)
-            ->reduce(fn ($tree, $menu) => $tree->push(
-                $this->withChildren($menu)
-            ), new Collection());
-
-        return Resource::collection($menus);
+            ->reduce(fn ($tree, $menu) => $tree
+                ->push($this->withChildren($menu)), new Collection());
     }
 
     private function withChildren(Menu $menu): Menu
