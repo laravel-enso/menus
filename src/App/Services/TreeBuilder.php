@@ -35,8 +35,6 @@ class TreeBuilder
             ? $this->build($menu->id)
             : null;
 
-        $menu['expanded'] = false;
-
         $menu->route = optional($menu->permission)->name;
 
         unset($menu->permission);

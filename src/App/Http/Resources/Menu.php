@@ -15,7 +15,8 @@ class Menu extends JsonResource
             'hasChildren' => $this->has_children,
             'children' => $this->children ? self::collection($this->children) : null,
             'route' => $this->route,
-            'expanded' => $this->expanded,
+            'expanded' => false,
+            'active' => false,
         ];
     }
 }
