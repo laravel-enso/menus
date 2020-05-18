@@ -2,6 +2,7 @@
 
 namespace LaravelEnso\Menus\App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use LaravelEnso\Menus\App\Exceptions\Menu as Exception;
@@ -61,12 +62,12 @@ class Menu extends Model
         parent::delete();
     }
 
-    public function scopeIsParent($query)
+    public function scopeIsParent(Builder $query)
     {
         return $query->whereHasChildren(true);
     }
 
-    public function scopeIsNotParent($query)
+    public function scopeIsNotParent(Builder $query)
     {
         return $query->whereHasChildren(false);
     }
