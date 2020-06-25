@@ -1,13 +1,13 @@
 <?php
 
 use Tests\TestCase;
-use LaravelEnso\Core\App\Models\User;
-use LaravelEnso\Menus\App\Models\Menu;
+use LaravelEnso\Core\Models\User;
+use LaravelEnso\Menus\Models\Menu;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use LaravelEnso\Forms\App\TestTraits\EditForm;
-use LaravelEnso\Forms\App\TestTraits\CreateForm;
-use LaravelEnso\Forms\App\TestTraits\DestroyForm;
-use LaravelEnso\Tables\App\Traits\Tests\Datatable;
+use LaravelEnso\Forms\TestTraits\EditForm;
+use LaravelEnso\Forms\TestTraits\CreateForm;
+use LaravelEnso\Forms\TestTraits\DestroyForm;
+use LaravelEnso\Tables\Traits\Tests\Datatable;
 
 class MenuTest extends TestCase
 {
