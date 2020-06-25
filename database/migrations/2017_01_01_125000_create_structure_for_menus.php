@@ -21,5 +21,5 @@ class CreateStructureForMenus extends Migration
         'name' => 'Menus', 'icon' => 'list', 'route' => 'system.menus.index', 'order_index' => 999, 'has_children' => false,
     ];
 
-    protected string $parentMenu = 'System';
+    protected ?string $parentMenu = 'System';
 }
