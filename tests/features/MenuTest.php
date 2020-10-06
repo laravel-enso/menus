@@ -26,7 +26,7 @@ class MenuTest extends TestCase
         $this->seed()
             ->actingAs(User::first());
 
-        $this->testModel = factory(Menu::class)
+        $this->testModel = Menu::factory()
             ->make();
     }
 
@@ -66,7 +66,7 @@ class MenuTest extends TestCase
     /** @test */
     public function cant_destroy_if_is_parent()
     {
-        $parentMenu = factory(Menu::class)->create([
+        $parentMenu = Menu::factory()->create([
             'permission_id' => null,
             'has_children' => true,
         ]);

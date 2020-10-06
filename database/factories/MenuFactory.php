@@ -1,14 +1,25 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace LaravelEnso\Core\Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
 use LaravelEnso\Menus\Models\Menu;
 use LaravelEnso\Permissions\Models\Permission;
 
-$factory->define(Menu::class, fn (Faker $faker) => [
-    'permission_id' => fn () => factory(Permission::class)->create()->id,
-    'parent_id' => null,
-    'name' => $faker->word,
-    'icon' => $faker->word,
-    'has_children' => false,
-    'order_index' => $faker->randomNumber(3),
-]);
+
+class MenuFactory extends Factory
+{
+    protected $model = Menu::class;
+
+    public function definition()
+    {
+        return [
+            'permission_id' => Permission::factory(),
+            'parent_id' => null,
+            'name' => $this->faker->word,
+            'icon' => $this->faker->word,
+            'has_children' => false,
+            'order_index' => $this->faker->randomNumber(3),
+        ];
+    }
+}
