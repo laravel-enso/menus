@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use LaravelEnso\Menus\Models\Menu;
 use LaravelEnso\Permissions\Models\Permission;
 
-
 class MenuFactory extends Factory
 {
     protected $model = Menu::class;
