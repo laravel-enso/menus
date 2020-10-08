@@ -18,7 +18,7 @@
         "role": "Developer"
     }],
     "require": {
-        "laravel-enso/core": "^5.0",
+        "laravel-enso/core": "^6.0",
         "laravel-enso/forms": "^4.0",
         "laravel-enso/migrator": "^2.0",
         "laravel-enso/permissions": "^4.0",
@@ -27,7 +27,8 @@
     },
     "autoload": {
         "psr-4": {
-            "LaravelEnso\\Menus\\": "src/"
+            "LaravelEnso\\Menus\\": "src/",
+            "LaravelEnso\\Menus\\Database\\Factories\\": "database/factories/"
         }
     },
     "extra": {
