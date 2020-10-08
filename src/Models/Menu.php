@@ -3,9 +3,9 @@
 namespace LaravelEnso\Menus\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use LaravelEnso\Helpers\Traits\HasFactory;
 use LaravelEnso\Menus\Exceptions\Menu as Exception;
 use LaravelEnso\Permissions\Models\Permission;
 use LaravelEnso\Roles\Models\Role;
