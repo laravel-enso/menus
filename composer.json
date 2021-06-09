@@ -11,14 +11,16 @@
     "homepage": "https://github.com/laravel-enso/Menus",
     "type": "library",
     "license": "MIT",
-    "authors": [{
-        "name": "Adrian Ocneanu",
-        "email": "aocneanu@gmail.com",
-        "homepage": "https://laravel-enso.com",
-        "role": "Developer"
-    }],
+    "authors": [
+        {
+            "name": "Adrian Ocneanu",
+            "email": "aocneanu@gmail.com",
+            "homepage": "https://laravel-enso.com",
+            "role": "Developer"
+        }
+    ],
     "require": {
-        "laravel-enso/core": "^6.0",
+        "laravel-enso/core": "^7.0",
         "laravel-enso/forms": "^4.0",
         "laravel-enso/migrator": "^2.0",
         "laravel-enso/permissions": "^4.0",

@@ -29,17 +29,21 @@ class ValidateMenuRequest extends FormRequest
         $validator->after(function ($validator) {
             if ($this->get('has_children') && $this->filled('permission_id')) {
                 $validator->errors()->add(
-                    'has_children', __("The menu can't be a parent if the route isn't null")
+                    'has_children',
+                    __("The menu can't be a parent if the route isn't null")
                 )->add(
-                    'permission_id', __('The route has to be null if the menu is a parent')
+                    'permission_id',
+                    __('The route has to be null if the menu is a parent')
                 );
             }
 
             if (! $this->get('has_children') && ! $this->filled('permission_id')) {
                 $validator->errors()->add(
-                    'has_children', __('The menu must be a parent if the route is null')
+                    'has_children',
+                    __('The menu must be a parent if the route is null')
                 )->add(
-                    'permission_id', __("The route can't be null if the menu isn't a parent")
+                    'permission_id',
+                    __("The route can't be null if the menu isn't a parent")
                 );
             }
         });
@@ -49,6 +53,6 @@ class ValidateMenuRequest extends FormRequest
     {
         return Rule::unique('menus', 'name')
             ->where(fn ($query) => $query->whereParentId($this->parent_id))
-            ->ignore(optional($this->route('menu'))->id);
+            ->ignore($this->route('menu')?->id);
     }
 }
