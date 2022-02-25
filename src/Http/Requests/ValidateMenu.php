@@ -5,7 +5,7 @@ namespace LaravelEnso\Menus\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class ValidateMenuRequest extends FormRequest
+class ValidateMenu extends FormRequest
 {
     public function authorize()
     {

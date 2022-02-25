@@ -3,12 +3,12 @@
 namespace LaravelEnso\Menus\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use LaravelEnso\Menus\Tables\Builders\MenuTable;
+use LaravelEnso\Menus\Tables\Builders\Menu;
 use LaravelEnso\Tables\Traits\Data;
 
 class TableData extends Controller
 {
     use Data;
 
-    protected $tableClass = MenuTable::class;
+    protected $tableClass = Menu::class;
 }

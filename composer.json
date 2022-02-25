@@ -20,11 +20,11 @@
         }
     ],
     "require": {
-        "laravel-enso/core": "^7.0",
+        "laravel-enso/core": "^8.0",
         "laravel-enso/forms": "^4.0",
         "laravel-enso/migrator": "^2.0",
-        "laravel-enso/permissions": "^4.0",
-        "laravel-enso/roles": "^4.0",
+        "laravel-enso/permissions": "^5.0",
+        "laravel-enso/roles": "^5.0",
         "laravel-enso/tables": "^4.0"
     },
     "autoload": {
