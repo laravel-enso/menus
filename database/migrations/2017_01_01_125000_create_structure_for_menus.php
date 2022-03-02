@@ -2,7 +2,7 @@
 
 use LaravelEnso\Migrator\Database\Migration;
 
-class CreateStructureForMenus extends Migration
+return new class extends Migration
 {
     protected array $permissions = [
         ['name' => 'system.menus.index', 'description' => 'Menus index', 'is_default' => false],
@@ -22,4 +22,4 @@ class CreateStructureForMenus extends Migration
     ];
 
     protected ?string $parentMenu = 'System';
-}
+};
