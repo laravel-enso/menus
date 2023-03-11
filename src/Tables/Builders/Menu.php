@@ -8,7 +8,7 @@ use LaravelEnso\Tables\Contracts\Table;
 
 class Menu implements Table
 {
-    private const TemplatePath = __DIR__ . '/../Templates/menus.json';
+    private const TemplatePath = __DIR__.'/../Templates/menus.json';
 
     public function query(): Builder
     {

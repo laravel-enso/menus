@@ -51,7 +51,7 @@ class Menu extends Model
         return $query->whereHasChildren(false);
     }
 
-    public function icon(): string | array
+    public function icon(): string|array
     {
         return Str::contains($this->icon, ' ')
             ? explode(' ', $this->icon)
