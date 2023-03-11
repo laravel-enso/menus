@@ -41,7 +41,17 @@ class Menu extends Model
         return $this->hasMany(Role::class);
     }
 
-    public function getComputedIconAttribute()
+    public function scopeIsParent(Builder $query)
+    {
+        return $query->whereHasChildren(true);
+    }
+
+    public function scopeIsNotParent(Builder $query)
+    {
+        return $query->whereHasChildren(false);
+    }
+
+    public function icon(): string | array
     {
         return Str::contains($this->icon, ' ')
             ? explode(' ', $this->icon)
@@ -59,15 +69,5 @@ class Menu extends Model
         }
 
         parent::delete();
-    }
-
-    public function scopeIsParent(Builder $query)
-    {
-        return $query->whereHasChildren(true);
-    }
-
-    public function scopeIsNotParent(Builder $query)
-    {
-        return $query->whereHasChildren(false);
     }
 }

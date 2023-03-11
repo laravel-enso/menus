@@ -7,14 +7,11 @@
         "edit",
         "destroy"
     ],
-    "appends": [
-        "computedIcon"
-    ],
     "columns": [
         {
             "label": "Name",
             "name": "name",
-            "data": "menus.name",
+            "data": "name",
             "meta": [
                 "searchable",
                 "sortable"
@@ -22,35 +19,34 @@
         },
         {
             "label": "Icon",
-            "name": "computedIcon",
-            "data": "menus.computedIcon",
+            "name": "icon",
+            "data": "icon",
             "meta": [
                 "icon",
+                "method",
                 "notExportable"
             ]
         },
         {
             "label": "Parent",
-            "name": "parent",
-            "data": "parent_menus.name",
+            "name": "parent.name",
+            "data": "parent.name",
             "meta": [
-                "searchable",
-                "sortable"
+                "searchable"
             ]
         },
         {
             "label": "Route",
-            "name": "route",
-            "data": "permissions.name",
+            "name": "permission.name",
+            "data": "permission.name",
             "meta": [
-                "searchable",
-                "sortable"
+                "searchable"
             ]
         },
         {
             "label": "Has Children",
             "name": "has_children",
-            "data": "menus.has_children",
+            "data": "has_children",
             "meta": [
                 "boolean"
             ]
@@ -58,7 +54,7 @@
         {
             "label": "Order",
             "name": "order_index",
-            "data": "menus.order_index",
+            "data": "order_index",
             "meta": [
                 "sortable"
             ]
@@ -66,7 +62,7 @@
         {
             "label": "Created At",
             "name": "created_at",
-            "data": "menus.created_at",
+            "data": "created_at",
             "meta": [
                 "sortable",
                 "date"
