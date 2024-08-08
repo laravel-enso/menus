@@ -17,10 +17,6 @@ class Menu extends Model
 
     protected $guarded = ['id'];
 
-    protected $casts = [
-        'has_children' => 'boolean', 'parent_id' => 'integer', 'permission_id' => 'integer',
-    ];
-
     public function parent()
     {
         return $this->belongsTo(self::class);
@@ -69,5 +65,13 @@ class Menu extends Model
         }
 
         parent::delete();
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'has_children' => 'boolean', 'parent_id' => 'integer',
+            'permission_id' => 'integer',
+        ];
     }
 }
