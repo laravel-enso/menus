@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->unsignedInteger('parent_id')->index()->nullable();
+            $table->integer('parent_id')->unsigned()->index()->nullable();
             $table->foreign('parent_id')->references('id')->on('menus');
 
             $table->integer('permission_id')->unsigned()->index()->nullable();
