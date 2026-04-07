@@ -8,13 +8,13 @@ use LaravelEnso\Menus\Services\TreeBuilder;
 
 class Menus implements ProvidesState
 {
-    public function mutation(): string
+    public function store(): string
     {
-        return 'menu/set';
+        return 'menu';
     }
 
-    public function state(): mixed
+    public function state(): array
     {
-        return Menu::collection((new TreeBuilder())->handle());
+        return Menu::collection((new TreeBuilder())->handle())->resolve();
     }
 }
