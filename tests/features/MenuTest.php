@@ -8,6 +8,7 @@ use LaravelEnso\Menus\Models\Menu;
 use LaravelEnso\Tables\Traits\Tests\Datatable;
 use LaravelEnso\Users\Models\User;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class MenuTest extends TestCase
 {
@@ -28,7 +29,7 @@ class MenuTest extends TestCase
             ->make();
     }
 
-    /** @test */
+    #[Test]
     public function can_store_menu()
     {
         $response = $this->post(
@@ -46,7 +47,7 @@ class MenuTest extends TestCase
             ])->assertJsonStructure(['message']);
     }
 
-    /** @test */
+    #[Test]
     public function can_update_menu()
     {
         $this->testModel->save();
@@ -61,7 +62,7 @@ class MenuTest extends TestCase
         $this->assertEquals('edited', $this->testModel->fresh()->name);
     }
 
-    /** @test */
+    #[Test]
     public function cant_destroy_if_is_parent()
     {
         $parentMenu = Menu::factory()->create([
