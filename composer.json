@@ -26,7 +26,7 @@
         "laravel-enso/migrator": "^2.0",
         "laravel-enso/permissions": "^5.0",
         "laravel-enso/roles": "^5.0",
-        "laravel-enso/tables": "^5.1.0"
+        "laravel-enso/tables": "^5.1"
     },
     "autoload": {
         "psr-4": {
