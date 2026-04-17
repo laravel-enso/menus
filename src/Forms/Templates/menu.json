@@ -14,6 +14,25 @@
                     }
                 },
                 {
+                    "label": "Parent",
+                    "name": "parent_id",
+                    "value": null,
+                    "meta": {
+                        "type": "select",
+                        "multiple": false,
+                        "options": []
+                    }
+                },
+                {
+                    "label": "Route",
+                    "name": "permission_id",
+                    "value": null,
+                    "meta": {
+                        "type": "select",
+                        "options": []
+                    }
+                },
+                {
                     "label": "Order",
                     "name": "order_index",
                     "value": 999,
@@ -29,25 +48,6 @@
                     "meta": {
                         "type": "input",
                         "content": "text"
-                    }
-                },
-                {
-                    "label": "Route",
-                    "name": "permission_id",
-                    "value": null,
-                    "meta": {
-                        "type": "select",
-                        "options": []
-                    }
-                },
-                {
-                    "label": "Parent",
-                    "name": "parent_id",
-                    "value": null,
-                    "meta": {
-                        "type": "select",
-                        "multiple": false,
-                        "options": []
                     }
                 },
                 {
