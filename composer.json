@@ -1,6 +1,6 @@
 {
     "name": "laravel-enso/menus",
-    "description": "Menu Manager dependency for Laravel Enso",
+    "description": "Menu management for Laravel Enso",
     "keywords": [
         "laravel-enso",
         "menus",
@@ -8,7 +8,7 @@
         "breadcrumbs",
         "laravel-menu"
     ],
-    "homepage": "https://github.com/laravel-enso/Menus",
+    "homepage": "https://github.com/laravel-enso/menus",
     "type": "library",
     "license": "MIT",
     "authors": [
