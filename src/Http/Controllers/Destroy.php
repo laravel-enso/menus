@@ -12,7 +12,7 @@ class Destroy extends Controller
         $menu->delete();
 
         return [
-            'message' => __('The menu was successfully deleted'),
+            'message'  => __('The menu was successfully deleted'),
             'redirect' => 'system.menus.index',
         ];
     }

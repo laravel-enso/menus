@@ -14,11 +14,11 @@ class MenuFactory extends Factory
     {
         return [
             'permission_id' => Permission::factory(),
-            'parent_id' => null,
-            'name' => $this->faker->word,
-            'icon' => $this->faker->word,
-            'has_children' => false,
-            'order_index' => $this->faker->randomNumber(3),
+            'parent_id'     => null,
+            'name'          => $this->faker->word,
+            'icon'          => $this->faker->word,
+            'has_children'  => false,
+            'order_index'   => $this->faker->randomNumber(3),
         ];
     }
 }

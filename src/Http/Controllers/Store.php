@@ -13,9 +13,9 @@ class Store extends Controller
         $menu->fill($request->validated())->save();
 
         return [
-            'message' => __('The menu was created!'),
+            'message'  => __('The menu was created!'),
             'redirect' => 'system.menus.edit',
-            'param' => ['menu' => $menu->id],
+            'param'    => ['menu' => $menu->id],
         ];
     }
 }

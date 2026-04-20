@@ -7,12 +7,16 @@ use LaravelEnso\Forms\TestTraits\EditForm;
 use LaravelEnso\Menus\Models\Menu;
 use LaravelEnso\Tables\Traits\Tests\Datatable;
 use LaravelEnso\Users\Models\User;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class MenuTest extends TestCase
 {
-    use CreateForm, Datatable, DestroyForm, EditForm, RefreshDatabase;
+    use CreateForm;
+    use Datatable;
+    use DestroyForm;
+    use EditForm;
+    use RefreshDatabase;
 
     private $permissionGroup = 'system.menus';
 
@@ -43,7 +47,7 @@ class MenuTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonFragment([
                 'redirect' => 'system.menus.edit',
-                'param' => ['menu' => $menu->id],
+                'param'    => ['menu' => $menu->id],
             ])->assertJsonStructure(['message']);
     }
 
@@ -67,7 +71,7 @@ class MenuTest extends TestCase
     {
         $parentMenu = Menu::factory()->create([
             'permission_id' => null,
-            'has_children' => true,
+            'has_children'  => true,
         ]);
 
         $this->testModel->parent_id = $parentMenu->id;

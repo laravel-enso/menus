@@ -13,7 +13,8 @@ use LaravelEnso\Tables\Traits\TableCache;
 
 class Menu extends Model
 {
-    use HasFactory, TableCache;
+    use HasFactory;
+    use TableCache;
 
     protected $guarded = ['id'];
 
@@ -70,7 +71,7 @@ class Menu extends Model
     protected function casts(): array
     {
         return [
-            'has_children' => 'boolean', 'parent_id' => 'integer',
+            'has_children'  => 'boolean', 'parent_id' => 'integer',
             'permission_id' => 'integer',
         ];
     }

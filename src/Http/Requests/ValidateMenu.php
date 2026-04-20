@@ -15,12 +15,12 @@ class ValidateMenu extends FormRequest
     public function rules()
     {
         return [
-            'parent_id' => 'nullable',
-            'name' => [$this->nameUnique(), 'required'],
+            'parent_id'     => 'nullable',
+            'name'          => [$this->nameUnique(), 'required'],
             'permission_id' => 'nullable|exists:permissions,id',
-            'icon' => 'required',
-            'has_children' => 'boolean',
-            'order_index' => 'numeric|required',
+            'icon'          => 'required',
+            'has_children'  => 'boolean',
+            'order_index'   => 'numeric|required',
         ];
     }
 
@@ -37,7 +37,7 @@ class ValidateMenu extends FormRequest
                 );
             }
 
-            if (! $this->get('has_children') && ! $this->filled('permission_id')) {
+            if (!$this->get('has_children') && !$this->filled('permission_id')) {
                 $validator->errors()->add(
                     'has_children',
                     __('The menu must be a parent if the route is null')

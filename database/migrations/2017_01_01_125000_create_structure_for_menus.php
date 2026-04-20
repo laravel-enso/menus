@@ -2,8 +2,7 @@
 
 use LaravelEnso\Migrator\Database\Migration;
 
-return new class extends Migration
-{
+return new class() extends Migration {
     protected array $permissions = [
         ['name' => 'system.menus.index', 'description' => 'Menus index', 'is_default' => false],
         ['name' => 'system.menus.tableData', 'description' => 'Get table data for menus', 'is_default' => false],
