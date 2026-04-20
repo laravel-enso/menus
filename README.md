@@ -81,6 +81,10 @@ Required Enso packages:
 - [`laravel-enso/roles`](https://docs.laravel-enso.com/backend/roles.html) [↗](https://github.com/laravel-enso/roles)
 - [`laravel-enso/tables`](https://docs.laravel-enso.com/backend/tables.html) [↗](https://github.com/laravel-enso/tables)
 
+Companion frontend package:
+
+- [`@enso-ui/menus`](https://docs.laravel-enso.com/frontend/menus.html) [↗](https://github.com/enso-ui/menus)
+
 ## Contributions
 
 are welcome. Pull requests are great, but issues are good too.
