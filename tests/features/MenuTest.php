@@ -102,7 +102,7 @@ class MenuTest extends TestCase
         $this->post(route('system.menus.store', [], false), [
             ...$this->testModel->toArray(),
             'permission_id' => null,
-            'has_children' => false,
+            'has_children'  => false,
         ])->assertStatus(302)
             ->assertSessionHasErrors(['has_children', 'permission_id']);
     }
@@ -122,11 +122,11 @@ class MenuTest extends TestCase
     {
         $parent = Menu::factory()->create([
             'permission_id' => null,
-            'has_children' => true,
-            'order_index' => 10,
+            'has_children'  => true,
+            'order_index'   => 10,
         ]);
         $child = Menu::factory()->create([
-            'parent_id' => $parent->id,
+            'parent_id'   => $parent->id,
             'order_index' => 30,
         ]);
         $sibling = Menu::factory()->create(['order_index' => 20]);
@@ -134,18 +134,18 @@ class MenuTest extends TestCase
         $this->put(route('system.menus.organize', [], false), [
             'menus' => [
                 [
-                    'id' => $sibling->id,
+                    'id'           => $sibling->id,
                     'has_children' => false,
-                    'children' => [],
+                    'children'     => [],
                 ],
                 [
-                    'id' => $parent->id,
+                    'id'           => $parent->id,
                     'has_children' => true,
-                    'children' => [
+                    'children'     => [
                         [
-                            'id' => $child->id,
+                            'id'           => $child->id,
                             'has_children' => false,
-                            'children' => [],
+                            'children'     => [],
                         ],
                     ],
                 ],
